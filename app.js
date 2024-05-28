@@ -1,5 +1,5 @@
-import { format } from "@formkit/tempo"
+import { format } from "/node_modules/@formkit/tempo/dist/index.mjs";
 
-const date = new Date();
+const date = format(new Date(), "full");
 
 console.log(date);
