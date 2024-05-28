@@ -2,7 +2,18 @@ body {
   margin: auto 40px;
 }
 
+.event {
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.event h4 {
+  margin: 10px 0 20px;
+}
+
 footer {
   text-align: center;
   border-top: 1px solid;
+  margin-top: 20px;
 }
