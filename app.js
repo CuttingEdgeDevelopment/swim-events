@@ -19,3 +19,11 @@ if (countdown === 0) {
 } else {
   eventCountdownEl[0].textContent = countdown + " days to go!";
 }
+
+function readJSON() {
+  fetch('./data.json')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+}
+
+readJSON();
