@@ -2,7 +2,8 @@
 
 Building a small application to show countdowns for upcoming events.
 
-## Preview
+### Preview
+![Screenshot of the Countdown Application.](https://github.com/nicolasmesser/countdown/blob/main/countdownScreenshot.png)
 
-## Technologies & Tools
+### Technologies & Tools
 HTML, CSS, JavaScript, Tempo
