@@ -2,6 +2,16 @@ body {
   margin: auto 40px;
 }
 
+#currentDay {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+#currentDate {
+  font-style: italic;
+  margin-top: 5px;
+}
+
 .event {
   border: 1px solid;
   border-radius: 10px;
