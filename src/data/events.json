@@ -1,5 +1,14 @@
 {
-  "id": 1,
-  "event": "Paris 2024",
-  "date": "26.07.2024"
+  "events": [
+    {
+      "id": 1,
+      "name": "European Aquatics Championships",
+      "date": "17.06.2024"
+    },
+    {
+      "id": 2,
+      "name": "Paris 2024",
+      "date": "26.07.2024"
+    }
+  ]
 }
