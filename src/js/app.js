@@ -22,7 +22,7 @@ if (countdown === 0) {
 }
 
 function readJSON() {
-  fetch('./data.json')
+  fetch('./src/data/events.json')
     .then((response) => response.json())
     .then((json) => console.log(json));
 }
