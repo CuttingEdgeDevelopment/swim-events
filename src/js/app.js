@@ -7,19 +7,27 @@ const day = format(new Date(), "dddd");
 let events = eventsList.events;
 let currentDateEl = document.getElementById("currentDate");
 let currentDayEl = document.getElementById("currentDay");
+let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
 let eventDateEl = document.getElementsByClassName("eventDate");
 let eventDate = parse(eventDateEl[0].textContent, "DD.MM.YYYY")
 let eventCountdownEl = document.getElementsByClassName("eventCountdown");
 let countdown = diffDays(eventDate, currentDate);
 
-events.forEach(event => {
-  console.log(event.name);
-  console.log(event.dateStart);
-});
-
 currentDateEl.textContent = "Current Date: " + date;
 currentDayEl.textContent = "Happy " + day + "!";
+
+events.forEach(event => {
+  eventsListEl.insertAdjacentHTML(
+    "beforeend",
+    '<section class="event">' +
+      '<h4>' + event.name + '</h4>' +
+      '<p>Date: <span class="eventDate">' + event.dateStart + '</span></p>' +
+      '<p>Countdown: <span class="eventCountdown">' + '</span></p>' +
+    '</section>'
+  );
+});
+
 if (countdown === 0) {
   eventCountdownEl[0].textContent = "Today is the day!";
 } else if (countdown === 1) {
