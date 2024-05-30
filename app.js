@@ -1,4 +1,5 @@
-import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
+// import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
+import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
 
 const date = format(new Date(), "MMM DD, YYYY");
 const day = format(new Date(), "dddd");
