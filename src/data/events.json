@@ -3,12 +3,23 @@
     {
       "id": 1,
       "name": "European Aquatics Championships",
-      "date": "17.06.2024"
+      "location": "Belgrade (SRB)",
+      "dateStart": "17.06.2024",
+      "dateEnd": "23.06.2024"
     },
     {
       "id": 2,
-      "name": "Paris 2024",
-      "date": "26.07.2024"
+      "name": "European Junior Swimming Championships",
+      "location": "Vilnius (LTU)",
+      "dateStart": "02.07.2024",
+      "dateEnd": "07.07.2024"
+    },
+    {
+      "id": 3,
+      "name": "The Olympic Games of Paris 2024",
+      "location": "Paris (FRA)",
+      "dateStart": "26.07.2024",
+      "dateEnd": "11.08.2024"
     }
   ]
 }
