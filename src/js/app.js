@@ -5,36 +5,36 @@ import eventsList from "/src/data/events.json" with { type: 'json' };
 const date = format(new Date(), "MMM DD, YYYY");
 const day = format(new Date(), "dddd");
 let events = eventsList.events;
+let eventsSection = "";
 let currentDateEl = document.getElementById("currentDate");
 let currentDayEl = document.getElementById("currentDay");
 let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
-let eventDateEl = document.getElementsByClassName("eventDate");
-let eventDate = parse(eventDateEl[0].textContent, "DD.MM.YYYY")
 let eventCountdownEl = document.getElementsByClassName("eventCountdown");
-let countdown = diffDays(eventDate, currentDate);
 
 currentDateEl.textContent = "Current Date: " + date;
 currentDayEl.textContent = "Happy " + day + "!";
 
 events.forEach(event => {
-  eventsListEl.insertAdjacentHTML(
-    "beforeend",
-    '<section class="event">' +
-      '<h4>' + event.name + '</h4>' +
-      '<p>Date: <span class="eventDate">' + event.dateStart + '</span></p>' +
-      '<p>Countdown: <span class="eventCountdown">' + '</span></p>' +
-    '</section>'
-  );
-});
+  let eventDate = parse(event.dateStart, "DD.MM.YYYY")
+  let countdown = diffDays(eventDate, currentDate);
+  eventsSection = '<section class="event">' +
+    '<h4>' + event.name + '</h4>' +
+    '<p>Date: <span class="eventDate">' + event.dateStart + '</span></p>';
 
-if (countdown === 0) {
-  eventCountdownEl[0].textContent = "Today is the day!";
-} else if (countdown === 1) {
-  eventCountdownEl[0].textContent = countdown + " day to go!";
-} else {
-  eventCountdownEl[0].textContent = countdown + " days to go!";
-}
+  if (countdown === 0) {
+    eventCountdownEl.textContent = "Today is the day!";
+    eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+  } else if (countdown === 1) {
+    eventCountdownEl.textContent = countdown + " day to go!";
+    eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+  } else {
+    eventCountdownEl.textContent = countdown + " days to go!";
+    eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+  }
+
+  eventsListEl.insertAdjacentHTML("beforeend", eventsSection);
+});
 
 /* Initial fetch function
 -------------------------
