@@ -2,7 +2,7 @@
 import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
 import eventsList from "/src/data/events.json" with { type: 'json' };
 
-const date = format(new Date(), "MMM DD, YYYY");
+const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
 const btnAdd = document.getElementById("btn-add");
 const btnUpdate = document.getElementById("btn-update");
@@ -14,8 +14,8 @@ let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
 let eventCountdownEl = document.getElementsByClassName("eventCountdown");
 
-currentDateEl.textContent = "Current Date: " + date;
 currentDayEl.textContent = "Happy " + day + "!";
+currentDateEl.textContent = "Current Date: " + date;
 
 function listEvents() {
   events.forEach(event => {
@@ -29,10 +29,10 @@ function listEvents() {
       eventCountdownEl.textContent = "Today is the day!";
       eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
     } else if (countdown === 1) {
-      eventCountdownEl.textContent = countdown + " day to go!";
+      eventCountdownEl.textContent = countdown + " day to go";
       eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
     } else {
-      eventCountdownEl.textContent = countdown + " days to go!";
+      eventCountdownEl.textContent = countdown + " days to go";
       eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
     }
 
