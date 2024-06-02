@@ -16,6 +16,13 @@
     },
     {
       "id": 3,
+      "name": "Swiss Summer Championships",
+      "location": "Uster (SUI)",
+      "dateStart": "11.07.2024",
+      "dateEnd": "14.07.2024"
+    },
+    {
+      "id": 4,
       "name": "The Olympic Games of Paris 2024",
       "location": "Paris (FRA)",
       "dateStart": "26.07.2024",
