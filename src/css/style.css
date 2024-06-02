@@ -2,6 +2,10 @@ body {
   margin: auto 40px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header-info {
   display: flex;
   justify-content: space-between;

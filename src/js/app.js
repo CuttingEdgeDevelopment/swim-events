@@ -21,9 +21,17 @@ function listEvents() {
   events.forEach(event => {
     let eventDate = parse(event.dateStart, "DD.MM.YYYY")
     let countdown = diffDays(eventDate, currentDate);
-    eventsSection = '<section class="event">' +
-      '<h4>' + event.name + '</h4>' +
-      '<p>Date: <span class="eventDate">' + event.dateStart + '</span></p>';
+    eventsSection = '<section class="event">';
+
+    if (event.link === "") {
+      eventsSection += '<h4>' + event.name + '</h4>';
+    } else {
+      eventsSection += '<h4><a href="' + event.link + '" title="TEST" target="_blank">' + event.name + '</a></h4>';
+    }
+
+    eventsSection += '<p>Location: ' + event.location + '</p>' +
+      '<p>Begin: ' + event.dateStart + '</p>' +
+      '<p>End: ' + event.dateEnd + '</p>';
 
     if (countdown === 0) {
       eventCountdownEl.textContent = "Today is the day!";
