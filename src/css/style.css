@@ -2,6 +2,11 @@ body {
   margin: auto 40px;
 }
 
+.header-info {
+  display: flex;
+  justify-content: space-between;
+}
+
 #currentDay {
   font-weight: bold;
   margin-bottom: 0px;
