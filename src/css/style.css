@@ -6,6 +6,10 @@ a {
   text-decoration: none;
 }
 
+p.hidden {
+  display: none;
+}
+
 .header-info {
   display: flex;
   justify-content: space-between;

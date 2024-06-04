@@ -1,5 +1,7 @@
-// import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
-import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
+// Import to use for local development without internet access
+import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
+// Import to use for deployement of application
+// import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
 import eventsList from "/src/data/events.json" with { type: 'json' };
 
 const date = format(new Date(), "MMMM DD, YYYY");
@@ -13,6 +15,7 @@ let currentDayEl = document.getElementById("currentDay");
 let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
 let eventCountdownEl = document.getElementsByClassName("eventCountdown");
+let eventsLoadingEl = document.getElementById("eventsLoading");
 
 currentDayEl.textContent = "Happy " + day + "!";
 currentDateEl.textContent = "Current Date: " + date;
@@ -58,5 +61,7 @@ btnAdd.addEventListener("click", event => {
 
 btnUpdate.addEventListener("click", event => {
   eventsListEl.textContent = "";
-  listEvents();
+  eventsLoadingEl.classList.remove("hidden");
+  setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
+  setTimeout(function() { listEvents() }, 2000);
 });
