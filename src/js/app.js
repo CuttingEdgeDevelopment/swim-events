@@ -24,7 +24,7 @@ function listEvents() {
   events.forEach(event => {
     let eventDate = parse(event.dateStart, "DD.MM.YYYY")
     let countdown = diffDays(eventDate, currentDate);
-    eventsSection = '<section class="event">';
+    eventsSection = '<section class="event event-' + event.id + '">';
 
     if (event.link === "") {
       eventsSection += '<h4>' + event.name + '</h4>';
