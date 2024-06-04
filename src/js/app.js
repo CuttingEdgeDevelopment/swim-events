@@ -22,33 +22,40 @@ currentDateEl.textContent = "Current Date: " + date;
 
 function listEvents() {
   events.forEach(event => {
-    let eventDate = parse(event.dateStart, "DD.MM.YYYY")
-    let countdown = diffDays(eventDate, currentDate);
-    eventsSection = '<section class="event event-' + event.id + '">';
+    let eventStartDate = parse(event.dateStart, "DD.MM.YYYY")
+    let eventEndDate = parse(event.dateEnd, "DD.MM.YYYY")
+    let countdown = diffDays(eventStartDate, currentDate);
+    let daysPassed = diffDays(eventEndDate, currentDate);
 
-    if (event.link === "") {
-      eventsSection += '<h4>' + event.name + '</h4>';
+    if (countdown < 0) {
+      console.log(event.name + " ended " + daysPassed + " days ago.");
     } else {
-      eventsSection += '<h4><a href="' + event.link + '" title="TEST" target="_blank">' + event.name + '</a></h4>';
+      eventsSection = '<section class="event event-' + event.id + '">';
+
+      if (event.link === "") {
+        eventsSection += '<h4>' + event.name + '</h4>';
+      } else {
+        eventsSection += '<h4><a href="' + event.link + '" title="TEST" target="_blank">' + event.name + '</a></h4>';
+      }
+
+      eventsSection += '<p>Location: ' + event.location + '</p>' +
+        '<p>Begin: ' + event.dateStart + '</p>' +
+        '<p>End: ' + event.dateEnd + '</p>';
+
+      if (countdown === 0) {
+        eventCountdownEl.textContent = "Today is the day!";
+        eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+      } else if (countdown === 1) {
+        eventCountdownEl.textContent = countdown + " day to go";
+        eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+      } else {
+        eventCountdownEl.textContent = countdown + " days to go";
+        eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+      }
     }
-
-    eventsSection += '<p>Location: ' + event.location + '</p>' +
-      '<p>Begin: ' + event.dateStart + '</p>' +
-      '<p>End: ' + event.dateEnd + '</p>';
-
-    if (countdown === 0) {
-      eventCountdownEl.textContent = "Today is the day!";
-      eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
-    } else if (countdown === 1) {
-      eventCountdownEl.textContent = countdown + " day to go";
-      eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
-    } else {
-      eventCountdownEl.textContent = countdown + " days to go";
-      eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
-    }
-
     eventsListEl.insertAdjacentHTML("beforeend", eventsSection);
   });
+
 }
 
 window.addEventListener("load", event => {
