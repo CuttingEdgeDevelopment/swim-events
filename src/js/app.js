@@ -1,7 +1,7 @@
 // Import to use for local development without internet access
-import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
+// import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
 // Import to use for deployement of application
-// import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
+import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
 import eventsList from "/src/data/events.json" with { type: 'json' };
 
 const date = format(new Date(), "MMMM DD, YYYY");
