@@ -1,0 +1,58 @@
+body {
+  margin: auto 40px;
+}
+
+a {
+  text-decoration: none;
+}
+
+p.hidden {
+  display: none;
+}
+
+.header-info {
+  justify-content: space-between;
+  display: flex;
+}
+
+#eventsLoading {
+  color: #dc143c;
+  font-style: italic;
+  font-weight: bold;
+}
+
+#currentDay {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+#currentDate {
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.event {
+  border: 1px solid;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+.event-3 {
+  background: #f08080;
+}
+
+.event h4 {
+  margin: 10px 0 20px;
+}
+
+.eventCountdown {
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid;
+  margin-top: 20px;
+}
+/*# sourceMappingURL=index.c92073ef.css.map */

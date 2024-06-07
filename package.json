@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "@formkit/tempo": "^0.1.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
   }
 }
