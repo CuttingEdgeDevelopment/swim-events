@@ -584,15 +584,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"8lRBv":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _tempo = require("@formkit/tempo");
-var _eventsJson = require("../data/events.json");
-var _eventsJsonDefault = parcelHelpers.interopDefault(_eventsJson);
+const eventsData = require("bd5103096a294280");
 const date = (0, _tempo.format)(new Date(), "MMMM DD, YYYY");
 const day = (0, _tempo.format)(new Date(), "dddd");
 const btnAdd = document.getElementById("btn-add");
 const btnUpdate = document.getElementById("btn-update");
-let data = (0, _eventsJsonDefault.default);
+let data = eventsData;
 let eventsSection = "";
 let currentDateEl = document.getElementById("currentDate");
 let currentDayEl = document.getElementById("currentDay");
@@ -646,40 +644,7 @@ btnUpdate.addEventListener("click", (event)=>{
     }, 2000);
 });
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../data/events.json":"5LFKi","@formkit/tempo":"bPFbk"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"5LFKi":[function(require,module,exports) {
-module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
-
-},{}],"bPFbk":[function(require,module,exports) {
+},{"@formkit/tempo":"bPFbk","bd5103096a294280":"5LFKi"}],"bPFbk":[function(require,module,exports) {
 // src/iso8601.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1829,6 +1794,39 @@ function diffYears(dateA, dateB) {
     return r == 0 ? 0 : r;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"5LFKi":[function(require,module,exports) {
+module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
+
+},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire94c2")
 
 //# sourceMappingURL=index.59a40e7a.js.map

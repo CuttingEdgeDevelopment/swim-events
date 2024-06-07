@@ -1,5 +1,6 @@
 import { format, parse, diffDays } from "@formkit/tempo";
-import eventsData from "../data/events.json" with { type: 'json' };
+
+const eventsData = require("../data/events.json");
 
 const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
