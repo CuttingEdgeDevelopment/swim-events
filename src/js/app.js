@@ -67,6 +67,7 @@ btnAdd.addEventListener("click", event => {
 });
 
 btnUpdate.addEventListener("click", event => {
+  eventsSection = "";
   eventsListEl.textContent = "";
   eventsLoadingEl.classList.remove("hidden");
   setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
