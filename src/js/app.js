@@ -2,13 +2,13 @@
 // import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
 // Import to use for deployement of application
 import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
-import eventsList from "/src/data/events.json" with { type: 'json' };
+import eventsData from "/src/data/events.json" with { type: 'json' };
 
 const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
 const btnAdd = document.getElementById("btn-add");
 const btnUpdate = document.getElementById("btn-update");
-let events = eventsList.events;
+let data = eventsData;
 let eventsSection = "";
 let currentDateEl = document.getElementById("currentDate");
 let currentDayEl = document.getElementById("currentDay");
@@ -21,7 +21,7 @@ currentDayEl.textContent = "Happy " + day + "!";
 currentDateEl.textContent = "Current Date: " + date;
 
 function listEvents() {
-  events.forEach(event => {
+  data.events.forEach(event => {
     let eventStartDate = parse(event.dateStart, "DD.MM.YYYY")
     let eventEndDate = parse(event.dateEnd, "DD.MM.YYYY")
     let countdown = diffDays(eventStartDate, currentDate);
