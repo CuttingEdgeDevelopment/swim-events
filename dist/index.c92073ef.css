@@ -10,9 +10,17 @@ p.hidden {
   display: none;
 }
 
-.header-info {
-  justify-content: space-between;
+.main-title, .main-title-btn {
+  align-items: center;
   display: flex;
+}
+
+.main-title {
+  gap: 5px;
+}
+
+.main-title-btn {
+  gap: 2px;
 }
 
 #eventsLoading {
@@ -48,6 +56,24 @@ p.hidden {
 
 .eventCountdown {
   font-weight: bold;
+}
+
+#btn-add, #btn-update {
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+
+#btn-add {
+  background: url("add_circle_outline.932dd904.svg") center no-repeat;
+}
+
+#btn-update {
+  background: url("refresh.d30ccc1b.svg") center no-repeat;
+}
+
+#btn-add span, #btn-update span {
+  display: none;
 }
 
 footer {
