@@ -17,10 +17,15 @@ p.hidden {
 
 .main-title {
   gap: 5px;
+  margin-bottom: 20px;
 }
 
 .main-title-btn {
   gap: 2px;
+}
+
+.main-title h2 {
+  margin: 0px;
 }
 
 #eventsLoading {
