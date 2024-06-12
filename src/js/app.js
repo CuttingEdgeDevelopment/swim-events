@@ -1,8 +1,6 @@
-// Import to use for local development without internet access
-// import { format, parse, diffDays } from "/node_modules/@formkit/tempo/dist/index.mjs";
-// Import to use for deployement of application
-import { format, parse, diffDays } from "https://cdn.jsdelivr.net/npm/@formkit/tempo/+esm";
-import eventsData from "/src/data/events.json" with { type: 'json' };
+import { format, parse, diffDays } from "@formkit/tempo";
+
+const eventsData = require("../data/events.json");
 
 const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
@@ -59,7 +57,9 @@ function listEvents() {
 }
 
 window.addEventListener("load", event => {
-  listEvents();
+  eventsLoadingEl.classList.remove("hidden");
+  setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
+  setTimeout(function() { listEvents() }, 2000);
 });
 
 btnAdd.addEventListener("click", event => {

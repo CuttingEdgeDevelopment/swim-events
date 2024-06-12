@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Countdown</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/app.js" type="module"></script>
+
+  <body>
+    <header>
+      <h1>Countdown</h1>
+      <section class="header-info">
+        <div class="header-info-welcome">
+          <p id="currentDay"></p>
+          <p id="currentDate"></p>
+        </div>
+      </section>
+    </header>
+    <main>
+      <div class="main-title">
+        <h2>Upcoming Events</h2>
+        <div class="main-title-btn">
+          <button id="btn-add"><span>Add Event</span></button>
+          <button id="btn-update"><span>Update Events</span></button>
+        </div>
+      </div>
+      <p id="eventsLoading" class="hidden">Loading events ...</p>
+      <section id="eventsList">
+      </section>
+    </main>
+    <footer>
+      <p>Copyright &copy 2024 Nicolas Messer</p>
+    </footer>
+  </body>
+
+</html>

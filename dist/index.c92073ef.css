@@ -11,8 +11,8 @@ p.hidden {
 }
 
 .main-title, .main-title-btn {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .main-title {
@@ -25,34 +25,34 @@ p.hidden {
 }
 
 .main-title h2 {
-  margin: 0px;
+  margin: 0;
 }
 
 #eventsLoading {
-  font-weight: bold;
+  color: #dc143c;
   font-style: italic;
-  color: crimson;
+  font-weight: bold;
 }
 
 #currentDay {
+  margin-bottom: 0;
   font-weight: bold;
-  margin-bottom: 0px;
 }
 
 #currentDate {
-  font-style: italic;
   margin-top: 5px;
+  font-style: italic;
 }
 
 .event {
   border: 1px solid;
   border-radius: 10px;
-  padding: 10px 20px;
   margin-bottom: 10px;
+  padding: 10px 20px;
 }
 
 .event-4 {
-  background: lightcoral;
+  background: #f08080;
 }
 
 .event h4 {
@@ -64,17 +64,17 @@ p.hidden {
 }
 
 #btn-add, #btn-update {
-  height: 24px;
-  width: 24px;
   border: none;
+  width: 24px;
+  height: 24px;
 }
 
 #btn-add {
-  background: url(../img/add_circle_outline.svg) no-repeat center;
+  background: url("add_circle_outline.932dd904.svg") center no-repeat;
 }
 
 #btn-update {
-  background: url(../img/refresh.svg) no-repeat center;
+  background: url("refresh.d30ccc1b.svg") center no-repeat;
 }
 
 #btn-add span, #btn-update span {
@@ -86,3 +86,4 @@ footer {
   border-top: 1px solid;
   margin-top: 20px;
 }
+/*# sourceMappingURL=index.c92073ef.css.map */
