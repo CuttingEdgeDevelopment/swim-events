@@ -627,7 +627,13 @@ function listEvents() {
     });
 }
 window.addEventListener("load", (event)=>{
-    listEvents();
+    eventsLoadingEl.classList.remove("hidden");
+    setTimeout(function() {
+        eventsLoadingEl.classList.add("hidden");
+    }, 1500);
+    setTimeout(function() {
+        listEvents();
+    }, 2000);
 });
 btnAdd.addEventListener("click", (event)=>{
     console.log("This button will add a new event");
