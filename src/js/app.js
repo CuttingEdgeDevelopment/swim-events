@@ -28,12 +28,12 @@ function listEvents() {
     if (countdown < 0) {
       console.log(event.name + " ended " + daysPassed + " days ago.");
     } else {
-      eventsSection = '<section class="event event-' + event.id + '">';
+      eventsSection = '<section class="event event-' + event.id + ' border border-black rounded-xl mb-3 px-4 py-5">';
 
       if (event.link === "") {
-        eventsSection += '<h4>' + event.name + '</h4>';
+        eventsSection += '<h4 class="mb-2 text-xl">' + event.name + '</h4>';
       } else {
-        eventsSection += '<h4><a href="' + event.link + '" title="TEST" target="_blank">' + event.name + '</a></h4>';
+        eventsSection += '<h4 class="mb-2 text-xl"><a href="' + event.link + '" title="' + event.name + '" target="_blank">' + event.name + '</a></h4>';
       }
 
       eventsSection += '<p>Location: ' + event.location + '</p>' +
@@ -48,7 +48,7 @@ function listEvents() {
         eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
       } else {
         eventCountdownEl.textContent = countdown + " days to go";
-        eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
+        eventsSection += '<p>Countdown: <span class="font-bold">' + eventCountdownEl.textContent + '</span></p>' + '</section>';
       }
     }
     eventsListEl.insertAdjacentHTML("beforeend", eventsSection);

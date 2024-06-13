@@ -8,29 +8,29 @@
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <script src="./js/app.js" type="module"></script>
 
-  <body>
+  <body class="px-16 py-8">
     <header>
-      <h1>Countdown</h1>
+      <h1 class="text-4xl mb-2">Countdown</h1>
       <section class="header-info">
         <div class="header-info-welcome">
-          <p id="currentDay"></p>
-          <p id="currentDate"></p>
+          <p id="currentDay" class="font-bold"></p>
+          <p id="currentDate" class="italic"></p>
         </div>
       </section>
     </header>
-    <main>
-      <div class="main-title">
-        <h2>Upcoming Events</h2>
-        <div class="main-title-btn">
-          <button id="btn-add"><span>Add Event</span></button>
-          <button id="btn-update"><span>Update Events</span></button>
+    <main class="my-5">
+      <div class="flex mb-5 gap-1.5 items-center">
+        <h2 class="text-2xl">Upcoming Events</h2>
+        <div class="flex gap-0.5">
+          <button id="btn-add" class="h-6 w-6 border-none"><span class="hidden">Add Event</span></button>
+          <button id="btn-update" class="h-6 w-6"><span class="hidden">Update Events</span></button>
         </div>
       </div>
-      <p id="eventsLoading" class="hidden">Loading events ...</p>
+      <p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>
       <section id="eventsList">
       </section>
     </main>
-    <footer>
+    <footer class="text-center border-t border-black p-2">
       <p>Copyright &copy 2024 Nicolas Messer</p>
     </footer>
   </body>
