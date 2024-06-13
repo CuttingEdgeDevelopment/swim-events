@@ -1,4 +1,10 @@
 {
+  "name": "my-project",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "npx parcel",
+    "build": "parcel build"
+  },
   "dependencies": {
     "@formkit/tempo": "^0.1.1"
   },
