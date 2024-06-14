@@ -10,17 +10,17 @@
 
   <body class="px-16 py-8">
     <header>
-      <h1 class="text-4xl mb-2">Countdown</h1>
+      <h1 class="text-4xl mb-2 font-extrabold">Countdown</h1>
       <section class="header-info">
         <div class="header-info-welcome">
-          <p id="currentDay" class="font-bold"></p>
-          <p id="currentDate" class="italic"></p>
+          <p id="currentDay" class="font-medium"></p>
+          <p id="currentDate" class="italic text-sm"></p>
         </div>
       </section>
     </header>
     <main class="my-5">
       <div class="flex mb-5 gap-1.5 items-center">
-        <h2 class="text-2xl">Upcoming Events</h2>
+        <h2 class="text-2xl font-semibold">Upcoming Events</h2>
         <div class="flex gap-0.5">
           <button id="btn-add" class="h-6 w-6 border-none">
             <span class="hidden">Add Event</span>
@@ -37,8 +37,7 @@
         </div>
       </div>
       <p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>
-      <section id="eventsList">
-      </section>
+      <section id="eventsList"></section>
     </main>
     <footer class="text-center border-t border-black p-2">
       <p>Copyright &copy 2024 Nicolas Messer</p>
