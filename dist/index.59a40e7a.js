@@ -596,7 +596,6 @@ let currentDateEl = document.getElementById("currentDate");
 let currentDayEl = document.getElementById("currentDay");
 let eventsListEl = document.getElementById("eventsList");
 let currentDate = (0, _tempo.parse)(date, "dddd DD MMMM YYYY");
-let eventCountdownEl = document.getElementsByClassName("eventCountdown");
 let eventsLoadingEl = document.getElementById("eventsLoading");
 currentDayEl.textContent = "Happy " + day + "!";
 currentDateEl.textContent = "Current Date: " + date;
@@ -604,24 +603,19 @@ function listEvents() {
     data.events.forEach((event)=>{
         let eventStartDate = (0, _tempo.parse)(event.dateStart, "DD.MM.YYYY");
         let eventEndDate = (0, _tempo.parse)(event.dateEnd, "DD.MM.YYYY");
+        let startDate = (0, _tempo.format)(eventStartDate, "dddd, MMMM DD, YYYY");
+        let endDate = (0, _tempo.format)(eventEndDate, "dddd, MMMM DD, YYYY");
         let countdown = (0, _tempo.diffDays)(eventStartDate, currentDate);
         let daysPassed = (0, _tempo.diffDays)(eventEndDate, currentDate);
         if (countdown < 0) console.log(event.name + " ended " + daysPassed + " days ago.");
         else {
-            eventsSection = '<section class="event event-' + event.id + '">';
-            if (event.link === "") eventsSection += "<h4>" + event.name + "</h4>";
-            else eventsSection += '<h4><a href="' + event.link + '" title="TEST" target="_blank">' + event.name + "</a></h4>";
-            eventsSection += "<p>Location: " + event.location + "</p>" + "<p>Begin: " + event.dateStart + "</p>" + "<p>End: " + event.dateEnd + "</p>";
-            if (countdown === 0) {
-                eventCountdownEl.textContent = "Today is the day!";
-                eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + "</span></p>" + "</section>";
-            } else if (countdown === 1) {
-                eventCountdownEl.textContent = countdown + " day to go";
-                eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + "</span></p>" + "</section>";
-            } else {
-                eventCountdownEl.textContent = countdown + " days to go";
-                eventsSection += '<p>Countdown: <span class="eventCountdown">' + eventCountdownEl.textContent + "</span></p>" + "</section>";
-            }
+            eventsSection = '<section class="event event-' + event.id + ' border border-black rounded-xl px-4 py-5 flex justify-between"><div id="eventInfo">';
+            if (event.link === "") eventsSection += '<h4 class="mb-2 text-xl font-normal">' + event.name + "</h4>";
+            else eventsSection += '<h4 class="mb-2 text-xl font-normal hover:font-semibold"><a href="' + event.link + '" title="' + event.name + '" target="_blank">' + event.name + "</a></h4>";
+            eventsSection += '<p><span class="font-medium">Location:</span> ' + event.location + "</p>" + '<p><span class="font-medium">Begin:</span> ' + startDate + "</p>" + '<p><span class="font-medium">End:</span> ' + endDate + '</p></div><div id="eventCountdown" class="text-center">';
+            if (countdown === 0) eventsSection += '<p class="font-bold">Today is the day!</p></div></section>';
+            else if (countdown === 1) eventsSection += '<p class="text-7xl">' + countdown + '</p><p class="font-bold">day to go</p>' + "</div></section>";
+            else eventsSection += '<p class="text-7xl">' + countdown + '</p><p class="font-bold">days to go</p>' + "</div></section>";
         }
         eventsListEl.insertAdjacentHTML("beforeend", eventsSection);
     });
