@@ -273,6 +273,11 @@ img, video {
   display: none;
 }
 
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .h-6 {
   height: 1.5rem;
 }
@@ -380,13 +385,5 @@ img, video {
 
 .event-4 {
   background: #f08080;
-}
-
-#btn-add {
-  background: url("add_circle_outline.932dd904.svg") center no-repeat;
-}
-
-#btn-update {
-  background: url("refresh.d30ccc1b.svg") center no-repeat;
 }
 /*# sourceMappingURL=index.c92073ef.css.map */

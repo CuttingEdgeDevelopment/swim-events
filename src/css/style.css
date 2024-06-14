@@ -5,11 +5,3 @@
 .event-4 {
   background: lightcoral;
 }
-
-#btn-add {
-  background: url(../img/add_circle_outline.svg) no-repeat center;
-}
-
-#btn-update {
-  background: url(../img/refresh.svg) no-repeat center;
-}
