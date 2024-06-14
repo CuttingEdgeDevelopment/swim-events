@@ -286,8 +286,8 @@ img, video {
   width: 1.5rem;
 }
 
-.content-between {
-  align-content: space-between;
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -314,6 +314,10 @@ img, video {
   gap: .375rem;
 }
 
+.gap-3 {
+  gap: .75rem;
+}
+
 .rounded-xl {
   border-radius: .75rem;
 }
@@ -335,18 +339,31 @@ img, video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .p-2 {
   padding: .5rem;
 }
 
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
+.p-8 {
+  padding: 2rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .py-5 {
@@ -357,6 +374,25 @@ img, video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-center {
@@ -373,14 +409,9 @@ img, video {
   line-height: 2.5rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-xs {
-  font-size: .75rem;
-  line-height: 1rem;
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
 }
 
 .text-sm {
@@ -388,19 +419,9 @@ img, video {
   line-height: 1.25rem;
 }
 
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-7xl {
-  font-size: 4.5rem;
-  line-height: 1;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -411,20 +432,16 @@ img, video {
   font-weight: 800;
 }
 
-.font-black {
-  font-weight: 900;
-}
-
-.font-semibold {
-  font-weight: 600;
+.font-medium {
+  font-weight: 500;
 }
 
 .font-normal {
   font-weight: 400;
 }
 
-.font-medium {
-  font-weight: 500;
+.font-semibold {
+  font-weight: 600;
 }
 
 .italic {
@@ -438,10 +455,6 @@ img, video {
 
 .event-4 {
   background: #f08080;
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
 }
 
 .hover\:font-semibold:hover {

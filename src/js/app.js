@@ -29,7 +29,7 @@ function listEvents() {
     if (countdown < 0) {
       console.log(event.name + " ended " + daysPassed + " days ago.");
     } else {
-      eventsSection = '<section class="event event-' + event.id + ' border border-black rounded-xl mb-3 px-4 py-5 flex justify-between"><div id="eventInfo">';
+      eventsSection = '<section class="event event-' + event.id + ' border border-black rounded-xl px-4 py-5 flex justify-between"><div id="eventInfo">';
 
       if (event.link === "") {
         eventsSection += '<h4 class="mb-2 text-xl font-normal">' + event.name + '</h4>';

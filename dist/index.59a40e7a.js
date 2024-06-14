@@ -609,7 +609,7 @@ function listEvents() {
         let daysPassed = (0, _tempo.diffDays)(eventEndDate, currentDate);
         if (countdown < 0) console.log(event.name + " ended " + daysPassed + " days ago.");
         else {
-            eventsSection = '<section class="event event-' + event.id + ' border border-black rounded-xl mb-3 px-4 py-5 flex justify-between"><div id="eventInfo">';
+            eventsSection = '<section class="event event-' + event.id + ' border border-black rounded-xl px-4 py-5 flex justify-between"><div id="eventInfo">';
             if (event.link === "") eventsSection += '<h4 class="mb-2 text-xl font-normal">' + event.name + "</h4>";
             else eventsSection += '<h4 class="mb-2 text-xl font-normal hover:font-semibold"><a href="' + event.link + '" title="' + event.name + '" target="_blank">' + event.name + "</a></h4>";
             eventsSection += '<p><span class="font-medium">Location:</span> ' + event.location + "</p>" + '<p><span class="font-medium">Begin:</span> ' + startDate + "</p>" + '<p><span class="font-medium">End:</span> ' + endDate + '</p></div><div id="eventCountdown" class="text-center">';
