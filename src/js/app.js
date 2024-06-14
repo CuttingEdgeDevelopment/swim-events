@@ -1,6 +1,24 @@
 import { format, parse, diffDays } from "@formkit/tempo";
+import { createClient } from '@supabase/supabase-js';
 
 const eventsData = require("../data/events.json");
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+async function fetchData() {
+  const { data, error } = await supabase.from("events").select("name");
+
+  if (error) {
+    console.error('Error fetching data:', error);
+    return;
+  }
+
+  console.log('Fetched data:', data);
+  console.log("TEST");
+}
+
+fetchData();
 
 const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
