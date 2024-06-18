@@ -16,7 +16,7 @@ async function fetchData() {
   }
 
   console.log('Fetched data:', data);
-  console.log(supabaseData);
+  return data;
 }
 
 fetchData();

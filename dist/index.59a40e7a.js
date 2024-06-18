@@ -598,7 +598,7 @@ async function fetchData() {
         return;
     }
     console.log("Fetched data:", data);
-    console.log(supabaseData);
+    return data;
 }
 fetchData();
 const date = (0, _tempo.format)(new Date(), "MMMM DD, YYYY");
