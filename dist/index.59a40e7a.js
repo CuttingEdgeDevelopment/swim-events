@@ -697,7 +697,7 @@ btnUpdate.addEventListener("click", (event)=>{
     }, 2000);
 });
 
-},{"@formkit/tempo":"bPFbk","bd5103096a294280":"5LFKi","@supabase/supabase-js":"04ZJL"}],"bPFbk":[function(require,module,exports) {
+},{"@formkit/tempo":"bPFbk","@supabase/supabase-js":"04ZJL","bd5103096a294280":"5LFKi"}],"bPFbk":[function(require,module,exports) {
 // src/iso8601.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1876,9 +1876,6 @@ exports.export = function(dest, destName, get) {
         get: get
     });
 };
-
-},{}],"5LFKi":[function(require,module,exports) {
-module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"Swiss Junior Championships","location":"Basel (SUI)","dateStart":"18.07.2024","dateEnd":"21.07.2024","link":""},{"id":6,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
 
 },{}],"04ZJL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -9065,6 +9062,9 @@ exports.default = AuthClient;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire716c")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5LFKi":[function(require,module,exports) {
+module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"Swiss Junior Championships","location":"Basel (SUI)","dateStart":"18.07.2024","dateEnd":"21.07.2024","link":""},{"id":6,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
+
+},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire716c")
 
 //# sourceMappingURL=index.59a40e7a.js.map
