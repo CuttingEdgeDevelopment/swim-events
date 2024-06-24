@@ -3391,7 +3391,7 @@ const DEFAULT_HEADERS = {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "version", ()=>version);
-const version = "1.15.2";
+const version = "1.15.5";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ii5aX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -5104,12 +5104,15 @@ class StorageFileApi {
      * Signed upload URLs can be used to upload files to the bucket without further authentication.
      * They are valid for 2 hours.
      * @param path The file path, including the current file name. For example `folder/image.png`.
-     */ createSignedUploadUrl(path) {
+     * @param options.upsert If set to true, allows the file to be overwritten if it already exists.
+     */ createSignedUploadUrl(path, options) {
         return __awaiter(this, void 0, void 0, function*() {
             try {
                 let _path = this._getFinalPath(path);
+                const headers = Object.assign({}, this.headers);
+                if (options === null || options === void 0 ? void 0 : options.upsert) headers["x-upsert"] = "true";
                 const data = yield (0, _fetch.post)(this.fetch, `${this.url}/object/upload/sign/${_path}`, {}, {
-                    headers: this.headers
+                    headers
                 });
                 const url = new URL(this.url + data.url);
                 const token = url.searchParams.get("token");
@@ -5146,13 +5149,15 @@ class StorageFileApi {
      *
      * @param fromPath The original file path, including the current file name. For example `folder/image.png`.
      * @param toPath The new file path, including the new file name. For example `folder/image-new.png`.
-     */ move(fromPath, toPath) {
+     * @param options The destination options.
+     */ move(fromPath, toPath, options) {
         return __awaiter(this, void 0, void 0, function*() {
             try {
                 const data = yield (0, _fetch.post)(this.fetch, `${this.url}/object/move`, {
                     bucketId: this.bucketId,
                     sourceKey: fromPath,
-                    destinationKey: toPath
+                    destinationKey: toPath,
+                    destinationBucket: options === null || options === void 0 ? void 0 : options.destinationBucket
                 }, {
                     headers: this.headers
                 });
@@ -5174,13 +5179,15 @@ class StorageFileApi {
      *
      * @param fromPath The original file path, including the current file name. For example `folder/image.png`.
      * @param toPath The new file path, including the new file name. For example `folder/image-copy.png`.
-     */ copy(fromPath, toPath) {
+     * @param options The destination options.
+     */ copy(fromPath, toPath, options) {
         return __awaiter(this, void 0, void 0, function*() {
             try {
                 const data = yield (0, _fetch.post)(this.fetch, `${this.url}/object/copy`, {
                     bucketId: this.bucketId,
                     sourceKey: fromPath,
-                    destinationKey: toPath
+                    destinationKey: toPath,
+                    destinationBucket: options === null || options === void 0 ? void 0 : options.destinationBucket
                 }, {
                     headers: this.headers
                 });
@@ -5843,7 +5850,7 @@ const DEFAULT_HEADERS = {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "version", ()=>version);
-const version = "2.5.5";
+const version = "2.6.0";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"17il3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -5881,7 +5888,7 @@ const DEFAULT_REALTIME_OPTIONS = {};
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "version", ()=>version);
-const version = "2.43.4";
+const version = "2.43.5";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8ZZRj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -9066,6 +9073,6 @@ parcelHelpers.defineInteropFlag(exports);
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5LFKi":[function(require,module,exports) {
 module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"Swiss Junior Championships","location":"Basel (SUI)","dateStart":"18.07.2024","dateEnd":"21.07.2024","link":""},{"id":6,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
 
-},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire716c")
+},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire4482")
 
 //# sourceMappingURL=index.59a40e7a.js.map

@@ -589,6 +589,6 @@ module.exports = function() {
     throw new Error("ws does not work in the browser. Browser clients must use the native WebSocket object");
 };
 
-},{}]},["fx7yB"], null, "parcelRequire716c")
+},{}]},["fx7yB"], null, "parcelRequire4482")
 
 //# sourceMappingURL=browser.7ada82ab.js.map
