@@ -9130,7 +9130,7 @@ var _vue = require("@headlessui/vue");
 const __default__ = {
     data () {
         return {
-            name: "Vue"
+            name: "Swim Events Countdown"
         };
     }
 };
@@ -11013,16 +11013,19 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
 var _vue = require("vue");
 const _hoisted_1 = {
-    class: "text-xl font-bold"
+    class: "px-16 pt-8"
 };
+const _hoisted_2 = {
+    class: "text-4xl mb-2 font-extrabold"
+};
+const _hoisted_3 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+    id: "currentDay",
+    class: "font-medium"
+}, null, -1 /* HOISTED */ );
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
-        (0, _vue.createElementVNode)("div", _hoisted_1, [
-            (0, _vue.createTextVNode)("Hello " + (0, _vue.toDisplayString)($data.name) + "! ", 1 /* TEXT */ ),
-            (0, _vue.createVNode)($setup["BeakerIcon"], {
-                class: "size-6 text-blue-500"
-            })
-        ]),
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("header", _hoisted_1, [
+        (0, _vue.createElementVNode)("h1", _hoisted_2, (0, _vue.toDisplayString)($data.name), 1 /* TEXT */ ),
+        _hoisted_3,
         (0, _vue.createVNode)($setup["TabGroup"], null, {
             default: (0, _vue.withCtx)(()=>[
                     (0, _vue.createVNode)($setup["TabList"], null, {
@@ -11076,7 +11079,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
             _: 1 /* STABLE */ 
         })
-    ], 64 /* STABLE_FRAGMENT */ );
+    ]);
 }
 if (module.hot) module.hot.accept(()=>{
     __VUE_HMR_RUNTIME__.rerender("bc6975-hmr", render);
