@@ -16,8 +16,6 @@ const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const date = format(new Date(), "MMMM DD, YYYY");
-const day = format(new Date(), "dddd");
-const btnAdd = document.getElementById("btn-add");
 const btnUpdate = document.getElementById("btn-update");
 
 const rocketIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#15803d" class="size-20 m-auto"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" /></svg>';
@@ -26,14 +24,9 @@ const linkIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 
 let data = eventsData;
 let eventsSection = "";
-let currentDateEl = document.getElementById("currentDate");
-let currentDayEl = document.getElementById("currentDay");
 let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
 let eventsLoadingEl = document.getElementById("eventsLoading");
-
-currentDayEl.textContent = "Happy " + day + "!";
-currentDateEl.textContent = "Current Date: " + date;
 
 async function fetchData() {
   const { data, error } = await supabase.from("events").select("*").order("dateStart", { ascending: true });
@@ -146,10 +139,6 @@ window.addEventListener("load", event => {
   setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
   // setTimeout(function() { listEvents() }, 2000);
   setTimeout(function() { displayData() }, 2000);
-});
-
-btnAdd.addEventListener("click", event => {
-  console.log("This button will add a new event");
 });
 
 btnUpdate.addEventListener("click", event => {
