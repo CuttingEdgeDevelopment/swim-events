@@ -585,6 +585,10 @@ select {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.p-2 {
+  padding: .5rem;
+}
+
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -614,6 +618,14 @@ select {
   padding-top: 2rem;
 }
 
+.pl-2 {
+  padding-left: .5rem;
+}
+
+.pr-2 {
+  padding-right: .5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -633,14 +645,14 @@ select {
   line-height: 1;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .text-sm {
   font-size: .875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -701,7 +713,117 @@ select {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.ui-selected\:font-bold[data-headlessui-state~="selected"], :where([data-headlessui-state~="selected"]) .ui-selected\:font-bold {
-  font-weight: 700;
+.ui-selected\:underline[data-headlessui-state~="selected"] {
+  text-decoration-line: underline;
+}
+
+.ui-selected\:shadow-md[data-headlessui-state~="selected"] {
+  --tw-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.ui-selected\:shadow-indigo-300[data-headlessui-state~="selected"] {
+  --tw-shadow-color: #a5b4fc;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.ui-selected\:drop-shadow[data-headlessui-state~="selected"] {
+  --tw-drop-shadow: drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.ui-selected\:drop-shadow-md[data-headlessui-state~="selected"] {
+  --tw-drop-shadow: drop-shadow(0 4px 3px #00000012) drop-shadow(0 2px 2px #0000000f);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.ui-selected\:drop-shadow-xl[data-headlessui-state~="selected"] {
+  --tw-drop-shadow: drop-shadow(0 20px 13px #00000008) drop-shadow(0 8px 5px #00000014);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:where([data-headlessui-state~="selected"]) .ui-selected\:underline {
+  text-decoration-line: underline;
+}
+
+:where([data-headlessui-state~="selected"]) .ui-selected\:shadow-md {
+  --tw-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+:where([data-headlessui-state~="selected"]) .ui-selected\:shadow-indigo-300 {
+  --tw-shadow-color: #a5b4fc;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+:where([data-headlessui-state~="selected"]) .ui-selected\:drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:where([data-headlessui-state~="selected"]) .ui-selected\:drop-shadow-md {
+  --tw-drop-shadow: drop-shadow(0 4px 3px #00000012) drop-shadow(0 2px 2px #0000000f);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+:where([data-headlessui-state~="selected"]) .ui-selected\:drop-shadow-xl {
+  --tw-drop-shadow: drop-shadow(0 20px 13px #00000008) drop-shadow(0 8px 5px #00000014);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.ui-not-selected\:font-medium[data-headlessui-state]:not([data-headlessui-state~="selected"]) {
+  font-weight: 500;
+}
+
+.ui-not-selected\:font-normal[data-headlessui-state]:not([data-headlessui-state~="selected"]) {
+  font-weight: 400;
+}
+
+.ui-not-selected\:text-neutral-500[data-headlessui-state]:not([data-headlessui-state~="selected"]) {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity));
+}
+
+.ui-not-selected\:text-neutral-700[data-headlessui-state]:not([data-headlessui-state~="selected"]) {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity));
+}
+
+.ui-not-selected\:text-red-400[data-headlessui-state]:not([data-headlessui-state~="selected"]) {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
+}
+
+.ui-not-selected\:underline[data-headlessui-state]:not([data-headlessui-state~="selected"]) {
+  text-decoration-line: underline;
+}
+
+:where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:font-medium:not([data-headlessui-state]) {
+  font-weight: 500;
+}
+
+:where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:font-normal:not([data-headlessui-state]) {
+  font-weight: 400;
+}
+
+:where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:text-neutral-500:not([data-headlessui-state]) {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity));
+}
+
+:where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:text-neutral-700:not([data-headlessui-state]) {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity));
+}
+
+:where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:text-red-400:not([data-headlessui-state]) {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
+}
+
+:where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:underline:not([data-headlessui-state]) {
+  text-decoration-line: underline;
 }
 /*# sourceMappingURL=index.c92073ef.css.map */

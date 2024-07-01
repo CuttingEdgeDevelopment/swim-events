@@ -9209,7 +9209,7 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
     }
 });
 
-},{"@heroicons/vue/24/solid":"kEq2u","@headlessui/vue":"dO8ba","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@formkit/tempo":"bPFbk","./lib/supabaseClient":"fQKov"}],"kEq2u":[function(require,module,exports) {
+},{"@heroicons/vue/24/solid":"kEq2u","@headlessui/vue":"dO8ba","@formkit/tempo":"bPFbk","./lib/supabaseClient":"fQKov","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kEq2u":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AcademicCapIcon", ()=>(0, _academicCapIconJsDefault.default));
@@ -19416,32 +19416,26 @@ const _hoisted_3 = {
     class: "header-info"
 };
 const _hoisted_4 = {
-    class: "header-info-welcome"
+    class: "flex gap-1.5 items-center justify-between"
 };
 const _hoisted_5 = {
+    class: "header-info-welcome"
+};
+const _hoisted_6 = {
     id: "currentDay",
     class: "font-medium"
 };
-const _hoisted_6 = {
+const _hoisted_7 = {
     id: "currentDate",
     class: "italic text-sm"
 };
-const _hoisted_7 = {
-    class: "px-16 py-8"
-};
 const _hoisted_8 = {
-    class: "flex mb-5 gap-1.5 items-center"
-};
-const _hoisted_9 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
-    class: "text-2xl font-semibold"
-}, "Upcoming Events", -1 /* HOISTED */ );
-const _hoisted_10 = {
     class: "flex gap-0.5"
 };
-const _hoisted_11 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+const _hoisted_9 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
     class: "hidden"
 }, "Add Event", -1 /* HOISTED */ );
-const _hoisted_12 = /*#__PURE__*/ (0, _vue.createElementVNode)("svg", {
+const _hoisted_10 = /*#__PURE__*/ (0, _vue.createElementVNode)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
@@ -19455,14 +19449,14 @@ const _hoisted_12 = /*#__PURE__*/ (0, _vue.createElementVNode)("svg", {
         d: "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
     })
 ], -1 /* HOISTED */ );
-const _hoisted_13 = [
-    _hoisted_11,
-    _hoisted_12
+const _hoisted_11 = [
+    _hoisted_9,
+    _hoisted_10
 ];
-const _hoisted_14 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+const _hoisted_12 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
     class: "hidden"
 }, "Update Events", -1 /* HOISTED */ );
-const _hoisted_15 = /*#__PURE__*/ (0, _vue.createElementVNode)("svg", {
+const _hoisted_13 = /*#__PURE__*/ (0, _vue.createElementVNode)("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     fill: "none",
     viewBox: "0 0 24 24",
@@ -19476,43 +19470,90 @@ const _hoisted_15 = /*#__PURE__*/ (0, _vue.createElementVNode)("svg", {
         d: "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
     })
 ], -1 /* HOISTED */ );
-const _hoisted_16 = [
-    _hoisted_14,
-    _hoisted_15
+const _hoisted_14 = [
+    _hoisted_12,
+    _hoisted_13
 ];
+const _hoisted_15 = {
+    class: "px-16 py-8"
+};
+const _hoisted_16 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
+    class: "text-2xl font-semibold pr-2 ui-not-selected:text-neutral-500"
+}, "Upcoming Events", -1 /* HOISTED */ );
+const _hoisted_17 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
+    class: "text-2xl font-semibold pl-2"
+}, "Past Events", -1 /* HOISTED */ );
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
         (0, _vue.createElementVNode)("header", _hoisted_1, [
             (0, _vue.createElementVNode)("h1", _hoisted_2, (0, _vue.toDisplayString)($data.name), 1 /* TEXT */ ),
             (0, _vue.createElementVNode)("section", _hoisted_3, [
                 (0, _vue.createElementVNode)("div", _hoisted_4, [
-                    (0, _vue.createElementVNode)("p", _hoisted_5, "Happy " + (0, _vue.toDisplayString)($setup.day), 1 /* TEXT */ ),
-                    (0, _vue.createElementVNode)("p", _hoisted_6, "Current Date: " + (0, _vue.toDisplayString)($setup.date), 1 /* TEXT */ )
-                ])
-            ])
-        ]),
-        (0, _vue.createElementVNode)("main", _hoisted_7, [
-            (0, _vue.createElementVNode)("div", _hoisted_8, [
-                _hoisted_9,
-                (0, _vue.createElementVNode)("div", _hoisted_10, [
-                    (0, _vue.createElementVNode)("button", {
-                        onClick: _cache[0] || (_cache[0] = ($event)=>$options.addEvent()),
-                        id: "btn-add",
-                        title: "Add an Event",
-                        class: "h-6 w-6 border-none"
-                    }, [
-                        ..._hoisted_13
+                    (0, _vue.createElementVNode)("div", _hoisted_5, [
+                        (0, _vue.createElementVNode)("p", _hoisted_6, "Happy " + (0, _vue.toDisplayString)($setup.day), 1 /* TEXT */ ),
+                        (0, _vue.createElementVNode)("p", _hoisted_7, "Current Date: " + (0, _vue.toDisplayString)($setup.date), 1 /* TEXT */ )
                     ]),
-                    (0, _vue.createElementVNode)("button", {
-                        onClick: _cache[1] || (_cache[1] = ($event)=>$options.updateEvents()),
-                        id: "btn-update",
-                        title: "Update Events",
-                        class: "h-6 w-6"
-                    }, [
-                        ..._hoisted_16
+                    (0, _vue.createElementVNode)("div", _hoisted_8, [
+                        (0, _vue.createElementVNode)("button", {
+                            onClick: _cache[0] || (_cache[0] = ($event)=>$options.addEvent()),
+                            id: "btn-add",
+                            title: "Add an Event",
+                            class: "h-6 w-6 border-none"
+                        }, [
+                            ..._hoisted_11
+                        ]),
+                        (0, _vue.createElementVNode)("button", {
+                            onClick: _cache[1] || (_cache[1] = ($event)=>$options.updateEvents()),
+                            id: "btn-update",
+                            title: "Update Events",
+                            class: "h-6 w-6"
+                        }, [
+                            ..._hoisted_14
+                        ])
                     ])
                 ])
             ])
+        ]),
+        (0, _vue.createElementVNode)("main", _hoisted_15, [
+            (0, _vue.createVNode)($setup["TabGroup"], null, {
+                default: (0, _vue.withCtx)(()=>[
+                        (0, _vue.createVNode)($setup["TabList"], null, {
+                            default: (0, _vue.withCtx)(()=>[
+                                    (0, _vue.createVNode)($setup["Tab"], null, {
+                                        default: (0, _vue.withCtx)(()=>[
+                                                _hoisted_16
+                                            ]),
+                                        _: 1 /* STABLE */ 
+                                    }),
+                                    (0, _vue.createVNode)($setup["Tab"], null, {
+                                        default: (0, _vue.withCtx)(()=>[
+                                                _hoisted_17
+                                            ]),
+                                        _: 1 /* STABLE */ 
+                                    })
+                                ]),
+                            _: 1 /* STABLE */ 
+                        }),
+                        (0, _vue.createVNode)($setup["TabPanels"], null, {
+                            default: (0, _vue.withCtx)(()=>[
+                                    (0, _vue.createVNode)($setup["TabPanel"], null, {
+                                        default: (0, _vue.withCtx)(()=>[
+                                                (0, _vue.createTextVNode)("Content 1")
+                                            ]),
+                                        _: 1 /* STABLE */ 
+                                    }),
+                                    (0, _vue.createVNode)($setup["TabPanel"], null, {
+                                        default: (0, _vue.withCtx)(()=>[
+                                                (0, _vue.createTextVNode)("Content 2")
+                                            ]),
+                                        _: 1 /* STABLE */ 
+                                    })
+                                ]),
+                            _: 1 /* STABLE */ 
+                        })
+                    ]),
+                _: 1 /* STABLE */ 
+            })
         ])
     ], 64 /* STABLE_FRAGMENT */ );
 }
