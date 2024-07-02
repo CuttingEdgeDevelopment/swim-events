@@ -9118,30 +9118,11 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _solid = require("@heroicons/vue/24/solid");
 var _vue = require("@headlessui/vue");
-var _tempo = require("@formkit/tempo");
+var _vue1 = require("vue");
 var _supabaseClient = require("./lib/supabaseClient");
+var _tempo = require("@formkit/tempo");
 const date = (0, _tempo.format)(new Date(), "MMMM DD, YYYY");
 const day = (0, _tempo.format)(new Date(), "dddd");
-async function fetchData() {
-    const { data, error } = await (0, _supabaseClient.supabase).from("events").select("*").order("dateStart", {
-        ascending: true
-    });
-    if (error) {
-        console.error("Error fetching data:", error);
-        return;
-    }
-    console.log("Fetched data:", data);
-    return data;
-}
-async function displayData() {
-    try {
-        const supabaseData = await fetchData();
-        console.log("Display data:", supabaseData);
-    // listEvents2(supabaseData);
-    } catch (error) {
-        console.error("Failed to fetch or display data:", error);
-    }
-}
 const __default__ = {
     data () {
         return {
@@ -9157,7 +9138,6 @@ const __default__ = {
         updateEvents () {
             console.log("This button will update the events");
             fetchData();
-            displayData();
         }
     }
 };
@@ -9165,11 +9145,26 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
     __name: "App",
     setup (__props, { expose: __expose }) {
         __expose();
+        const events = (0, _vue1.ref)([]);
+        async function fetchData1() {
+            const { data, error } = await (0, _supabaseClient.supabase).from("events").select("*").order("dateStart", {
+                ascending: true
+            });
+            if (error) {
+                console.error("Error fetching data:", error);
+                return;
+            }
+            console.log("Fetched data:", data);
+            events.value = data;
+        }
+        (0, _vue1.onMounted)(()=>{
+            fetchData1();
+        });
         const __returned__ = {
             date,
             day,
-            fetchData,
-            displayData,
+            events,
+            fetchData: fetchData1,
             get format () {
                 return 0, _tempo.format;
             },
@@ -9178,9 +9173,6 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
             },
             get diffDays () {
                 return 0, _tempo.diffDays;
-            },
-            get supabase () {
-                return 0, _supabaseClient.supabase;
             },
             get BeakerIcon () {
                 return 0, _solid.BeakerIcon;
@@ -9199,6 +9191,11 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
             },
             get TabPanel () {
                 return 0, _vue.TabPanel;
+            },
+            ref: (0, _vue1.ref),
+            onMounted: (0, _vue1.onMounted),
+            get supabase () {
+                return 0, _supabaseClient.supabase;
             }
         };
         Object.defineProperty(__returned__, "__isScriptSetup", {
@@ -9209,7 +9206,7 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
     }
 });
 
-},{"@heroicons/vue/24/solid":"kEq2u","@headlessui/vue":"dO8ba","@formkit/tempo":"bPFbk","./lib/supabaseClient":"fQKov","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kEq2u":[function(require,module,exports) {
+},{"@heroicons/vue/24/solid":"kEq2u","@headlessui/vue":"dO8ba","@formkit/tempo":"bPFbk","./lib/supabaseClient":"fQKov","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","vue":"gzxs9"}],"kEq2u":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AcademicCapIcon", ()=>(0, _academicCapIconJsDefault.default));
@@ -19481,8 +19478,14 @@ const _hoisted_16 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
     class: "text-2xl font-semibold pr-2 ui-not-selected:text-neutral-500"
 }, "Upcoming Events", -1 /* HOISTED */ );
 const _hoisted_17 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
-    class: "text-2xl font-semibold pl-2"
+    class: "text-2xl font-semibold pl-2 ui-not-selected:text-neutral-500"
 }, "Past Events", -1 /* HOISTED */ );
+const _hoisted_18 = {
+    key: 0
+};
+const _hoisted_19 = [
+    "href"
+];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
         (0, _vue.createElementVNode)("header", _hoisted_1, [
@@ -19538,13 +19541,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             default: (0, _vue.withCtx)(()=>[
                                     (0, _vue.createVNode)($setup["TabPanel"], null, {
                                         default: (0, _vue.withCtx)(()=>[
-                                                (0, _vue.createTextVNode)("Content 1")
+                                                ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.events, (event)=>{
+                                                    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("ul", {
+                                                        key: event.id
+                                                    }, [
+                                                        event.link != 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", _hoisted_18, [
+                                                            (0, _vue.createElementVNode)("a", {
+                                                                href: event.link,
+                                                                target: "_blank"
+                                                            }, (0, _vue.toDisplayString)(event.name), 9 /* TEXT, PROPS */ , _hoisted_19)
+                                                        ])) : (0, _vue.createCommentVNode)("v-if", true)
+                                                    ]);
+                                                }), 128 /* KEYED_FRAGMENT */ ))
                                             ]),
                                         _: 1 /* STABLE */ 
                                     }),
                                     (0, _vue.createVNode)($setup["TabPanel"], null, {
                                         default: (0, _vue.withCtx)(()=>[
-                                                (0, _vue.createTextVNode)("Content 2")
+                                                (0, _vue.createTextVNode)(" Content 2 ")
                                             ]),
                                         _: 1 /* STABLE */ 
                                     })

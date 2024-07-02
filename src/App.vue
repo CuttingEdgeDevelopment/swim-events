@@ -31,12 +31,20 @@
           <h2 class="text-2xl font-semibold pr-2 ui-not-selected:text-neutral-500">Upcoming Events</h2>
         </Tab>
         <Tab>
-          <h2 class="text-2xl font-semibold pl-2">Past Events</h2>
+          <h2 class="text-2xl font-semibold pl-2 ui-not-selected:text-neutral-500">Past Events</h2>
         </Tab>
       </TabList>
       <TabPanels>
-        <TabPanel>Content 1</TabPanel>
-        <TabPanel>Content 2</TabPanel>
+        <TabPanel>
+          <ul v-for="event in events" :key="event.id">
+            <li v-if="event.link != 0">
+              <a :href="event.link" target="_blank">{{ event.name }}</a>
+            </li>
+          </ul>
+        </TabPanel>
+        <TabPanel>
+          Content 2
+        </TabPanel>
       </TabPanels>
     </TabGroup>
   </main>
@@ -45,14 +53,10 @@
 <script setup>
   import { BeakerIcon } from '@heroicons/vue/24/solid'
   import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-</script>
+  import { ref, onMounted } from 'vue'
+  import { supabase } from "./lib/supabaseClient";
 
-<script>
-  import { format, parse, diffDays } from "@formkit/tempo";
-  import { supabase } from './lib/supabaseClient'
-
-  const date = format(new Date(), "MMMM DD, YYYY");
-  const day = format(new Date(), "dddd");
+  const events = ref([]);
 
   async function fetchData() {
     const { data, error } = await supabase.from("events").select("*").order("dateStart", { ascending: true });
@@ -63,18 +67,19 @@
     }
 
     console.log('Fetched data:', data);
-    return data;
+    events.value = data;
   }
 
-  async function displayData() {
-    try {
-      const supabaseData = await fetchData();
-      console.log('Display data:', supabaseData);
-      // listEvents2(supabaseData);
-    } catch (error) {
-      console.error('Failed to fetch or display data:', error);
-    }
-}
+  onMounted(() => {
+    fetchData();
+  });
+</script>
+
+<script>
+  import { format, parse, diffDays } from "@formkit/tempo";
+
+  const date = format(new Date(), "MMMM DD, YYYY");
+  const day = format(new Date(), "dddd");
 
   export default {
     data() {
@@ -91,7 +96,6 @@
       updateEvents() {
         console.log("This button will update the events");
         fetchData();
-        displayData();
       },
     },
   };
