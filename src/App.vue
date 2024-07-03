@@ -4,8 +4,8 @@
     <section class="header-info">
       <div class="flex gap-1.5 items-center justify-between">
         <div class="header-info-welcome">
-          <p id="currentDay" class="font-medium">Happy {{ day }}</p>
-          <p id="currentDate" class="italic text-sm">Current Date: {{ date }}</p>
+          <p id="currentDay" class="font-medium">Happy {{ currentDay }}</p>
+          <p id="currentDate" class="italic text-sm">Current Date: {{ currentDate }}</p>
         </div>
         <div class="flex gap-0.5">
           <button @click="addEvent()" id="btn-add" title="Add an Event" class="h-6 w-6 border-none">
@@ -37,13 +37,27 @@
       <TabPanels>
         <TabPanel>
           <ul v-for="event in events" :key="event.id">
-            <li v-if="event.link != 0">
-              <a :href="event.link" target="_blank">{{ event.name }}</a>
+            <li v-if="!compareDates(compareDate, event.dateEnd)">
+              <span v-if="event.link != ''">
+                <a :href="event.link" target="_blank">{{ event.name }}</a>
+              </span>
+              <span v-else>
+                {{ event.name }}
+              </span>
             </li>
           </ul>
         </TabPanel>
         <TabPanel>
-          Content 2
+          <ul v-for="event in events" :key="event.id">
+            <li v-if="compareDates(compareDate, event.dateEnd)">
+              <span v-if="event.link != ''">
+                <a :href="event.link" target="_blank">{{ event.name }}</a>
+              </span>
+              <span v-else>
+                {{ event.name }}
+              </span>
+            </li>
+          </ul>
         </TabPanel>
       </TabPanels>
     </TabGroup>
@@ -76,9 +90,10 @@
 </script>
 
 <script>
-  import { format, parse, diffDays } from "@formkit/tempo";
+  import { format, parse, diffDays, isAfter } from "@formkit/tempo";
 
   const date = format(new Date(), "MMMM DD, YYYY");
+  const dateCompare = format(new Date(), "YYYY-MM-DD");
   const day = format(new Date(), "dddd");
 
   export default {
@@ -87,9 +102,15 @@
         name: "Swim Events Countdown",
         currentDay: day,
         currentDate: date,
+        compareDate: dateCompare,
       };
     },
     methods: {
+      compareDates(firstDate, secondDate) {
+        // Compare when the first date is before the second date
+        const eventPassed = isAfter(firstDate, secondDate);
+        return eventPassed;
+      },
       addEvent() {
         console.log("This button will add a new event");
       },
