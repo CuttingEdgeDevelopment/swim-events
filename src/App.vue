@@ -36,29 +36,28 @@
       </TabList>
       <TabPanels>
         <TabPanel>
-          <ul v-for="event in events" :key="event.id">
-            <li v-if="!compareDates(compareDate, event.dateEnd)">
-              <span v-if="event.link != ''">
-                <section id="eventsList" class="flex flex-col gap-3">
-                  <section class="event event-' + event.id + ' border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
-                    <div id="eventInfo">
-                      <h4 class="mb-2 text-xl font-medium">{{ event.name }}<a :href="event.link" title="{{ event.name }}" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-6" /></a></h4>
-                      <p><span class="font-medium">Location: </span>{{ event.location }}</p>
-                      <p><span class="font-medium">Begin:</span> {{ format(event.dateStart, "dddd, MMMM DD, YYYY") }}</p>
-                      <p><span class="font-medium">End:</span> {{ format(event.dateEnd, "dddd, MMMM DD, YYYY") }}</p>
-                    </div>
-                    <div id="eventCountdown" class="text-center">
-                      <p class="text-7xl"></p>
-                      <p class="font-bold">days to go</p>
-                    </div>
-                  </section>
-                </section>
-              </span>
-              <span v-else>
-                {{ event.name }}
-              </span>
-            </li>
-          </ul>
+          <section id="eventsList" class="flex flex-col gap-3">
+            <div v-for="event in events" :key="event.id">
+              <section :class="testFunc(event.id)" class="event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300" v-if="!compareDates(compareDate, event.dateEnd)">
+                <div id="eventInfo" v-if="event.link != ''">
+                  <h4 class="mb-2 text-xl font-medium">{{ event.name }}<a :href="event.link" title="{{ event.name }}" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-6" /></a></h4>
+                  <p><span class="font-medium">Location: </span>{{ event.location }}</p>
+                  <p><span class="font-medium">Begin:</span> {{ format(event.dateStart, "dddd, MMMM DD, YYYY") }}</p>
+                  <p><span class="font-medium">End:</span> {{ format(event.dateEnd, "dddd, MMMM DD, YYYY") }}</p>
+                </div>
+                <div id="eventInfo" v-else>
+                  <h4 class="mb-2 text-xl font-medium">{{ event.name }}</h4>
+                  <p><span class="font-medium">Location: </span>{{ event.location }}</p>
+                  <p><span class="font-medium">Begin:</span> {{ format(event.dateStart, "dddd, MMMM DD, YYYY") }}</p>
+                  <p><span class="font-medium">End:</span> {{ format(event.dateEnd, "dddd, MMMM DD, YYYY") }}</p>
+                </div>
+                <div id="eventCountdown" class="text-center">
+                  <p class="text-7xl">{{ countdown(event.dateStart, compareDate) }}</p>
+                  <p class="font-bold">days to go</p>
+                </div>
+              </section>
+            </div>
+          </section>
         </TabPanel>
         <TabPanel>
           <ul v-for="event in events" :key="event.id">
@@ -124,6 +123,11 @@
         const eventPassed = isAfter(firstDate, secondDate);
         return eventPassed;
       },
+      countdown(currentDate, startDate) {
+        const daysToGo = diffDays(currentDate, startDate);
+        return daysToGo;
+      },
+      testFunc(id) { return "event" + 'id'; },
       addEvent() {
         console.log("This button will add a new event");
       },
