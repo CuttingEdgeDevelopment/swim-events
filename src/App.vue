@@ -39,7 +39,20 @@
           <ul v-for="event in events" :key="event.id">
             <li v-if="!compareDates(compareDate, event.dateEnd)">
               <span v-if="event.link != ''">
-                <a :href="event.link" target="_blank">{{ event.name }}</a>
+                <section id="eventsList" class="flex flex-col gap-3">
+                  <section class="event event-' + event.id + ' border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+                    <div id="eventInfo">
+                      <h4 class="mb-2 text-xl font-medium">{{ event.name }}<a :href="event.link" title="{{ event.name }}" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-6" /></a></h4>
+                      <p><span class="font-medium">Location: </span>{{ event.location }}</p>
+                      <p><span class="font-medium">Begin:</span> {{ format(event.dateStart, "dddd, MMMM DD, YYYY") }}</p>
+                      <p><span class="font-medium">End:</span> {{ format(event.dateEnd, "dddd, MMMM DD, YYYY") }}</p>
+                    </div>
+                    <div id="eventCountdown" class="text-center">
+                      <p class="text-7xl"></p>
+                      <p class="font-bold">days to go</p>
+                    </div>
+                  </section>
+                </section>
               </span>
               <span v-else>
                 {{ event.name }}
@@ -65,7 +78,7 @@
 </template>
 
 <script setup>
-  import { BeakerIcon } from '@heroicons/vue/24/solid'
+  import { LinkIcon } from '@heroicons/vue/24/solid'
   import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
   import { ref, onMounted } from 'vue'
   import { supabase } from "./lib/supabaseClient";
