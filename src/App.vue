@@ -35,6 +35,12 @@
         </Tab>
       </TabList>
       <TabPanels>
+        <div id="eventsLoading" class="flex italic font-bold text-red-700 gap-0.5" v-show="eventsLoading">
+          <p>Loading events</p>
+            <span class="animate-bounce [animation-delay:-0.3s]">.</span>
+            <span class="animate-bounce [animation-delay:-0.15s]">.</span>
+            <span class="animate-bounce">.</span>
+        </div>
         <TabPanel>
           <section id="eventsList" class="flex flex-col gap-3">
             <div v-for="event in events" :key="event.id">
@@ -84,6 +90,7 @@
   import { supabase } from "./lib/supabaseClient";
 
   const events = ref([]);
+  const eventsLoading = ref(false);
 
   async function fetchData() {
     const { data, error } = await supabase.from("events").select("*").order("dateStart", { ascending: true });
@@ -95,6 +102,38 @@
 
     console.log('Fetched data:', data);
     events.value = data;
+  }
+
+  function compareDates(firstDate, secondDate) {
+    const eventPassed = isAfter(firstDate, secondDate);
+    return eventPassed;
+  }
+
+  function countdown(currentDate, startDate) {
+    const daysToGo = diffDays(currentDate, startDate);
+    return daysToGo;
+  }
+
+  function daysAfterEvent(endDate, currentDate) {
+    const daysPassed = diffDays(endDate, currentDate);
+    return Math.abs(daysPassed);
+  }
+
+  function eventID(id) {
+    return "event-" + id;
+  }
+
+  function updateEvents() {
+    console.log("This button will update the events");
+    eventsLoading.value = true;
+    setTimeout(() => {
+      fetchData();
+      eventsLoading.value = false;
+    }, 1000);
+  }
+
+  function addEvent() {
+    console.log("This button will add a new event");
   }
 
   onMounted(() => {
@@ -117,31 +156,6 @@
         currentDate: date,
         compareDate: dateCompare,
       };
-    },
-    methods: {
-      compareDates(firstDate, secondDate) {
-        // Compare when the first date is before the second date
-        const eventPassed = isAfter(firstDate, secondDate);
-        return eventPassed;
-      },
-      countdown(currentDate, startDate) {
-        const daysToGo = diffDays(currentDate, startDate);
-        return daysToGo;
-      },
-      daysAfterEvent(endDate, currentDate) {
-        const daysPassed = diffDays(endDate, currentDate);
-        return Math.abs(daysPassed);
-      },
-      eventID(id) {
-        return "event-" + id;
-      },
-      addEvent() {
-        console.log("This button will add a new event");
-      },
-      updateEvents() {
-        console.log("This button will update the events");
-        window.location.reload();
-      },
     },
   };
 </script>
