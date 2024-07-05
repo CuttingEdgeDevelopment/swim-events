@@ -9116,7 +9116,7 @@ exports.default = script;
 },{"29158dae54139136":"iiJmB","8a4954974a3e2a08":"evi43","7e9898e9b122e745":"h0MjM","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iiJmB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _solid = require("@heroicons/vue/24/solid");
+var _outline = require("@heroicons/vue/24/outline");
 var _vue = require("@headlessui/vue");
 var _vue1 = require("vue");
 var _supabaseClient = require("./lib/supabaseClient");
@@ -9143,15 +9143,19 @@ const __default__ = {
             const daysToGo = (0, _tempo.diffDays)(currentDate, startDate);
             return daysToGo;
         },
-        testFunc (id) {
-            return "eventid";
+        daysAfterEvent (endDate, currentDate) {
+            const daysPassed = (0, _tempo.diffDays)(endDate, currentDate);
+            return Math.abs(daysPassed);
+        },
+        eventID (id) {
+            return "event-" + id;
         },
         addEvent () {
             console.log("This button will add a new event");
         },
         updateEvents () {
             console.log("This button will update the events");
-            fetchData();
+            window.location.reload();
         }
     }
 };
@@ -9160,7 +9164,7 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
     setup (__props, { expose: __expose }) {
         __expose();
         const events = (0, _vue1.ref)([]);
-        async function fetchData1() {
+        async function fetchData() {
             const { data, error } = await (0, _supabaseClient.supabase).from("events").select("*").order("dateStart", {
                 ascending: true
             });
@@ -9172,14 +9176,14 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
             events.value = data;
         }
         (0, _vue1.onMounted)(()=>{
-            fetchData1();
+            fetchData();
         });
         const __returned__ = {
             date,
             dateCompare,
             day,
             events,
-            fetchData: fetchData1,
+            fetchData,
             get format () {
                 return 0, _tempo.format;
             },
@@ -9193,7 +9197,13 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
                 return 0, _tempo.isAfter;
             },
             get LinkIcon () {
-                return 0, _solid.LinkIcon;
+                return 0, _outline.LinkIcon;
+            },
+            get RocketLaunchIcon () {
+                return 0, _outline.RocketLaunchIcon;
+            },
+            get FireIcon () {
+                return 0, _outline.FireIcon;
             },
             get TabGroup () {
                 return 0, _vue.TabGroup;
@@ -9224,7 +9234,7 @@ exports.default = /*#__PURE__*/ Object.assign(__default__, {
     }
 });
 
-},{"@heroicons/vue/24/solid":"kEq2u","@headlessui/vue":"dO8ba","vue":"gzxs9","./lib/supabaseClient":"fQKov","@formkit/tempo":"bPFbk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kEq2u":[function(require,module,exports) {
+},{"@heroicons/vue/24/outline":"8j2hI","@headlessui/vue":"dO8ba","vue":"gzxs9","./lib/supabaseClient":"fQKov","@formkit/tempo":"bPFbk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8j2hI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AcademicCapIcon", ()=>(0, _academicCapIconJsDefault.default));
@@ -10116,7 +10126,7 @@ var _xcircleIconJsDefault = parcelHelpers.interopDefault(_xcircleIconJs);
 var _xmarkIconJs = require("./XMarkIcon.js");
 var _xmarkIconJsDefault = parcelHelpers.interopDefault(_xmarkIconJs);
 
-},{"./AcademicCapIcon.js":false,"./AdjustmentsHorizontalIcon.js":false,"./AdjustmentsVerticalIcon.js":false,"./ArchiveBoxArrowDownIcon.js":false,"./ArchiveBoxXMarkIcon.js":false,"./ArchiveBoxIcon.js":false,"./ArrowDownCircleIcon.js":false,"./ArrowDownLeftIcon.js":false,"./ArrowDownOnSquareStackIcon.js":false,"./ArrowDownOnSquareIcon.js":false,"./ArrowDownRightIcon.js":false,"./ArrowDownTrayIcon.js":false,"./ArrowDownIcon.js":false,"./ArrowLeftCircleIcon.js":false,"./ArrowLeftEndOnRectangleIcon.js":false,"./ArrowLeftOnRectangleIcon.js":false,"./ArrowLeftStartOnRectangleIcon.js":false,"./ArrowLeftIcon.js":false,"./ArrowLongDownIcon.js":false,"./ArrowLongLeftIcon.js":false,"./ArrowLongRightIcon.js":false,"./ArrowLongUpIcon.js":false,"./ArrowPathRoundedSquareIcon.js":false,"./ArrowPathIcon.js":false,"./ArrowRightCircleIcon.js":false,"./ArrowRightEndOnRectangleIcon.js":false,"./ArrowRightOnRectangleIcon.js":false,"./ArrowRightStartOnRectangleIcon.js":false,"./ArrowRightIcon.js":false,"./ArrowSmallDownIcon.js":false,"./ArrowSmallLeftIcon.js":false,"./ArrowSmallRightIcon.js":false,"./ArrowSmallUpIcon.js":false,"./ArrowTopRightOnSquareIcon.js":false,"./ArrowTrendingDownIcon.js":false,"./ArrowTrendingUpIcon.js":false,"./ArrowUpCircleIcon.js":false,"./ArrowUpLeftIcon.js":false,"./ArrowUpOnSquareStackIcon.js":false,"./ArrowUpOnSquareIcon.js":false,"./ArrowUpRightIcon.js":false,"./ArrowUpTrayIcon.js":false,"./ArrowUpIcon.js":false,"./ArrowUturnDownIcon.js":false,"./ArrowUturnLeftIcon.js":false,"./ArrowUturnRightIcon.js":false,"./ArrowUturnUpIcon.js":false,"./ArrowsPointingInIcon.js":false,"./ArrowsPointingOutIcon.js":false,"./ArrowsRightLeftIcon.js":false,"./ArrowsUpDownIcon.js":false,"./AtSymbolIcon.js":false,"./BackspaceIcon.js":false,"./BackwardIcon.js":false,"./BanknotesIcon.js":false,"./Bars2Icon.js":false,"./Bars3BottomLeftIcon.js":false,"./Bars3BottomRightIcon.js":false,"./Bars3CenterLeftIcon.js":false,"./Bars3Icon.js":false,"./Bars4Icon.js":false,"./BarsArrowDownIcon.js":false,"./BarsArrowUpIcon.js":false,"./Battery0Icon.js":false,"./Battery100Icon.js":false,"./Battery50Icon.js":false,"./BeakerIcon.js":false,"./BellAlertIcon.js":false,"./BellSlashIcon.js":false,"./BellSnoozeIcon.js":false,"./BellIcon.js":false,"./BoltSlashIcon.js":false,"./BoltIcon.js":false,"./BookOpenIcon.js":false,"./BookmarkSlashIcon.js":false,"./BookmarkSquareIcon.js":false,"./BookmarkIcon.js":false,"./BriefcaseIcon.js":false,"./BugAntIcon.js":false,"./BuildingLibraryIcon.js":false,"./BuildingOffice2Icon.js":false,"./BuildingOfficeIcon.js":false,"./BuildingStorefrontIcon.js":false,"./CakeIcon.js":false,"./CalculatorIcon.js":false,"./CalendarDaysIcon.js":false,"./CalendarIcon.js":false,"./CameraIcon.js":false,"./ChartBarSquareIcon.js":false,"./ChartBarIcon.js":false,"./ChartPieIcon.js":false,"./ChatBubbleBottomCenterTextIcon.js":false,"./ChatBubbleBottomCenterIcon.js":false,"./ChatBubbleLeftEllipsisIcon.js":false,"./ChatBubbleLeftRightIcon.js":false,"./ChatBubbleLeftIcon.js":false,"./ChatBubbleOvalLeftEllipsisIcon.js":false,"./ChatBubbleOvalLeftIcon.js":false,"./CheckBadgeIcon.js":false,"./CheckCircleIcon.js":false,"./CheckIcon.js":false,"./ChevronDoubleDownIcon.js":false,"./ChevronDoubleLeftIcon.js":false,"./ChevronDoubleRightIcon.js":false,"./ChevronDoubleUpIcon.js":false,"./ChevronDownIcon.js":false,"./ChevronLeftIcon.js":false,"./ChevronRightIcon.js":false,"./ChevronUpDownIcon.js":false,"./ChevronUpIcon.js":false,"./CircleStackIcon.js":false,"./ClipboardDocumentCheckIcon.js":false,"./ClipboardDocumentListIcon.js":false,"./ClipboardDocumentIcon.js":false,"./ClipboardIcon.js":false,"./ClockIcon.js":false,"./CloudArrowDownIcon.js":false,"./CloudArrowUpIcon.js":false,"./CloudIcon.js":false,"./CodeBracketSquareIcon.js":false,"./CodeBracketIcon.js":false,"./Cog6ToothIcon.js":false,"./Cog8ToothIcon.js":false,"./CogIcon.js":false,"./CommandLineIcon.js":false,"./ComputerDesktopIcon.js":false,"./CpuChipIcon.js":false,"./CreditCardIcon.js":false,"./CubeTransparentIcon.js":false,"./CubeIcon.js":false,"./CurrencyBangladeshiIcon.js":false,"./CurrencyDollarIcon.js":false,"./CurrencyEuroIcon.js":false,"./CurrencyPoundIcon.js":false,"./CurrencyRupeeIcon.js":false,"./CurrencyYenIcon.js":false,"./CursorArrowRaysIcon.js":false,"./CursorArrowRippleIcon.js":false,"./DevicePhoneMobileIcon.js":false,"./DeviceTabletIcon.js":false,"./DocumentArrowDownIcon.js":false,"./DocumentArrowUpIcon.js":false,"./DocumentChartBarIcon.js":false,"./DocumentCheckIcon.js":false,"./DocumentDuplicateIcon.js":false,"./DocumentMagnifyingGlassIcon.js":false,"./DocumentMinusIcon.js":false,"./DocumentPlusIcon.js":false,"./DocumentTextIcon.js":false,"./DocumentIcon.js":false,"./EllipsisHorizontalCircleIcon.js":false,"./EllipsisHorizontalIcon.js":false,"./EllipsisVerticalIcon.js":false,"./EnvelopeOpenIcon.js":false,"./EnvelopeIcon.js":false,"./ExclamationCircleIcon.js":false,"./ExclamationTriangleIcon.js":false,"./EyeDropperIcon.js":false,"./EyeSlashIcon.js":false,"./EyeIcon.js":false,"./FaceFrownIcon.js":false,"./FaceSmileIcon.js":false,"./FilmIcon.js":false,"./FingerPrintIcon.js":false,"./FireIcon.js":false,"./FlagIcon.js":false,"./FolderArrowDownIcon.js":false,"./FolderMinusIcon.js":false,"./FolderOpenIcon.js":false,"./FolderPlusIcon.js":false,"./FolderIcon.js":false,"./ForwardIcon.js":false,"./FunnelIcon.js":false,"./GifIcon.js":false,"./GiftTopIcon.js":false,"./GiftIcon.js":false,"./GlobeAltIcon.js":false,"./GlobeAmericasIcon.js":false,"./GlobeAsiaAustraliaIcon.js":false,"./GlobeEuropeAfricaIcon.js":false,"./HandRaisedIcon.js":false,"./HandThumbDownIcon.js":false,"./HandThumbUpIcon.js":false,"./HashtagIcon.js":false,"./HeartIcon.js":false,"./HomeModernIcon.js":false,"./HomeIcon.js":false,"./IdentificationIcon.js":false,"./InboxArrowDownIcon.js":false,"./InboxStackIcon.js":false,"./InboxIcon.js":false,"./InformationCircleIcon.js":false,"./KeyIcon.js":false,"./LanguageIcon.js":false,"./LifebuoyIcon.js":false,"./LightBulbIcon.js":false,"./LinkIcon.js":"aJio1","./ListBulletIcon.js":false,"./LockClosedIcon.js":false,"./LockOpenIcon.js":false,"./MagnifyingGlassCircleIcon.js":false,"./MagnifyingGlassMinusIcon.js":false,"./MagnifyingGlassPlusIcon.js":false,"./MagnifyingGlassIcon.js":false,"./MapPinIcon.js":false,"./MapIcon.js":false,"./MegaphoneIcon.js":false,"./MicrophoneIcon.js":false,"./MinusCircleIcon.js":false,"./MinusSmallIcon.js":false,"./MinusIcon.js":false,"./MoonIcon.js":false,"./MusicalNoteIcon.js":false,"./NewspaperIcon.js":false,"./NoSymbolIcon.js":false,"./PaintBrushIcon.js":false,"./PaperAirplaneIcon.js":false,"./PaperClipIcon.js":false,"./PauseCircleIcon.js":false,"./PauseIcon.js":false,"./PencilSquareIcon.js":false,"./PencilIcon.js":false,"./PhoneArrowDownLeftIcon.js":false,"./PhoneArrowUpRightIcon.js":false,"./PhoneXMarkIcon.js":false,"./PhoneIcon.js":false,"./PhotoIcon.js":false,"./PlayCircleIcon.js":false,"./PlayPauseIcon.js":false,"./PlayIcon.js":false,"./PlusCircleIcon.js":false,"./PlusSmallIcon.js":false,"./PlusIcon.js":false,"./PowerIcon.js":false,"./PresentationChartBarIcon.js":false,"./PresentationChartLineIcon.js":false,"./PrinterIcon.js":false,"./PuzzlePieceIcon.js":false,"./QrCodeIcon.js":false,"./QuestionMarkCircleIcon.js":false,"./QueueListIcon.js":false,"./RadioIcon.js":false,"./ReceiptPercentIcon.js":false,"./ReceiptRefundIcon.js":false,"./RectangleGroupIcon.js":false,"./RectangleStackIcon.js":false,"./RocketLaunchIcon.js":false,"./RssIcon.js":false,"./ScaleIcon.js":false,"./ScissorsIcon.js":false,"./ServerStackIcon.js":false,"./ServerIcon.js":false,"./ShareIcon.js":false,"./ShieldCheckIcon.js":false,"./ShieldExclamationIcon.js":false,"./ShoppingBagIcon.js":false,"./ShoppingCartIcon.js":false,"./SignalSlashIcon.js":false,"./SignalIcon.js":false,"./SparklesIcon.js":false,"./SpeakerWaveIcon.js":false,"./SpeakerXMarkIcon.js":false,"./Square2StackIcon.js":false,"./Square3Stack3DIcon.js":false,"./Squares2X2Icon.js":false,"./SquaresPlusIcon.js":false,"./StarIcon.js":false,"./StopCircleIcon.js":false,"./StopIcon.js":false,"./SunIcon.js":false,"./SwatchIcon.js":false,"./TableCellsIcon.js":false,"./TagIcon.js":false,"./TicketIcon.js":false,"./TrashIcon.js":false,"./TrophyIcon.js":false,"./TruckIcon.js":false,"./TvIcon.js":false,"./UserCircleIcon.js":false,"./UserGroupIcon.js":false,"./UserMinusIcon.js":false,"./UserPlusIcon.js":false,"./UserIcon.js":false,"./UsersIcon.js":false,"./VariableIcon.js":false,"./VideoCameraSlashIcon.js":false,"./VideoCameraIcon.js":false,"./ViewColumnsIcon.js":false,"./ViewfinderCircleIcon.js":false,"./WalletIcon.js":false,"./WifiIcon.js":false,"./WindowIcon.js":false,"./WrenchScrewdriverIcon.js":false,"./WrenchIcon.js":false,"./XCircleIcon.js":false,"./XMarkIcon.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aJio1":[function(require,module,exports) {
+},{"./AcademicCapIcon.js":false,"./AdjustmentsHorizontalIcon.js":false,"./AdjustmentsVerticalIcon.js":false,"./ArchiveBoxArrowDownIcon.js":false,"./ArchiveBoxXMarkIcon.js":false,"./ArchiveBoxIcon.js":false,"./ArrowDownCircleIcon.js":false,"./ArrowDownLeftIcon.js":false,"./ArrowDownOnSquareStackIcon.js":false,"./ArrowDownOnSquareIcon.js":false,"./ArrowDownRightIcon.js":false,"./ArrowDownTrayIcon.js":false,"./ArrowDownIcon.js":false,"./ArrowLeftCircleIcon.js":false,"./ArrowLeftEndOnRectangleIcon.js":false,"./ArrowLeftOnRectangleIcon.js":false,"./ArrowLeftStartOnRectangleIcon.js":false,"./ArrowLeftIcon.js":false,"./ArrowLongDownIcon.js":false,"./ArrowLongLeftIcon.js":false,"./ArrowLongRightIcon.js":false,"./ArrowLongUpIcon.js":false,"./ArrowPathRoundedSquareIcon.js":false,"./ArrowPathIcon.js":false,"./ArrowRightCircleIcon.js":false,"./ArrowRightEndOnRectangleIcon.js":false,"./ArrowRightOnRectangleIcon.js":false,"./ArrowRightStartOnRectangleIcon.js":false,"./ArrowRightIcon.js":false,"./ArrowSmallDownIcon.js":false,"./ArrowSmallLeftIcon.js":false,"./ArrowSmallRightIcon.js":false,"./ArrowSmallUpIcon.js":false,"./ArrowTopRightOnSquareIcon.js":false,"./ArrowTrendingDownIcon.js":false,"./ArrowTrendingUpIcon.js":false,"./ArrowUpCircleIcon.js":false,"./ArrowUpLeftIcon.js":false,"./ArrowUpOnSquareStackIcon.js":false,"./ArrowUpOnSquareIcon.js":false,"./ArrowUpRightIcon.js":false,"./ArrowUpTrayIcon.js":false,"./ArrowUpIcon.js":false,"./ArrowUturnDownIcon.js":false,"./ArrowUturnLeftIcon.js":false,"./ArrowUturnRightIcon.js":false,"./ArrowUturnUpIcon.js":false,"./ArrowsPointingInIcon.js":false,"./ArrowsPointingOutIcon.js":false,"./ArrowsRightLeftIcon.js":false,"./ArrowsUpDownIcon.js":false,"./AtSymbolIcon.js":false,"./BackspaceIcon.js":false,"./BackwardIcon.js":false,"./BanknotesIcon.js":false,"./Bars2Icon.js":false,"./Bars3BottomLeftIcon.js":false,"./Bars3BottomRightIcon.js":false,"./Bars3CenterLeftIcon.js":false,"./Bars3Icon.js":false,"./Bars4Icon.js":false,"./BarsArrowDownIcon.js":false,"./BarsArrowUpIcon.js":false,"./Battery0Icon.js":false,"./Battery100Icon.js":false,"./Battery50Icon.js":false,"./BeakerIcon.js":false,"./BellAlertIcon.js":false,"./BellSlashIcon.js":false,"./BellSnoozeIcon.js":false,"./BellIcon.js":false,"./BoltSlashIcon.js":false,"./BoltIcon.js":false,"./BookOpenIcon.js":false,"./BookmarkSlashIcon.js":false,"./BookmarkSquareIcon.js":false,"./BookmarkIcon.js":false,"./BriefcaseIcon.js":false,"./BugAntIcon.js":false,"./BuildingLibraryIcon.js":false,"./BuildingOffice2Icon.js":false,"./BuildingOfficeIcon.js":false,"./BuildingStorefrontIcon.js":false,"./CakeIcon.js":false,"./CalculatorIcon.js":false,"./CalendarDaysIcon.js":false,"./CalendarIcon.js":false,"./CameraIcon.js":false,"./ChartBarSquareIcon.js":false,"./ChartBarIcon.js":false,"./ChartPieIcon.js":false,"./ChatBubbleBottomCenterTextIcon.js":false,"./ChatBubbleBottomCenterIcon.js":false,"./ChatBubbleLeftEllipsisIcon.js":false,"./ChatBubbleLeftRightIcon.js":false,"./ChatBubbleLeftIcon.js":false,"./ChatBubbleOvalLeftEllipsisIcon.js":false,"./ChatBubbleOvalLeftIcon.js":false,"./CheckBadgeIcon.js":false,"./CheckCircleIcon.js":false,"./CheckIcon.js":false,"./ChevronDoubleDownIcon.js":false,"./ChevronDoubleLeftIcon.js":false,"./ChevronDoubleRightIcon.js":false,"./ChevronDoubleUpIcon.js":false,"./ChevronDownIcon.js":false,"./ChevronLeftIcon.js":false,"./ChevronRightIcon.js":false,"./ChevronUpDownIcon.js":false,"./ChevronUpIcon.js":false,"./CircleStackIcon.js":false,"./ClipboardDocumentCheckIcon.js":false,"./ClipboardDocumentListIcon.js":false,"./ClipboardDocumentIcon.js":false,"./ClipboardIcon.js":false,"./ClockIcon.js":false,"./CloudArrowDownIcon.js":false,"./CloudArrowUpIcon.js":false,"./CloudIcon.js":false,"./CodeBracketSquareIcon.js":false,"./CodeBracketIcon.js":false,"./Cog6ToothIcon.js":false,"./Cog8ToothIcon.js":false,"./CogIcon.js":false,"./CommandLineIcon.js":false,"./ComputerDesktopIcon.js":false,"./CpuChipIcon.js":false,"./CreditCardIcon.js":false,"./CubeTransparentIcon.js":false,"./CubeIcon.js":false,"./CurrencyBangladeshiIcon.js":false,"./CurrencyDollarIcon.js":false,"./CurrencyEuroIcon.js":false,"./CurrencyPoundIcon.js":false,"./CurrencyRupeeIcon.js":false,"./CurrencyYenIcon.js":false,"./CursorArrowRaysIcon.js":false,"./CursorArrowRippleIcon.js":false,"./DevicePhoneMobileIcon.js":false,"./DeviceTabletIcon.js":false,"./DocumentArrowDownIcon.js":false,"./DocumentArrowUpIcon.js":false,"./DocumentChartBarIcon.js":false,"./DocumentCheckIcon.js":false,"./DocumentDuplicateIcon.js":false,"./DocumentMagnifyingGlassIcon.js":false,"./DocumentMinusIcon.js":false,"./DocumentPlusIcon.js":false,"./DocumentTextIcon.js":false,"./DocumentIcon.js":false,"./EllipsisHorizontalCircleIcon.js":false,"./EllipsisHorizontalIcon.js":false,"./EllipsisVerticalIcon.js":false,"./EnvelopeOpenIcon.js":false,"./EnvelopeIcon.js":false,"./ExclamationCircleIcon.js":false,"./ExclamationTriangleIcon.js":false,"./EyeDropperIcon.js":false,"./EyeSlashIcon.js":false,"./EyeIcon.js":false,"./FaceFrownIcon.js":false,"./FaceSmileIcon.js":false,"./FilmIcon.js":false,"./FingerPrintIcon.js":false,"./FireIcon.js":"bsvYS","./FlagIcon.js":false,"./FolderArrowDownIcon.js":false,"./FolderMinusIcon.js":false,"./FolderOpenIcon.js":false,"./FolderPlusIcon.js":false,"./FolderIcon.js":false,"./ForwardIcon.js":false,"./FunnelIcon.js":false,"./GifIcon.js":false,"./GiftTopIcon.js":false,"./GiftIcon.js":false,"./GlobeAltIcon.js":false,"./GlobeAmericasIcon.js":false,"./GlobeAsiaAustraliaIcon.js":false,"./GlobeEuropeAfricaIcon.js":false,"./HandRaisedIcon.js":false,"./HandThumbDownIcon.js":false,"./HandThumbUpIcon.js":false,"./HashtagIcon.js":false,"./HeartIcon.js":false,"./HomeModernIcon.js":false,"./HomeIcon.js":false,"./IdentificationIcon.js":false,"./InboxArrowDownIcon.js":false,"./InboxStackIcon.js":false,"./InboxIcon.js":false,"./InformationCircleIcon.js":false,"./KeyIcon.js":false,"./LanguageIcon.js":false,"./LifebuoyIcon.js":false,"./LightBulbIcon.js":false,"./LinkIcon.js":"czlIq","./ListBulletIcon.js":false,"./LockClosedIcon.js":false,"./LockOpenIcon.js":false,"./MagnifyingGlassCircleIcon.js":false,"./MagnifyingGlassMinusIcon.js":false,"./MagnifyingGlassPlusIcon.js":false,"./MagnifyingGlassIcon.js":false,"./MapPinIcon.js":false,"./MapIcon.js":false,"./MegaphoneIcon.js":false,"./MicrophoneIcon.js":false,"./MinusCircleIcon.js":false,"./MinusSmallIcon.js":false,"./MinusIcon.js":false,"./MoonIcon.js":false,"./MusicalNoteIcon.js":false,"./NewspaperIcon.js":false,"./NoSymbolIcon.js":false,"./PaintBrushIcon.js":false,"./PaperAirplaneIcon.js":false,"./PaperClipIcon.js":false,"./PauseCircleIcon.js":false,"./PauseIcon.js":false,"./PencilSquareIcon.js":false,"./PencilIcon.js":false,"./PhoneArrowDownLeftIcon.js":false,"./PhoneArrowUpRightIcon.js":false,"./PhoneXMarkIcon.js":false,"./PhoneIcon.js":false,"./PhotoIcon.js":false,"./PlayCircleIcon.js":false,"./PlayPauseIcon.js":false,"./PlayIcon.js":false,"./PlusCircleIcon.js":false,"./PlusSmallIcon.js":false,"./PlusIcon.js":false,"./PowerIcon.js":false,"./PresentationChartBarIcon.js":false,"./PresentationChartLineIcon.js":false,"./PrinterIcon.js":false,"./PuzzlePieceIcon.js":false,"./QrCodeIcon.js":false,"./QuestionMarkCircleIcon.js":false,"./QueueListIcon.js":false,"./RadioIcon.js":false,"./ReceiptPercentIcon.js":false,"./ReceiptRefundIcon.js":false,"./RectangleGroupIcon.js":false,"./RectangleStackIcon.js":false,"./RocketLaunchIcon.js":"bvVj7","./RssIcon.js":false,"./ScaleIcon.js":false,"./ScissorsIcon.js":false,"./ServerStackIcon.js":false,"./ServerIcon.js":false,"./ShareIcon.js":false,"./ShieldCheckIcon.js":false,"./ShieldExclamationIcon.js":false,"./ShoppingBagIcon.js":false,"./ShoppingCartIcon.js":false,"./SignalSlashIcon.js":false,"./SignalIcon.js":false,"./SparklesIcon.js":false,"./SpeakerWaveIcon.js":false,"./SpeakerXMarkIcon.js":false,"./Square2StackIcon.js":false,"./Square3Stack3DIcon.js":false,"./Squares2X2Icon.js":false,"./SquaresPlusIcon.js":false,"./StarIcon.js":false,"./StopCircleIcon.js":false,"./StopIcon.js":false,"./SunIcon.js":false,"./SwatchIcon.js":false,"./TableCellsIcon.js":false,"./TagIcon.js":false,"./TicketIcon.js":false,"./TrashIcon.js":false,"./TrophyIcon.js":false,"./TruckIcon.js":false,"./TvIcon.js":false,"./UserCircleIcon.js":false,"./UserGroupIcon.js":false,"./UserMinusIcon.js":false,"./UserPlusIcon.js":false,"./UserIcon.js":false,"./UsersIcon.js":false,"./VariableIcon.js":false,"./VideoCameraSlashIcon.js":false,"./VideoCameraIcon.js":false,"./ViewColumnsIcon.js":false,"./ViewfinderCircleIcon.js":false,"./WalletIcon.js":false,"./WifiIcon.js":false,"./WindowIcon.js":false,"./WrenchScrewdriverIcon.js":false,"./WrenchIcon.js":false,"./XCircleIcon.js":false,"./XMarkIcon.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsvYS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>render);
@@ -10124,15 +10134,68 @@ var _vue = require("vue");
 function render(_ctx, _cache) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
         viewBox: "0 0 24 24",
-        fill: "currentColor",
+        "stroke-width": "1.5",
+        stroke: "currentColor",
         "aria-hidden": "true",
         "data-slot": "icon"
     }, [
         (0, _vue.createElementVNode)("path", {
-            "fill-rule": "evenodd",
-            d: "M19.902 4.098a3.75 3.75 0 0 0-5.304 0l-4.5 4.5a3.75 3.75 0 0 0 1.035 6.037.75.75 0 0 1-.646 1.353 5.25 5.25 0 0 1-1.449-8.45l4.5-4.5a5.25 5.25 0 1 1 7.424 7.424l-1.757 1.757a.75.75 0 1 1-1.06-1.06l1.757-1.757a3.75 3.75 0 0 0 0-5.304Zm-7.389 4.267a.75.75 0 0 1 1-.353 5.25 5.25 0 0 1 1.449 8.45l-4.5 4.5a5.25 5.25 0 1 1-7.424-7.424l1.757-1.757a.75.75 0 1 1 1.06 1.06l-1.757 1.757a3.75 3.75 0 1 0 5.304 5.304l4.5-4.5a3.75 3.75 0 0 0-1.035-6.037.75.75 0 0 1-.354-1Z",
-            "clip-rule": "evenodd"
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round",
+            d: "M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"
+        }),
+        (0, _vue.createElementVNode)("path", {
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round",
+            d: "M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"
+        })
+    ]);
+}
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"czlIq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>render);
+var _vue = require("vue");
+function render(_ctx, _cache) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        "stroke-width": "1.5",
+        stroke: "currentColor",
+        "aria-hidden": "true",
+        "data-slot": "icon"
+    }, [
+        (0, _vue.createElementVNode)("path", {
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round",
+            d: "M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
+        })
+    ]);
+}
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bvVj7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>render);
+var _vue = require("vue");
+function render(_ctx, _cache) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        "stroke-width": "1.5",
+        stroke: "currentColor",
+        "aria-hidden": "true",
+        "data-slot": "icon"
+    }, [
+        (0, _vue.createElementVNode)("path", {
+            "stroke-linecap": "round",
+            "stroke-linejoin": "round",
+            d: "M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
         })
     ]);
 }
@@ -19538,26 +19601,26 @@ const _hoisted_29 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
     class: "font-medium"
 }, "End:", -1 /* HOISTED */ );
 const _hoisted_30 = {
+    key: 2,
     id: "eventCountdown",
     class: "text-center"
 };
-const _hoisted_31 = {
+const _hoisted_31 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+    class: "font-bold"
+}, "Ongoing!", -1 /* HOISTED */ );
+const _hoisted_32 = {
+    key: 3,
+    id: "eventCountdown",
+    class: "text-center"
+};
+const _hoisted_33 = {
     class: "text-7xl"
 };
-const _hoisted_32 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+const _hoisted_34 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
     class: "font-bold"
 }, "days to go", -1 /* HOISTED */ );
-const _hoisted_33 = {
+const _hoisted_35 = {
     key: 0
-};
-const _hoisted_34 = {
-    key: 0
-};
-const _hoisted_35 = [
-    "href"
-];
-const _hoisted_36 = {
-    key: 1
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
@@ -19622,7 +19685,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                             !$options.compareDates($data.compareDate, event.dateEnd) ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", {
                                                                 key: 0,
                                                                 class: (0, _vue.normalizeClass)([
-                                                                    $options.testFunc(event.id),
+                                                                    $options.eventID(event.id),
                                                                     "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                                 ])
                                                             }, [
@@ -19636,7 +19699,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                             class: "hover:text-indigo-700"
                                                                         }, [
                                                                             (0, _vue.createVNode)($setup["LinkIcon"], {
-                                                                                class: "size-6"
+                                                                                class: "inline ml-2 stroke-[3.0] size-4 hover:text-indigo-700"
                                                                             })
                                                                         ], 8 /* PROPS */ , _hoisted_21)
                                                                     ]),
@@ -19667,10 +19730,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                         (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                     ])
                                                                 ])),
-                                                                (0, _vue.createElementVNode)("div", _hoisted_30, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_31, (0, _vue.toDisplayString)($options.countdown(event.dateStart, $data.compareDate)), 1 /* TEXT */ ),
-                                                                    _hoisted_32
-                                                                ])
+                                                                $options.countdown(event.dateStart, $data.compareDate) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_30, [
+                                                                    (0, _vue.createVNode)($setup["FireIcon"], {
+                                                                        class: "size-20 m-auto stroke-red-700 stroke-[1.5]"
+                                                                    }),
+                                                                    _hoisted_31
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_32, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_33, (0, _vue.toDisplayString)($options.countdown(event.dateStart, $data.compareDate)), 1 /* TEXT */ ),
+                                                                    _hoisted_34
+                                                                ]))
                                                             ], 2 /* CLASS */ )) : (0, _vue.createCommentVNode)("v-if", true)
                                                         ]);
                                                     }), 128 /* KEYED_FRAGMENT */ ))
@@ -19684,13 +19752,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("ul", {
                                                         key: event.id
                                                     }, [
-                                                        $options.compareDates($data.compareDate, event.dateEnd) ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", _hoisted_33, [
-                                                            event.link != "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("span", _hoisted_34, [
-                                                                (0, _vue.createElementVNode)("a", {
-                                                                    href: event.link,
-                                                                    target: "_blank"
-                                                                }, (0, _vue.toDisplayString)(event.name), 9 /* TEXT, PROPS */ , _hoisted_35)
-                                                            ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("span", _hoisted_36, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ))
+                                                        $options.compareDates($data.compareDate, event.dateEnd) ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", _hoisted_35, [
+                                                            (0, _vue.createElementVNode)("span", null, (0, _vue.toDisplayString)(event.name) + " ended " + (0, _vue.toDisplayString)($options.daysAfterEvent($data.compareDate, event.dateEnd)) + " days ago ", 1 /* TEXT */ )
                                                         ])) : (0, _vue.createCommentVNode)("v-if", true)
                                                     ]);
                                                 }), 128 /* KEYED_FRAGMENT */ ))

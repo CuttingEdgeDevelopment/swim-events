@@ -585,6 +585,22 @@ select {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.fill-red-700 {
+  fill: #b91c1c;
+}
+
+.stroke-red-700 {
+  stroke: #b91c1c;
+}
+
+.stroke-\[1\.5\] {
+  stroke-width: 1.5px;
+}
+
+.stroke-\[3\.0\] {
+  stroke-width: 3px;
+}
+
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
