@@ -3,7 +3,7 @@
 Building a small application to show countdowns for upcoming swimming events.
 
 ### Preview
-![Screenshot of the Countdown Application.](https://github.com/nicolasmesser/countdown/blob/main/src/img/countdownScreenshot.png)
+![Screenshot of the Countdown Application.](https://github.com/CuttingEdgeDevelopment/swim-events/blob/main/src/img/countdownScreenshot.png)
 
 ### Technologies & Tools
 HTML, CSS (TailwindCSS), JavaScript, Parcel, Tempo, Supabase
