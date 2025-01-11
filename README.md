@@ -1,4 +1,4 @@
-# Countdown
+# Swim Events
 
 Building a small application to show countdowns for upcoming swimming events.
 
