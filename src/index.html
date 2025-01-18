@@ -36,7 +36,12 @@
           </button>
         </div>
       </div>
-      <p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>
+      <div id="eventsLoading" class="flex italic font-bold text-red-700 gap-0.5">
+        <p>Loading events</p>
+          <span class="animate-bounce [animation-delay:-0.3s]">.</span>
+          <span class="animate-bounce [animation-delay:-0.15s]">.</span>
+          <span class="animate-bounce">.</span>
+      </div>
       <section id="eventsList" class="flex flex-col gap-3"></section>
     </main>
     <footer class="text-center border-t border-black px-16 py-4">
