@@ -512,6 +512,22 @@ select {
   width: 1.5rem;
 }
 
+@keyframes bounce {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(.8, 0, 1, 1);
+    transform: translateY(-25%);
+  }
+
+  50% {
+    animation-timing-function: cubic-bezier(0, 0, .2, 1);
+    transform: none;
+  }
+}
+
+.animate-bounce {
+  animation: 1s infinite bounce;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -650,6 +666,14 @@ select {
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+
+.\[animation-delay\:-0\.15s\] {
+  animation-delay: -.15s;
+}
+
+.\[animation-delay\:-0\.3s\] {
+  animation-delay: -.3s;
 }
 
 .event-25 {

@@ -22,6 +22,7 @@ let currentDayEl = document.getElementById("currentDay");
 let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
 let eventsLoadingEl = document.getElementById("eventsLoading");
+let eventsLoadingTextEl = document.getElementById("eventsLoadingText");
 
 currentDayEl.textContent = "Happy " + day + "!";
 currentDateEl.textContent = "Current Date: " + date;
@@ -146,6 +147,7 @@ btnAdd.addEventListener("click", event => {
 btnUpdate.addEventListener("click", event => {
   eventsSection = "";
   eventsListEl.textContent = "";
+  eventsLoadingTextEl.textContent = "Updating events";
   eventsLoadingEl.classList.remove("hidden");
   setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
   // setTimeout(function() { listEvents() }, 2000);
