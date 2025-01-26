@@ -1,5 +1,6 @@
 import { format, parse, diffDays } from "@formkit/tempo";
 import { createClient } from '@supabase/supabase-js';
+import { count } from "console";
 
 const eventsData = require("../data/events.json");
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -34,15 +35,14 @@ async function fetchData() {
     console.error('Error fetching data:', error);
     return;
   }
-
-  console.log('Fetched data:', data);
+  // console.log('Fetched data:', data);
   return data;
 }
 
 async function displayData() {
   try {
     const supabaseData = await fetchData();
-    console.log('Display data:', supabaseData);
+    // console.log('Display data:', supabaseData);
     listEvents2(supabaseData);
   } catch (error) {
     console.error('Failed to fetch or display data:', error);
@@ -51,6 +51,7 @@ async function displayData() {
 
 function listEvents() {
   data.events.forEach(event => {
+    eventsSection = ""; // Reset eventsSection at the beginning of each iteration
     let eventStartDate = parse(event.dateStart, "DD.MM.YYYY");
     let eventEndDate = parse(event.dateEnd, "DD.MM.YYYY");
     let startDate = format(eventStartDate, "dddd, MMMM DD, YYYY");
@@ -59,7 +60,11 @@ function listEvents() {
     let daysPassed = diffDays(eventEndDate, currentDate);
 
     if (daysPassed < 0) {
-      console.log(event.name + " ended " + Math.abs(daysPassed) + " days ago.");
+      if (daysPassed === -1) {
+        console.log(event.name + " ended " + Math.abs(daysPassed) + " day ago.");
+      } else {
+        console.log(event.name + " ended " + Math.abs(daysPassed) + " days ago.");
+      }
     } else {
       if (countdown <= 0) {
         eventsSection = '<section class="event event-' + event.id + ' border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"><div id="eventInfo">';
@@ -93,6 +98,7 @@ function listEvents() {
 
 function listEvents2(supabaseEvents) {
   supabaseEvents.forEach(event => {
+    eventsSection = "";
     let eventStartDate = parse(event.dateStart, "YYYY-MM-DD");
     let eventEndDate = parse(event.dateEnd, "YYYY-MM-DD");
     let startDate = format(eventStartDate, "dddd, MMMM DD, YYYY");
@@ -101,7 +107,11 @@ function listEvents2(supabaseEvents) {
     let daysPassed = diffDays(eventEndDate, currentDate);
 
     if (daysPassed < 0) {
-      console.log(event.name + " ended " + Math.abs(daysPassed) + " days ago.");
+      if (daysPassed === -1) {
+        console.log(event.name + " ended " + Math.abs(daysPassed) + " day ago.");
+      } else {
+        console.log(event.name + " ended " + Math.abs(daysPassed) + " days ago.");
+      }
     } else {
       if (countdown <= 0) {
         eventsSection = '<section class="event event-' + event.id + ' border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"><div id="eventInfo">';
