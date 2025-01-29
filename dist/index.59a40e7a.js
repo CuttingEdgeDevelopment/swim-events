@@ -630,7 +630,7 @@ async function displayData() {
 }
 function listEvents() {
     data.events.forEach((event)=>{
-        eventsSection = ""; // Reset eventsSection at the beginning of each iteration
+        eventsSection = "";
         let eventStartDate = (0, _tempo.parse)(event.dateStart, "DD.MM.YYYY");
         let eventEndDate = (0, _tempo.parse)(event.dateEnd, "DD.MM.YYYY");
         let startDate = (0, _tempo.format)(eventStartDate, "dddd, MMMM DD, YYYY");

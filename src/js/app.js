@@ -51,7 +51,7 @@ async function displayData() {
 
 function listEvents() {
   data.events.forEach(event => {
-    eventsSection = ""; // Reset eventsSection at the beginning of each iteration
+    eventsSection = "";
     let eventStartDate = parse(event.dateStart, "DD.MM.YYYY");
     let eventEndDate = parse(event.dateEnd, "DD.MM.YYYY");
     let startDate = format(eventStartDate, "dddd, MMMM DD, YYYY");
