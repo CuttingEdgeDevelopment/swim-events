@@ -688,6 +688,14 @@ select {
   color: rgb(185 28 28 / var(--tw-text-opacity));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
 .\[animation-delay\:-0\.15s\] {
   animation-delay: -.15s;
 }
@@ -696,13 +704,21 @@ select {
   animation-delay: -.3s;
 }
 
-.event-4 {
+.event-25 {
   background: #fecaca;
+}
+
+.hover\:font-semibold:hover {
+  font-weight: 600;
 }
 
 .hover\:text-indigo-700:hover {
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
+}
+
+.hover\:no-underline:hover {
+  text-decoration-line: none;
 }
 
 .hover\:shadow-md:hover {
