@@ -712,7 +712,7 @@ btnUpdate.addEventListener("click", (event)=>{
     }, 2000);
 });
 
-},{"@formkit/tempo":"bPFbk","@supabase/supabase-js":"04ZJL","vue":"gzxs9","bd5103096a294280":"5LFKi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","/src/App.vue":"fYNyc"}],"bPFbk":[function(require,module,exports) {
+},{"@formkit/tempo":"bPFbk","@supabase/supabase-js":"04ZJL","vue":"gzxs9","/src/App.vue":"fYNyc","bd5103096a294280":"5LFKi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bPFbk":[function(require,module,exports) {
 // src/iso8601.ts
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -17444,10 +17444,7 @@ const stringifySymbol = (v, i = "")=>{
     isSymbol(v) ? `Symbol(${(_a = v.description) != null ? _a : i})` : v);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5LFKi":[function(require,module,exports) {
-module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"Swiss Junior Championships","location":"Basel (SUI)","dateStart":"18.07.2024","dateEnd":"21.07.2024","link":""},{"id":6,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
-
-},{}],"fYNyc":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fYNyc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
@@ -19580,46 +19577,43 @@ const _hoisted_14 = [
 const _hoisted_15 = {
     class: "px-16 py-8"
 };
-const _hoisted_16 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
+const _hoisted_16 = /*#__PURE__*/ (0, _vue.createStaticVNode)('<div id="eventsLoading" class="flex italic font-bold text-red-700 gap-0.5"><p id="eventsLoadingText">Loading events</p><span class="animate-bounce [animation-delay:-0.3s]">.</span><span class="animate-bounce [animation-delay:-0.15s]">.</span><span class="animate-bounce">.</span></div>', 1);
+const _hoisted_17 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
     class: "text-2xl font-semibold pr-2 ui-not-selected:text-neutral-500"
 }, "Upcoming Events", -1 /* HOISTED */ );
-const _hoisted_17 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
+const _hoisted_18 = /*#__PURE__*/ (0, _vue.createElementVNode)("h2", {
     class: "text-2xl font-semibold pl-2 ui-not-selected:text-neutral-500"
 }, "Past Events", -1 /* HOISTED */ );
-const _hoisted_18 = {
-    id: "eventsLoading",
-    class: "flex italic font-bold text-red-700 gap-0.5"
-};
-const _hoisted_19 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", null, "Loading events", -1 /* HOISTED */ );
-const _hoisted_20 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
-    class: "animate-bounce [animation-delay:-0.3s]"
-}, ".", -1 /* HOISTED */ );
-const _hoisted_21 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
-    class: "animate-bounce [animation-delay:-0.15s]"
-}, ".", -1 /* HOISTED */ );
-const _hoisted_22 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
-    class: "animate-bounce"
-}, ".", -1 /* HOISTED */ );
-const _hoisted_23 = [
-    _hoisted_19,
-    _hoisted_20,
-    _hoisted_21,
-    _hoisted_22
-];
-const _hoisted_24 = {
+const _hoisted_19 = {
     id: "eventsList",
     class: "flex flex-col gap-3"
 };
-const _hoisted_25 = {
+const _hoisted_20 = {
     key: 0,
     id: "eventInfo"
 };
-const _hoisted_26 = {
+const _hoisted_21 = {
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_27 = [
+const _hoisted_22 = [
     "href"
 ];
+const _hoisted_23 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "font-medium"
+}, "Location: ", -1 /* HOISTED */ );
+const _hoisted_24 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "font-medium"
+}, "Begin:", -1 /* HOISTED */ );
+const _hoisted_25 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "font-medium"
+}, "End:", -1 /* HOISTED */ );
+const _hoisted_26 = {
+    key: 1,
+    id: "eventInfo"
+};
+const _hoisted_27 = {
+    class: "mb-2 text-xl font-medium"
+};
 const _hoisted_28 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
     class: "font-medium"
 }, "Location: ", -1 /* HOISTED */ );
@@ -19630,43 +19624,41 @@ const _hoisted_30 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
     class: "font-medium"
 }, "End:", -1 /* HOISTED */ );
 const _hoisted_31 = {
-    key: 1,
-    id: "eventInfo"
-};
-const _hoisted_32 = {
-    class: "mb-2 text-xl font-medium"
-};
-const _hoisted_33 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
-    class: "font-medium"
-}, "Location: ", -1 /* HOISTED */ );
-const _hoisted_34 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
-    class: "font-medium"
-}, "Begin:", -1 /* HOISTED */ );
-const _hoisted_35 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
-    class: "font-medium"
-}, "End:", -1 /* HOISTED */ );
-const _hoisted_36 = {
     key: 2,
     id: "eventCountdown",
     class: "text-center"
 };
-const _hoisted_37 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+const _hoisted_32 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
     class: "font-bold"
 }, "Ongoing!", -1 /* HOISTED */ );
-const _hoisted_38 = {
+const _hoisted_33 = {
     key: 3,
     id: "eventCountdown",
     class: "text-center"
 };
-const _hoisted_39 = {
+const _hoisted_34 = {
     class: "text-7xl"
 };
-const _hoisted_40 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+const _hoisted_35 = /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
     class: "font-bold"
 }, "days to go", -1 /* HOISTED */ );
-const _hoisted_41 = {
+const _hoisted_36 = {
     key: 0
 };
+const _hoisted_37 = /*#__PURE__*/ (0, _vue.createElementVNode)("footer", {
+    class: "text-center border-t border-black px-16 py-4"
+}, [
+    /*#__PURE__*/ (0, _vue.createElementVNode)("p", null, [
+        /*#__PURE__*/ (0, _vue.createTextVNode)("Copyright \xa9 2024 "),
+        /*#__PURE__*/ (0, _vue.createElementVNode)("a", {
+            href: "https://cutting-edge.dev/",
+            target: "_blank",
+            title: "Cutting Edge Development Studio",
+            class: "underline underline-offset-2 hover:font-semibold hover:no-underline"
+        }, "Cutting Edge Development Studio"),
+        /*#__PURE__*/ (0, _vue.createTextVNode)(" by Nicolas Messer")
+    ])
+], -1 /* HOISTED */ );
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
         (0, _vue.createElementVNode)("header", _hoisted_1, [
@@ -19699,19 +19691,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ])
         ]),
         (0, _vue.createElementVNode)("main", _hoisted_15, [
+            _hoisted_16,
             (0, _vue.createVNode)($setup["TabGroup"], null, {
                 default: (0, _vue.withCtx)(()=>[
                         (0, _vue.createVNode)($setup["TabList"], null, {
                             default: (0, _vue.withCtx)(()=>[
                                     (0, _vue.createVNode)($setup["Tab"], null, {
                                         default: (0, _vue.withCtx)(()=>[
-                                                _hoisted_16
+                                                _hoisted_17
                                             ]),
                                         _: 1 /* STABLE */ 
                                     }),
                                     (0, _vue.createVNode)($setup["Tab"], null, {
                                         default: (0, _vue.withCtx)(()=>[
-                                                _hoisted_17
+                                                _hoisted_18
                                             ]),
                                         _: 1 /* STABLE */ 
                                     })
@@ -19720,17 +19713,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         }),
                         (0, _vue.createVNode)($setup["TabPanels"], null, {
                             default: (0, _vue.withCtx)(()=>[
-                                    (0, _vue.withDirectives)((0, _vue.createElementVNode)("div", _hoisted_18, [
-                                        ..._hoisted_23
-                                    ], 512 /* NEED_PATCH */ ), [
-                                        [
-                                            (0, _vue.vShow),
-                                            $setup.eventsLoading
-                                        ]
-                                    ]),
                                     (0, _vue.createVNode)($setup["TabPanel"], null, {
                                         default: (0, _vue.withCtx)(()=>[
-                                                (0, _vue.createElementVNode)("section", _hoisted_24, [
+                                                (0, _vue.createElementVNode)("section", _hoisted_19, [
                                                     ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.events, (event)=>{
                                                         return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
                                                             key: event.id
@@ -19742,8 +19727,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                                 ])
                                                             }, [
-                                                                event.link != "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_25, [
-                                                                    (0, _vue.createElementVNode)("h4", _hoisted_26, [
+                                                                event.link != "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_20, [
+                                                                    (0, _vue.createElementVNode)("h4", _hoisted_21, [
                                                                         (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
                                                                         (0, _vue.createElementVNode)("a", {
                                                                             href: event.link,
@@ -19754,8 +19739,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                             (0, _vue.createVNode)($setup["LinkIcon"], {
                                                                                 class: "inline ml-2 stroke-[3.0] size-4 hover:text-indigo-700"
                                                                             })
-                                                                        ], 8 /* PROPS */ , _hoisted_27)
+                                                                        ], 8 /* PROPS */ , _hoisted_22)
                                                                     ]),
+                                                                    (0, _vue.createElementVNode)("p", null, [
+                                                                        _hoisted_23,
+                                                                        (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
+                                                                    ]),
+                                                                    (0, _vue.createElementVNode)("p", null, [
+                                                                        _hoisted_24,
+                                                                        (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                    ]),
+                                                                    (0, _vue.createElementVNode)("p", null, [
+                                                                        _hoisted_25,
+                                                                        (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                    ])
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_26, [
+                                                                    (0, _vue.createElementVNode)("h4", _hoisted_27, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
                                                                     (0, _vue.createElementVNode)("p", null, [
                                                                         _hoisted_28,
                                                                         (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
@@ -19768,29 +19767,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                         _hoisted_30,
                                                                         (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                     ])
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_31, [
-                                                                    (0, _vue.createElementVNode)("h4", _hoisted_32, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
-                                                                    (0, _vue.createElementVNode)("p", null, [
-                                                                        _hoisted_33,
-                                                                        (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
-                                                                    ]),
-                                                                    (0, _vue.createElementVNode)("p", null, [
-                                                                        _hoisted_34,
-                                                                        (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
-                                                                    ]),
-                                                                    (0, _vue.createElementVNode)("p", null, [
-                                                                        _hoisted_35,
-                                                                        (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
-                                                                    ])
                                                                 ])),
-                                                                $setup.countdown(event.dateStart, $data.compareDate) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_36, [
+                                                                $setup.countdown(event.dateStart, $data.compareDate) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_31, [
                                                                     (0, _vue.createVNode)($setup["FireIcon"], {
                                                                         class: "size-20 m-auto stroke-red-700 stroke-[1.5]"
                                                                     }),
-                                                                    _hoisted_37
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_38, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_39, (0, _vue.toDisplayString)($setup.countdown(event.dateStart, $data.compareDate)), 1 /* TEXT */ ),
-                                                                    _hoisted_40
+                                                                    _hoisted_32
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_33, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_34, (0, _vue.toDisplayString)($setup.countdown(event.dateStart, $data.compareDate)), 1 /* TEXT */ ),
+                                                                    _hoisted_35
                                                                 ]))
                                                             ], 2 /* CLASS */ )) : (0, _vue.createCommentVNode)("v-if", true)
                                                         ]);
@@ -19805,7 +19790,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("ul", {
                                                         key: event.id
                                                     }, [
-                                                        $setup.compareDates($data.compareDate, event.dateEnd) ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", _hoisted_41, [
+                                                        $setup.compareDates($data.compareDate, event.dateEnd) ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("li", _hoisted_36, [
                                                             (0, _vue.createElementVNode)("span", null, (0, _vue.toDisplayString)(event.name) + " ended " + (0, _vue.toDisplayString)($setup.daysAfterEvent($data.compareDate, event.dateEnd)) + " days ago ", 1 /* TEXT */ )
                                                         ])) : (0, _vue.createCommentVNode)("v-if", true)
                                                     ]);
@@ -19819,7 +19804,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     ]),
                 _: 1 /* STABLE */ 
             })
-        ])
+        ]),
+        _hoisted_37
     ], 64 /* STABLE_FRAGMENT */ );
 }
 if (module.hot) module.hot.accept(()=>{
@@ -19832,6 +19818,9 @@ parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire4482")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5LFKi":[function(require,module,exports) {
+module.exports = JSON.parse('{"events":[{"id":1,"name":"International Basler Cup","location":"Basel (SUI)","dateStart":"31.05.2024","dateEnd":"02.06.2024","link":""},{"id":2,"name":"European Aquatics Championships","location":"Belgrade (SRB)","dateStart":"17.06.2024","dateEnd":"23.06.2024","link":"https://www.len.eu/belgrade2024/"},{"id":3,"name":"European Junior Swimming Championships","location":"Vilnius (LTU)","dateStart":"02.07.2024","dateEnd":"07.07.2024","link":""},{"id":4,"name":"Swiss Summer Championships","location":"Uster (SUI)","dateStart":"11.07.2024","dateEnd":"14.07.2024","link":"https://scu.ch/sm-50m-uster-2024/"},{"id":5,"name":"Swiss Junior Championships","location":"Basel (SUI)","dateStart":"18.07.2024","dateEnd":"21.07.2024","link":""},{"id":6,"name":"The Olympic Games of Paris 2024","location":"Paris (FRA)","dateStart":"26.07.2024","dateEnd":"11.08.2024","link":""}]}');
+
+},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire8078")
 
 //# sourceMappingURL=index.59a40e7a.js.map

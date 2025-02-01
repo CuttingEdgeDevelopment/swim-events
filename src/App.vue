@@ -25,6 +25,12 @@
     </section>
   </header>
   <main class="px-16 py-8">
+    <div id="eventsLoading" class="flex italic font-bold text-red-700 gap-0.5">
+          <p id="eventsLoadingText">Loading events</p>
+            <span class="animate-bounce [animation-delay:-0.3s]">.</span>
+            <span class="animate-bounce [animation-delay:-0.15s]">.</span>
+            <span class="animate-bounce">.</span>
+        </div>
     <TabGroup>
       <TabList>
         <Tab>
@@ -35,12 +41,6 @@
         </Tab>
       </TabList>
       <TabPanels>
-        <div id="eventsLoading" class="flex italic font-bold text-red-700 gap-0.5" v-show="eventsLoading">
-          <p>Loading events</p>
-            <span class="animate-bounce [animation-delay:-0.3s]">.</span>
-            <span class="animate-bounce [animation-delay:-0.15s]">.</span>
-            <span class="animate-bounce">.</span>
-        </div>
         <TabPanel>
           <section id="eventsList" class="flex flex-col gap-3">
             <div v-for="event in events" :key="event.id">
@@ -81,6 +81,9 @@
       </TabPanels>
     </TabGroup>
   </main>
+  <footer class="text-center border-t border-black px-16 py-4">
+    <p>Copyright &copy 2024 <a href="https://cutting-edge.dev/" target="_blank" title="Cutting Edge Development Studio" class="underline underline-offset-2 hover:font-semibold hover:no-underline">Cutting Edge Development Studio</a> by Nicolas Messer</p>
+  </footer>
 </template>
 
 <script setup>

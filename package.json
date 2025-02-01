@@ -1,5 +1,5 @@
 {
-  "name": "countdown",
+  "name": "swim-events",
   "source": "src/index.html",
   "scripts": {
     "start": "npx parcel",
