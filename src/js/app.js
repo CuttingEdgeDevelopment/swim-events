@@ -3,12 +3,16 @@ import { createClient } from '@supabase/supabase-js';
 import { createApp } from "vue";
 import App from "/src/App.vue";
 
+globalThis.__VUE_OPTIONS_API__ = true;
+globalThis.__VUE_PROD_DEVTOOLS__ = false;
+globalThis.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
+
 const app = createApp(App);
 
 const eventsData = require("../data/events.json");
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// const supabase = createClient(supabaseUrl, supabaseKey);
 
 const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
@@ -29,8 +33,8 @@ let eventsLoadingEl = document.getElementById("eventsLoading");
 let eventsLoadingTextEl = document.getElementById("eventsLoadingText");
 
 app.mount("#app");
-currentDayEl.textContent = "Happy " + day + "!";
-currentDateEl.textContent = "Current Date: " + date;
+// currentDayEl.textContent = "Happy " + day + "!";
+// currentDateEl.textContent = "Current Date: " + date;
 
 async function fetchData() {
   const { data, error } = await supabase.from("events").select("*").order("dateStart", { ascending: true });
@@ -147,18 +151,18 @@ function listEvents2(supabaseEvents) {
   });
 }
 
-window.addEventListener("load", event => {
+/* window.addEventListener("load", event => {
   eventsLoadingEl.classList.remove("hidden");
   setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
   // setTimeout(function() { listEvents() }, 2000);
   setTimeout(function() { displayData() }, 2000);
-});
+}); */
 
-btnAdd.addEventListener("click", event => {
+/* btnAdd.addEventListener("click", event => {
   console.log("This button will add a new event");
-});
+}); */
 
-btnUpdate.addEventListener("click", event => {
+/* btnUpdate.addEventListener("click", event => {
   eventsSection = "";
   eventsListEl.textContent = "";
   eventsLoadingTextEl.textContent = "Updating events";
@@ -166,4 +170,4 @@ btnUpdate.addEventListener("click", event => {
   setTimeout(function() { eventsLoadingEl.classList.add("hidden") }, 1500);
   // setTimeout(function() { listEvents() }, 2000);
   setTimeout(function() { displayData() }, 2000);
-});
+}); */
