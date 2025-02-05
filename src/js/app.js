@@ -1,18 +1,10 @@
 import { format, parse, diffDays } from "@formkit/tempo";
 import { createClient } from '@supabase/supabase-js';
-import { createApp } from "vue";
-import App from "/src/App.vue";
-
-globalThis.__VUE_OPTIONS_API__ = true;
-globalThis.__VUE_PROD_DEVTOOLS__ = false;
-globalThis.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
-
-const app = createApp(App);
 
 const eventsData = require("../data/events.json");
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
-// const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const date = format(new Date(), "MMMM DD, YYYY");
 const day = format(new Date(), "dddd");
@@ -25,14 +17,15 @@ const linkIcon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 
 let data = eventsData;
 let eventsSection = "";
-let currentDateEl = document.getElementById("currentDate");
-let currentDayEl = document.getElementById("currentDay");
+// let currentDateEl = document.getElementById("currentDate");
+// let currentDayEl = document.getElementById("currentDay");
 let eventsListEl = document.getElementById("eventsList");
 let currentDate = parse(date, "dddd DD MMMM YYYY");
 let eventsLoadingEl = document.getElementById("eventsLoading");
 let eventsLoadingTextEl = document.getElementById("eventsLoadingText");
 
-app.mount("#app");
+console.log();
+
 // currentDayEl.textContent = "Happy " + day + "!";
 // currentDateEl.textContent = "Current Date: " + date;
 
