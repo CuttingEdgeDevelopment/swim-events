@@ -1,7 +1,5 @@
-<script>
-  export default {
-    props: ['name', 'currentDay', 'currentDate'],
-  }
+<script setup>
+  defineProps(["name"]);
 </script>
 
 <template>

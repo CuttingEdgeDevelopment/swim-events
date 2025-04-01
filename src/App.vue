@@ -1,23 +1,13 @@
 <template>
-  <Header />
+  <Header name="Swim Events Countdown" />
   <main class="px-16 py-8">
-    <div>Hello {{ name }}!</div>
+    <div><p>Main Content</p></div>
   </main>
   <Footer />
 </template>
 
-<script>
+<script setup>
   import Header from "./Header.vue";
   import Footer from "./Footer.vue";
 
-  export default {
-    components: {
-      Header, Footer,
-    },
-    data() {
-      return {
-        name: "Vue",
-      };
-    },
-  };
 </script>

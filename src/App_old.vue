@@ -6,7 +6,7 @@
             <span class="animate-bounce [animation-delay:-0.3s]">.</span>
             <span class="animate-bounce [animation-delay:-0.15s]">.</span>
             <span class="animate-bounce">.</span>
-        </div>
+    </div>
     <TabGroup>
       <TabList>
         <Tab>

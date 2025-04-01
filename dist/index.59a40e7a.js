@@ -591,7 +591,7 @@ var _appVueDefault = parcelHelpers.interopDefault(_appVue);
 const app = (0, _vue.createApp)((0, _appVueDefault.default));
 app.mount("#app");
 
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../App.vue":"fYNyc"}],"gzxs9":[function(require,module,exports) {
+},{"vue":"gzxs9","../App.vue":"fYNyc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gzxs9":[function(require,module,exports) {
 /**
 * vue v3.4.30
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -9013,18 +9013,22 @@ var _headerVueDefault = parcelHelpers.interopDefault(_headerVue);
 var _footerVue = require("./Footer.vue");
 var _footerVueDefault = parcelHelpers.interopDefault(_footerVue);
 exports.default = {
-    components: {
-        Header: (0, _headerVueDefault.default),
-        Footer: (0, _footerVueDefault.default)
-    },
-    data () {
-        return {
-            name: "Vue"
+    __name: "App",
+    setup (__props, { expose: __expose }) {
+        __expose();
+        const __returned__ = {
+            Header: (0, _headerVueDefault.default),
+            Footer: (0, _footerVueDefault.default)
         };
+        Object.defineProperty(__returned__, "__isScriptSetup", {
+            enumerable: false,
+            value: true
+        });
+        return __returned__;
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Header.vue":"3yHZw","./Footer.vue":"kXK0P"}],"3yHZw":[function(require,module,exports) {
+},{"./Header.vue":"3yHZw","./Footer.vue":"kXK0P","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3yHZw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
@@ -9048,18 +9052,7 @@ if (module.hot) {
 }
 exports.default = script;
 
-},{"de69e960d7d61f37":"kZnXf","2b13ab53cac6c6d":"fFbbj","9f8222c34903bc2a":"fPf9t","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kZnXf":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = {
-    props: [
-        "name",
-        "currentDay",
-        "currentDate"
-    ]
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fFbbj":[function(require,module,exports) {
+},{"2b13ab53cac6c6d":"fFbbj","9f8222c34903bc2a":"fPf9t","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","de69e960d7d61f37":"kZnXf"}],"fFbbj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -9138,8 +9131,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         (0, _vue.createElementVNode)("section", _hoisted_3, [
             (0, _vue.createElementVNode)("div", _hoisted_4, [
                 (0, _vue.createElementVNode)("div", _hoisted_5, [
-                    (0, _vue.createElementVNode)("p", _hoisted_6, "Happy " + (0, _vue.toDisplayString)($props.currentDay) + "!", 1 /* TEXT */ ),
-                    (0, _vue.createElementVNode)("p", _hoisted_7, "Current Date: " + (0, _vue.toDisplayString)($props.currentDate), 1 /* TEXT */ )
+                    (0, _vue.createElementVNode)("p", _hoisted_6, "Happy " + (0, _vue.toDisplayString)(_ctx.currentDay) + "!", 1 /* TEXT */ ),
+                    (0, _vue.createElementVNode)("p", _hoisted_7, "Current Date: " + (0, _vue.toDisplayString)(_ctx.currentDate), 1 /* TEXT */ )
                 ]),
                 (0, _vue.createElementVNode)("div", _hoisted_8, [
                     (0, _vue.createElementVNode)("button", {
@@ -9172,6 +9165,25 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kZnXf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = {
+    __name: "Header",
+    props: [
+        "name"
+    ],
+    setup (__props, { expose: __expose }) {
+        __expose();
+        const __returned__ = {};
+        Object.defineProperty(__returned__, "__isScriptSetup", {
+            enumerable: false,
+            value: true
+        });
+        return __returned__;
+    }
+};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kXK0P":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -9237,18 +9249,20 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
 var _vue = require("vue");
-const _hoisted_1 = {
+const _hoisted_1 = /*#__PURE__*/ (0, _vue.createElementVNode)("main", {
     class: "px-16 py-8"
-};
+}, [
+    /*#__PURE__*/ (0, _vue.createElementVNode)("div", null, [
+        /*#__PURE__*/ (0, _vue.createElementVNode)("p", null, "Main Content")
+    ])
+], -1 /* HOISTED */ );
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_Header = (0, _vue.resolveComponent)("Header");
-    const _component_Footer = (0, _vue.resolveComponent)("Footer");
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
-        (0, _vue.createVNode)(_component_Header),
-        (0, _vue.createElementVNode)("main", _hoisted_1, [
-            (0, _vue.createElementVNode)("div", null, "Hello " + (0, _vue.toDisplayString)($data.name) + "!", 1 /* TEXT */ )
-        ]),
-        (0, _vue.createVNode)(_component_Footer)
+        (0, _vue.createVNode)($setup["Header"], {
+            name: "Swim Events Countdown"
+        }),
+        _hoisted_1,
+        (0, _vue.createVNode)($setup["Footer"])
     ], 64 /* STABLE_FRAGMENT */ );
 }
 if (module.hot) module.hot.accept(()=>{
