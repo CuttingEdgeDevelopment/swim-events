@@ -473,6 +473,10 @@ select {
   margin-left: .5rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .inline {
   display: inline;
 }
@@ -530,6 +534,10 @@ select {
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
