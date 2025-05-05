@@ -9014,9 +9014,9 @@ var _mainVue = require("./Main.vue");
 var _mainVueDefault = parcelHelpers.interopDefault(_mainVue);
 var _footerVue = require("./Footer.vue");
 var _footerVueDefault = parcelHelpers.interopDefault(_footerVue);
+var _vue = require("vue");
 var _tempo = require("@formkit/tempo");
-var _outline = require("@heroicons/vue/24/outline");
-var _vue = require("@headlessui/vue");
+var _vue1 = require("@headlessui/vue");
 var _supabaseClient = require("./lib/supabaseClient");
 const name = "Swim Events Countdown";
 exports.default = {
@@ -9025,13 +9025,25 @@ exports.default = {
         __expose();
         const date = (0, _tempo.format)(new Date(), "MMMM DD, YYYY");
         const day = (0, _tempo.format)(new Date(), "dddd");
+        const events = (0, _vue.ref)([]);
+        async function getEvents() {
+            const { data } = await (0, _supabaseClient.supabase).from("events").select();
+            events.value = data;
+        }
+        (0, _vue.onMounted)(()=>{
+            getEvents();
+        });
         const __returned__ = {
             name,
             date,
             day,
+            events,
+            getEvents,
             Header: (0, _headerVueDefault.default),
             Main: (0, _mainVueDefault.default),
             Footer: (0, _footerVueDefault.default),
+            ref: (0, _vue.ref),
+            onMounted: (0, _vue.onMounted),
             get format () {
                 return 0, _tempo.format;
             },
@@ -9044,29 +9056,20 @@ exports.default = {
             get isAfter () {
                 return 0, _tempo.isAfter;
             },
-            get LinkIcon () {
-                return 0, _outline.LinkIcon;
-            },
-            get RocketLaunchIcon () {
-                return 0, _outline.RocketLaunchIcon;
-            },
-            get FireIcon () {
-                return 0, _outline.FireIcon;
-            },
             get TabGroup () {
-                return 0, _vue.TabGroup;
+                return 0, _vue1.TabGroup;
             },
             get TabList () {
-                return 0, _vue.TabList;
+                return 0, _vue1.TabList;
             },
             get Tab () {
-                return 0, _vue.Tab;
+                return 0, _vue1.Tab;
             },
             get TabPanels () {
-                return 0, _vue.TabPanels;
+                return 0, _vue1.TabPanels;
             },
             get TabPanel () {
-                return 0, _vue.TabPanel;
+                return 0, _vue1.TabPanel;
             },
             get supabase () {
                 return 0, _supabaseClient.supabase;
@@ -9080,7 +9083,7 @@ exports.default = {
     }
 };
 
-},{"./Header.vue":"3yHZw","./Footer.vue":"kXK0P","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@formkit/tempo":"bPFbk","./Main.vue":"4mZ9N","@heroicons/vue/24/outline":"8j2hI","@headlessui/vue":"dO8ba","./lib/supabaseClient":"fQKov"}],"3yHZw":[function(require,module,exports) {
+},{"./Header.vue":"3yHZw","./Footer.vue":"kXK0P","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@formkit/tempo":"bPFbk","./Main.vue":"4mZ9N","@headlessui/vue":"dO8ba","./lib/supabaseClient":"fQKov","vue":"gzxs9"}],"3yHZw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
@@ -10390,7 +10393,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
 let initialize = ()=>{
-    script = {};
+    script = require("4320831e6932d53f");
+    if (script.__esModule) script = script.default;
     script.render = require("59b365cbda4b6b72").render;
     require("210467382e2c7502").default(script);
     script.__scopeId = "data-v-5e4e47";
@@ -10408,7 +10412,7 @@ if (module.hot) {
 }
 exports.default = script;
 
-},{"59b365cbda4b6b72":"4Zhue","210467382e2c7502":"eo4HV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Zhue":[function(require,module,exports) {
+},{"59b365cbda4b6b72":"4Zhue","210467382e2c7502":"eo4HV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","4320831e6932d53f":"lPAQf"}],"4Zhue":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -10416,13 +10420,81 @@ var _vue = require("vue");
 const _hoisted_1 = {
     class: "px-16 py-8"
 };
-const _hoisted_2 = /*#__PURE__*/ (0, _vue.createStaticVNode)('<div class="flex mb-5 gap-1.5 items-center"><h2 class="text-2xl font-semibold">Upcoming Events</h2><div class="flex gap-0.5"><button id="btn-add" title="Add an Event" class="h-6 w-6 border-none"><span class="hidden">Add Event</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg></button><button id="btn-update" title="Update Events" class="h-6 w-6"><span class="hidden">Update Events</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"></path></svg></button></div></div><div class="flex justify-center items-center italic font-bold text-red-700 gap-0.5"><p>Loading</p><span class="animate-bounce [animation-delay:-0.3s]">.</span><span class="animate-bounce [animation-delay:-0.15s]">.</span><span class="animate-bounce">.</span></div><p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p><section id="eventsList" class="flex flex-col gap-3"></section>', 4);
-const _hoisted_6 = [
-    _hoisted_2
+const _hoisted_2 = /*#__PURE__*/ (0, _vue.createStaticVNode)('<div class="flex mb-5 gap-1.5 items-center"><h2 class="text-2xl font-semibold">Upcoming Events</h2><div class="flex gap-0.5"><button id="btn-add" title="Add an Event" class="h-6 w-6 border-none"><span class="hidden">Add Event</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg></button><button id="btn-update" title="Update Events" class="h-6 w-6"><span class="hidden">Update Events</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"></path></svg></button></div></div><div class="flex justify-center items-center italic font-bold text-red-700 gap-0.5"><p>Loading</p><span class="animate-bounce [animation-delay:-0.3s]">.</span><span class="animate-bounce [animation-delay:-0.15s]">.</span><span class="animate-bounce">.</span></div><p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>', 3);
+const _hoisted_5 = {
+    id: "eventsList",
+    class: "flex flex-col gap-3"
+};
+const _hoisted_6 = {
+    class: "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+};
+const _hoisted_7 = {
+    id: "eventInfo"
+};
+const _hoisted_8 = {
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_9 = [
+    "href",
+    "title"
 ];
-function render(_ctx, _cache) {
+const _hoisted_10 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "font-medium"
+}, "Location:", -1 /* HOISTED */ );
+const _hoisted_11 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "font-medium"
+}, "Begin:", -1 /* HOISTED */ );
+const _hoisted_12 = /*#__PURE__*/ (0, _vue.createElementVNode)("span", {
+    class: "font-medium"
+}, "End:", -1 /* HOISTED */ );
+const _hoisted_13 = /*#__PURE__*/ (0, _vue.createElementVNode)("div", {
+    id: "eventCountdown",
+    class: "text-center"
+}, [
+    /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+        class: "text-7xl"
+    }, "99"),
+    /*#__PURE__*/ (0, _vue.createElementVNode)("p", {
+        class: "font-bold"
+    }, "days to go")
+], -1 /* HOISTED */ );
+function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("main", _hoisted_1, [
-        ..._hoisted_6
+        _hoisted_2,
+        ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($props.events, (event)=>{
+            return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", _hoisted_5, [
+                (0, _vue.createElementVNode)("section", _hoisted_6, [
+                    (0, _vue.createElementVNode)("div", _hoisted_7, [
+                        (0, _vue.createElementVNode)("h4", _hoisted_8, [
+                            (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
+                            (0, _vue.createElementVNode)("a", {
+                                href: event.link,
+                                title: event.name,
+                                target: "_blank",
+                                class: "hover:text-indigo-700"
+                            }, [
+                                (0, _vue.createVNode)($setup["LinkIcon"], {
+                                    class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
+                                })
+                            ], 8 /* PROPS */ , _hoisted_9)
+                        ]),
+                        (0, _vue.createElementVNode)("p", null, [
+                            _hoisted_10,
+                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
+                        ]),
+                        (0, _vue.createElementVNode)("p", null, [
+                            _hoisted_11,
+                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.dateStart), 1 /* TEXT */ )
+                        ]),
+                        (0, _vue.createElementVNode)("p", null, [
+                            _hoisted_12,
+                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.dateEnd), 1 /* TEXT */ )
+                        ]),
+                        _hoisted_13
+                    ])
+                ])
+            ]);
+        }), 256 /* UNKEYED_FRAGMENT */ ))
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
@@ -10435,7 +10507,37 @@ parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8j2hI":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lPAQf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _outline = require("@heroicons/vue/24/outline");
+exports.default = {
+    __name: "Main",
+    props: [
+        "events"
+    ],
+    setup (__props, { expose: __expose }) {
+        __expose();
+        const __returned__ = {
+            get LinkIcon () {
+                return 0, _outline.LinkIcon;
+            },
+            get RocketLaunchIcon () {
+                return 0, _outline.RocketLaunchIcon;
+            },
+            get FireIcon () {
+                return 0, _outline.FireIcon;
+            }
+        };
+        Object.defineProperty(__returned__, "__isScriptSetup", {
+            enumerable: false,
+            value: true
+        });
+        return __returned__;
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@heroicons/vue/24/outline":"8j2hI"}],"8j2hI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AcademicCapIcon", ()=>(0, _academicCapIconJsDefault.default));
@@ -19545,7 +19647,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "currentDay",
             "currentDate"
         ]),
-        (0, _vue.createVNode)($setup["Main"]),
+        (0, _vue.createVNode)($setup["Main"], {
+            events: $setup.events
+        }, null, 8 /* PROPS */ , [
+            "events"
+        ]),
         (0, _vue.createVNode)($setup["Footer"])
     ], 64 /* STABLE_FRAGMENT */ );
 }

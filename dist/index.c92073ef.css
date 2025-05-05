@@ -469,12 +469,12 @@ select {
   margin-bottom: .5rem;
 }
 
-.ml-2 {
-  margin-left: .5rem;
-}
-
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.ml-2 {
+  margin-left: .5rem;
 }
 
 .inline {
@@ -593,6 +593,10 @@ select {
   stroke: #b91c1c;
 }
 
+.stroke-current {
+  stroke: currentColor;
+}
+
 .stroke-\[1\.5\] {
   stroke-width: 1.5px;
 }
@@ -690,6 +694,11 @@ select {
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
 .underline {

@@ -1,3 +1,9 @@
+<script setup>
+  defineProps(["events"]);
+
+  import { LinkIcon, RocketLaunchIcon, FireIcon } from '@heroicons/vue/24/outline'
+</script>
+
 <template>
   <main class="px-16 py-8">
     <div class="flex mb-5 gap-1.5 items-center">
@@ -24,6 +30,19 @@
           <span class='animate-bounce'>.</span>
       </div>
       <p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>
-      <section id="eventsList" class="flex flex-col gap-3"></section>
+      <section id="eventsList" class="flex flex-col gap-3" v-for="event in events">
+        <section class="event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+          <div id="eventInfo">
+            <h4 class="mb-2 text-xl font-medium">{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
+            <p><span class="font-medium">Location:</span> {{event.location}}</p>
+            <p><span class="font-medium">Begin:</span> {{event.dateStart}}</p>
+            <p><span class="font-medium">End:</span> {{event.dateEnd}}</p>
+            <div id="eventCountdown" class="text-center">
+              <p class="text-7xl">99</p>
+              <p class="font-bold">days to go</p>
+            </div>
+          </div>
+        </section>
+      </section>
   </main>
 </template>
