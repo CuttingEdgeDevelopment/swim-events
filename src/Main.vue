@@ -2,6 +2,9 @@
   defineProps(["events"]);
 
   import { LinkIcon, RocketLaunchIcon, FireIcon } from '@heroicons/vue/24/outline'
+  import { useDateFormat, useNow } from '@vueuse/core'
+
+  const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
 </script>
 
 <template>
@@ -35,8 +38,8 @@
           <div id="eventInfo">
             <h4 class="mb-2 text-xl font-medium">{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
             <p><span class="font-medium">Location:</span> {{event.location}}</p>
-            <p><span class="font-medium">Begin:</span> {{event.dateStart}}</p>
-            <p><span class="font-medium">End:</span> {{event.dateEnd}}</p>
+            <p><span class="font-medium">Begin:</span> {{useDateFormat(event.dateStart, 'dddd, MMM DD, YYYY')}}</p>
+            <p><span class="font-medium">End:</span> {{useDateFormat(event.dateEnd, 'dddd, MMM DD, YYYY')}}</p>
             <div id="eventCountdown" class="text-center">
               <p class="text-7xl">99</p>
               <p class="font-bold">days to go</p>
