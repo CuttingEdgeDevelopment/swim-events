@@ -10,7 +10,7 @@
   import Footer from "./Footer.vue";
 
   import { ref, onMounted } from 'vue'
-  import { format, parse, diffDays, isAfter } from "@formkit/tempo";
+  import { format } from "@formkit/tempo";
   import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
   import { supabase } from "./lib/supabaseClient";
 

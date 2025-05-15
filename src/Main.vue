@@ -1,10 +1,16 @@
 <script setup>
-  defineProps(["events"]);
+  defineProps(["events", "countdown"]);
 
   import { LinkIcon, RocketLaunchIcon, FireIcon } from '@heroicons/vue/24/outline'
   import { useDateFormat, useNow } from '@vueuse/core'
+  import { diffDays, parse } from "@formkit/tempo";
 
-  const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss');
+  function calculateCountdown(eventDate) {
+    const today = new Date();
+    const parsedEventDate = parse(eventDate, "YYYY-MM-DD");
+    countdown = diffDays(parsedEventDate, today);
+    return countdown
+  }
 </script>
 
 <template>
@@ -41,7 +47,7 @@
             <p><span class="font-medium">Begin:</span> {{useDateFormat(event.dateStart, 'dddd, MMM DD, YYYY')}}</p>
             <p><span class="font-medium">End:</span> {{useDateFormat(event.dateEnd, 'dddd, MMM DD, YYYY')}}</p>
             <div id="eventCountdown" class="text-center">
-              <p class="text-7xl">99</p>
+              <p class="text-7xl">{{ calculateCountdown(event.dateStart) }}</p>
               <p class="font-bold">days to go</p>
             </div>
           </div>
