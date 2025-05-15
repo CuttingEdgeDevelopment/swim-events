@@ -1,15 +1,19 @@
 <script setup>
-  defineProps(["events", "countdown"]);
+  const props = defineProps(["events", "today"]);
 
   import { LinkIcon, RocketLaunchIcon, FireIcon } from '@heroicons/vue/24/outline'
-  import { useDateFormat, useNow } from '@vueuse/core'
-  import { diffDays, parse } from "@formkit/tempo";
+  import { format, diffDays, parse } from "@formkit/tempo";
 
-  function calculateCountdown(eventDate) {
-    const today = new Date();
-    const parsedEventDate = parse(eventDate, "YYYY-MM-DD");
-    countdown = diffDays(parsedEventDate, today);
-    return countdown
+  function calculateCountdown(eventStart) {
+    const currentDate = parse(props.today, "dddd DD MMMM YYYY");
+    const eventStartDate = parse(eventStart, "YYYY-MM-DD");
+    return diffDays(eventStartDate, currentDate);
+  }
+
+  function daysPassed(eventEnd) {
+    const currentDate = parse(props.today, "dddd DD MMMM YYYY");
+    const eventEndDate = parse(eventEnd, "YYYY-MM-DD");
+    return diffDays(eventEndDate, currentDate);
   }
 </script>
 
@@ -44,10 +48,10 @@
           <div id="eventInfo">
             <h4 class="mb-2 text-xl font-medium">{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
             <p><span class="font-medium">Location:</span> {{event.location}}</p>
-            <p><span class="font-medium">Begin:</span> {{useDateFormat(event.dateStart, 'dddd, MMM DD, YYYY')}}</p>
-            <p><span class="font-medium">End:</span> {{useDateFormat(event.dateEnd, 'dddd, MMM DD, YYYY')}}</p>
+            <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
+            <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
             <div id="eventCountdown" class="text-center">
-              <p class="text-7xl">{{ calculateCountdown(event.dateStart) }}</p>
+              <p class="text-7xl">{{calculateCountdown(event.dateStart)}} {{daysPassed(event.dateEnd)}}</p>
               <p class="font-bold">days to go</p>
             </div>
           </div>

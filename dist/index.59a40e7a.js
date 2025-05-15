@@ -10131,24 +10131,30 @@ exports.default = script;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _outline = require("@heroicons/vue/24/outline");
-var _core = require("@vueuse/core");
 var _tempo = require("@formkit/tempo");
 exports.default = {
     __name: "Main",
     props: [
         "events",
-        "countdown"
+        "today"
     ],
     setup (__props, { expose: __expose }) {
         __expose();
-        function calculateCountdown(eventDate) {
-            const today = new Date();
-            const parsedEventDate = (0, _tempo.parse)(eventDate, "YYYY-MM-DD");
-            countdown = (0, _tempo.diffDays)(parsedEventDate, today);
-            return countdown;
+        const props = __props;
+        function calculateCountdown(eventStart) {
+            const currentDate = (0, _tempo.parse)(props.today, "dddd DD MMMM YYYY");
+            const eventStartDate = (0, _tempo.parse)(eventStart, "YYYY-MM-DD");
+            return (0, _tempo.diffDays)(eventStartDate, currentDate);
+        }
+        function daysPassed(eventEnd) {
+            const currentDate = (0, _tempo.parse)(props.today, "dddd DD MMMM YYYY");
+            const eventEndDate = (0, _tempo.parse)(eventEnd, "YYYY-MM-DD");
+            return (0, _tempo.diffDays)(eventEndDate, currentDate);
         }
         const __returned__ = {
+            props,
             calculateCountdown,
+            daysPassed,
             get LinkIcon () {
                 return 0, _outline.LinkIcon;
             },
@@ -10158,11 +10164,8 @@ exports.default = {
             get FireIcon () {
                 return 0, _outline.FireIcon;
             },
-            get useDateFormat () {
-                return 0, _core.useDateFormat;
-            },
-            get useNow () {
-                return 0, _core.useNow;
+            get format () {
+                return 0, _tempo.format;
             },
             get diffDays () {
                 return 0, _tempo.diffDays;
@@ -21175,16 +21178,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             _cache[1] || (_cache[1] = (0, _vue.createElementVNode)("span", {
                                 class: "font-medium"
                             }, "Begin:", -1 /* HOISTED */ )),
-                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.useDateFormat(event.dateStart, "dddd, MMM DD, YYYY")), 1 /* TEXT */ )
+                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                         ]),
                         (0, _vue.createElementVNode)("p", null, [
                             _cache[2] || (_cache[2] = (0, _vue.createElementVNode)("span", {
                                 class: "font-medium"
                             }, "End:", -1 /* HOISTED */ )),
-                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.useDateFormat(event.dateEnd, "dddd, MMM DD, YYYY")), 1 /* TEXT */ )
+                            (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                         ]),
                         (0, _vue.createElementVNode)("div", _hoisted_7, [
-                            (0, _vue.createElementVNode)("p", _hoisted_8, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                            (0, _vue.createElementVNode)("p", _hoisted_8, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)) + " " + (0, _vue.toDisplayString)($setup.daysPassed(event.dateEnd)), 1 /* TEXT */ ),
                             _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("p", {
                                 class: "font-bold"
                             }, "days to go", -1 /* HOISTED */ ))
@@ -29405,9 +29408,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "currentDate"
         ]),
         (0, _vue.createVNode)($setup["Main"], {
-            events: $setup.events
+            events: $setup.events,
+            today: $setup.date
         }, null, 8 /* PROPS */ , [
-            "events"
+            "events",
+            "today"
         ]),
         (0, _vue.createVNode)($setup["Footer"])
     ], 64 /* STABLE_FRAGMENT */ );

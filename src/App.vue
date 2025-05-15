@@ -1,6 +1,6 @@
 <template>
   <Header :name="name" :currentDay="day" :currentDate="date" />
-  <Main :events="events" />
+  <Main :events="events" :today="date" />
   <Footer />
 </template>
 
