@@ -44,14 +44,27 @@
       </div>
       <p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>
       <section id="eventsList" class="flex flex-col gap-3" v-for="event in events">
-        <section class="event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+        <section v-if="calculateCountdown(event.dateStart) <= 0" class="event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
           <div id="eventInfo">
-            <h4 class="mb-2 text-xl font-medium">{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
+            <h4 class="mb-2 text-xl font-medium" v-if="event.link == ''">{{event.name}}</h4>
+            <h4 class="mb-2 text-xl font-medium" v-else>{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
             <p><span class="font-medium">Location:</span> {{event.location}}</p>
             <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
             <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
-            <div id="eventCountdown" class="text-center">
-              <p class="text-7xl">{{calculateCountdown(event.dateStart)}} {{daysPassed(event.dateEnd)}}</p>
+            <div id="eventCountdown" class="text-center" v-if="calculateCountdown(event.dateStart) < 0">
+              <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#15803d]" />
+              <p class="font-bold">Ongoing!</p>
+            </div>
+            <div id="eventCountdown" class="text-center" v-else-if="calculateCountdown(event.dateStart) == 0">
+              <RocketLaunchIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
+              <p class="font-bold">Today is the day!</p>
+            </div>
+            <div id="eventCountdown" class="text-center" v-else-if="calculateCountdown(event.dateStart) == 1">
+              <p class="text-7xl">{{calculateCountdown(event.dateStart)}}</p>
+              <p class="font-bold">day to go</p>
+            </div>
+            <div id="eventCountdown" class="text-center" v-else>
+              <p class="text-7xl">{{calculateCountdown(event.dateStart)}}</p>
               <p class="font-bold">days to go</p>
             </div>
           </div>
