@@ -21,7 +21,7 @@
   const events = ref([]);
 
   async function getEvents() {
-    const { data } = await supabase.from('events').select()
+    const { data } = await supabase.from("events").select("*").order("dateStart", { ascending: true })
     events.value = data
   }
 
