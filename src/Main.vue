@@ -44,7 +44,7 @@
       </div>
       <p id="eventsLoading" class="hidden italic font-bold text-red-700">Loading events ...</p>
       <section id="eventsList" class="flex flex-col gap-3" v-for="event in events">
-        <section v-if="calculateCountdown(event.dateStart) <= 0" class="event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+        <section v-if="calculateCountdown(event.dateStart) <= 0" :class="`event-${event.id}`" class="event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
           <div id="eventInfo">
             <h4 class="mb-2 text-xl font-medium" v-if="event.link == ''">{{event.name}}</h4>
             <h4 class="mb-2 text-xl font-medium" v-else>{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
