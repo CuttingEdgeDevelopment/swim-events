@@ -1,6 +1,6 @@
 <template>
   <Header :name="name" :currentDay="day" :currentDate="date" />
-  <Main :events="events" :today="date" />
+  <Main :events="events" :today="date" @update-events="fetchData" />
   <Footer />
 </template>
 
@@ -20,12 +20,19 @@
 
   const events = ref([]);
 
-  async function getEvents() {
-    const { data } = await supabase.from("events").select("*").order("dateStart", { ascending: true })
+  async function fetchData() {
+    const { data, error } = await supabase.from("events").select("*").order("dateStart", { ascending: true })
+
+    if (error) {
+      console.error("Error fetching data:", error);
+      return;
+    }
+
+    console.log("Fetched data:", data);;
     events.value = data
   }
 
   onMounted(() => {
-    getEvents()
+    fetchData();
   })
 </script>
