@@ -12546,14 +12546,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         (0, _vue.createElementVNode)("div", _hoisted_9, [
                             $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_10, [
                                 (0, _vue.createVNode)($setup["FireIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
+                                    class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
                                 }),
                                 _cache[9] || (_cache[9] = (0, _vue.createElementVNode)("p", {
                                     class: "font-bold"
                                 }, "Ongoing!", -1 /* HOISTED */ ))
                             ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, [
                                 (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
+                                    class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
                                 }),
                                 _cache[10] || (_cache[10] = (0, _vue.createElementVNode)("p", {
                                     class: "font-bold"
@@ -12613,14 +12613,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         (0, _vue.createElementVNode)("div", _hoisted_20, [
                             $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_21, [
                                 (0, _vue.createVNode)($setup["FireIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
+                                    class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
                                 }),
                                 _cache[16] || (_cache[16] = (0, _vue.createElementVNode)("p", {
                                     class: "font-bold"
                                 }, "Ongoing!", -1 /* HOISTED */ ))
                             ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_22, [
                                 (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
+                                    class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
                                 }),
                                 _cache[17] || (_cache[17] = (0, _vue.createElementVNode)("p", {
                                     class: "font-bold"

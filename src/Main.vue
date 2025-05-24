@@ -73,11 +73,11 @@
             </div>
             <div id="eventCountdown" class="text-center">
               <div v-if="calculateCountdown(event.dateStart) < 0">
-                <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#15803d]" />
+                <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
                 <p class="font-bold">Ongoing!</p>
               </div>
               <div v-else-if="calculateCountdown(event.dateStart) == 0">
-                <RocketLaunchIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
+                <RocketLaunchIcon class="size-20 m-auto stroke-[1.5] stroke-[#15803d]" />
                 <p class="font-bold">Today is the day!</p>
               </div>
               <div v-else-if="calculateCountdown(event.dateStart) == 1">
@@ -100,11 +100,11 @@
             </div>
             <div id="eventCountdown" class="text-center">
               <div v-if="calculateCountdown(event.dateStart) < 0">
-                <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#15803d]" />
+                <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
                 <p class="font-bold">Ongoing!</p>
               </div>
               <div v-else-if="calculateCountdown(event.dateStart) == 0">
-                <RocketLaunchIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
+                <RocketLaunchIcon class="size-20 m-auto stroke-[1.5] stroke-[#15803d]" />
                 <p class="font-bold">Today is the day!</p>
               </div>
               <div v-else-if="calculateCountdown(event.dateStart) == 1">
