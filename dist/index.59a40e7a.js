@@ -10153,7 +10153,7 @@ exports.default = {
         __expose();
         const props = __props;
         const emit = __emit;
-        const upcomingEvents = (0, _vue.computed)(()=>props.events.filter((event)=>daysPassed(event.dateEnd) > 0));
+        const upcomingEvents = (0, _vue.computed)(()=>props.events.filter((event)=>daysPassed(event.dateEnd) >= 0));
         const loadingEvents = (0, _vue.ref)(true);
         const loadingText = (0, _vue.ref)("Loading events");
         (0, _vue.watch)(()=>props.events, (newVal)=>{

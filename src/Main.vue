@@ -6,7 +6,7 @@
   import { format, diffDays, parse } from "@formkit/tempo";
   import { computed, ref, watch } from "vue";
 
-  const upcomingEvents = computed(() => props.events.filter(event => daysPassed(event.dateEnd) > 0));
+  const upcomingEvents = computed(() => props.events.filter(event => daysPassed(event.dateEnd) >= 0));
   const loadingEvents = ref(true);
   const loadingText = ref("Loading events");
 
