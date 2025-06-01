@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.event-31, .event-32, .event-33 {
+.event-4, .event-5, .event-9, .event-25, .event-30, .event-31, .event-32, .event-33 {
   background: #fecaca;
+}
+
+.tabList {
+  @apply flex space-x-1 rounded-xl bg-blue-900/20 p-1;
+}
+
+.tabButton {
+  @apply w-full rounded-lg py-2.5 text-sm font-medium leading-5 ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2;
+}
+
+.tabButton:active {
+  @apply bg-white text-blue-700 shadow text-blue-100;
+}
+
+.tabButton:hover {
+  @apply bg-white/[0.12] text-white;
 }

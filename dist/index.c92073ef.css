@@ -469,10 +469,6 @@ select {
   margin-bottom: .5rem;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
 .ml-2 {
   margin-left: .5rem;
 }
@@ -597,10 +593,6 @@ select {
   stroke: currentColor;
 }
 
-.stroke-red-700 {
-  stroke: #b91c1c;
-}
-
 .stroke-\[1\.5\] {
   stroke-width: 1.5px;
 }
@@ -634,12 +626,8 @@ select {
   padding-bottom: 2rem;
 }
 
-.pl-2 {
-  padding-left: .5rem;
-}
-
-.pr-2 {
-  padding-right: .5rem;
+.pt-3 {
+  padding-top: .75rem;
 }
 
 .pt-8 {
@@ -720,8 +708,61 @@ select {
   animation-delay: -.3s;
 }
 
-.event-31, .event-32, .event-33 {
+.event-4, .event-5, .event-9, .event-25, .event-30, .event-31, .event-32, .event-33 {
   background: #fecaca;
+}
+
+.tabList {
+  display: flex;
+}
+
+.tabList > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.tabList {
+  background-color: #1e3a8a33;
+  border-radius: .75rem;
+  padding: .25rem;
+}
+
+.tabButton {
+  --tw-ring-color: #fff9;
+  --tw-ring-offset-width: 2px;
+  --tw-ring-offset-color: #60a5fa;
+  border-radius: .5rem;
+  width: 100%;
+  padding-top: .625rem;
+  padding-bottom: .625rem;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.tabButton:focus {
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  outline: 2px solid #0000;
+}
+
+.tabButton:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  color: rgb(219 234 254 / var(--tw-text-opacity));
+  --tw-text-opacity: 1;
+  --tw-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.tabButton:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  background-color: #ffffff1f;
 }
 
 .hover\:font-semibold:hover {
@@ -751,10 +792,5 @@ select {
 .hover\:drop-shadow:hover {
   --tw-drop-shadow: drop-shadow(0 1px 2px #0000001a) drop-shadow(0 1px 1px #0000000f);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.ui-not-selected\:text-neutral-500[data-headlessui-state]:not([data-headlessui-state~="selected"]), :where([data-headlessui-state]:not([data-headlessui-state~="selected"])) .ui-not-selected\:text-neutral-500:not([data-headlessui-state]) {
-  --tw-text-opacity: 1;
-  color: rgb(115 115 115 / var(--tw-text-opacity));
 }
 /*# sourceMappingURL=index.c92073ef.css.map */

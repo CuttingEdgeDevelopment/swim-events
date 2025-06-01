@@ -9949,7 +9949,6 @@ var _footerVue = require("./Footer.vue");
 var _footerVueDefault = parcelHelpers.interopDefault(_footerVue);
 var _vue = require("vue");
 var _tempo = require("@formkit/tempo");
-var _vue1 = require("@headlessui/vue");
 var _supabaseClient = require("./lib/supabaseClient");
 const name = "Swim Events Countdown";
 exports.default = {
@@ -9987,21 +9986,6 @@ exports.default = {
             get format () {
                 return 0, _tempo.format;
             },
-            get TabGroup () {
-                return 0, _vue1.TabGroup;
-            },
-            get TabList () {
-                return 0, _vue1.TabList;
-            },
-            get Tab () {
-                return 0, _vue1.Tab;
-            },
-            get TabPanels () {
-                return 0, _vue1.TabPanels;
-            },
-            get TabPanel () {
-                return 0, _vue1.TabPanel;
-            },
             get supabase () {
                 return 0, _supabaseClient.supabase;
             }
@@ -10014,7 +9998,7 @@ exports.default = {
     }
 };
 
-},{"./Header.vue":"3yHZw","./Main.vue":"4mZ9N","./Footer.vue":"kXK0P","vue":"gzxs9","@formkit/tempo":"bPFbk","@headlessui/vue":"dO8ba","./lib/supabaseClient":"fQKov","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3yHZw":[function(require,module,exports) {
+},{"./Header.vue":"3yHZw","./Main.vue":"4mZ9N","./Footer.vue":"kXK0P","vue":"gzxs9","@formkit/tempo":"bPFbk","./lib/supabaseClient":"fQKov","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3yHZw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
@@ -10137,9 +10121,10 @@ exports.default = script;
 },{"4320831e6932d53f":"lPAQf","59b365cbda4b6b72":"4Zhue","210467382e2c7502":"eo4HV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lPAQf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _vue = require("@headlessui/vue");
 var _outline = require("@heroicons/vue/24/outline");
 var _tempo = require("@formkit/tempo");
-var _vue = require("vue");
+var _vue1 = require("vue");
 exports.default = {
     __name: "Main",
     props: [
@@ -10153,10 +10138,11 @@ exports.default = {
         __expose();
         const props = __props;
         const emit = __emit;
-        const upcomingEvents = (0, _vue.computed)(()=>props.events.filter((event)=>daysPassed(event.dateEnd) >= 0));
-        const loadingEvents = (0, _vue.ref)(true);
-        const loadingText = (0, _vue.ref)("Loading events");
-        (0, _vue.watch)(()=>props.events, (newVal)=>{
+        const upcomingEvents = (0, _vue1.computed)(()=>props.events.filter((event)=>daysPassed(event.dateEnd) >= 0));
+        const pastEvents = (0, _vue1.computed)(()=>props.events.filter((event)=>daysPassed(event.dateEnd) < 0));
+        const loadingEvents = (0, _vue1.ref)(true);
+        const loadingText = (0, _vue1.ref)("Loading events");
+        (0, _vue1.watch)(()=>props.events, (newVal)=>{
             if (newVal && newVal.length > 0) {
                 loadingEvents.value = false;
                 loadingText.value = "Loading events";
@@ -10181,11 +10167,27 @@ exports.default = {
             props,
             emit,
             upcomingEvents,
+            pastEvents,
             loadingEvents,
             loadingText,
             calculateCountdown,
             daysPassed,
             onUpdateEvents,
+            get TabGroup () {
+                return 0, _vue.TabGroup;
+            },
+            get TabList () {
+                return 0, _vue.TabList;
+            },
+            get Tab () {
+                return 0, _vue.Tab;
+            },
+            get TabPanels () {
+                return 0, _vue.TabPanels;
+            },
+            get TabPanel () {
+                return 0, _vue.TabPanel;
+            },
             get LinkIcon () {
                 return 0, _outline.LinkIcon;
             },
@@ -10204,9 +10206,9 @@ exports.default = {
             get parse () {
                 return 0, _tempo.parse;
             },
-            computed: (0, _vue.computed),
-            ref: (0, _vue.ref),
-            watch: (0, _vue.watch)
+            computed: (0, _vue1.computed),
+            ref: (0, _vue1.ref),
+            watch: (0, _vue1.watch)
         };
         Object.defineProperty(__returned__, "__isScriptSetup", {
             enumerable: false,
@@ -10216,7 +10218,7 @@ exports.default = {
     }
 };
 
-},{"@heroicons/vue/24/outline":"8j2hI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@formkit/tempo":"bPFbk","vue":"gzxs9"}],"8j2hI":[function(require,module,exports) {
+},{"@heroicons/vue/24/outline":"8j2hI","@formkit/tempo":"bPFbk","vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@headlessui/vue":"dO8ba"}],"8j2hI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AcademicCapIcon", ()=>(0, _academicCapIconJsDefault.default));
@@ -12332,382 +12334,6 @@ function diffYears(dateA, dateB) {
     return r == 0 ? 0 : r;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Zhue":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = {
-    class: "px-16 py-8"
-};
-const _hoisted_2 = {
-    key: 0,
-    id: "eventsLoading",
-    class: "flex italic font-bold text-red-700 gap-0.5"
-};
-const _hoisted_3 = {
-    id: "eventsLoadingText"
-};
-const _hoisted_4 = {
-    id: "eventsList",
-    class: "flex flex-col gap-3"
-};
-const _hoisted_5 = {
-    id: "eventInfo"
-};
-const _hoisted_6 = {
-    key: 0,
-    class: "mb-2 text-xl font-medium"
-};
-const _hoisted_7 = {
-    key: 1,
-    class: "mb-2 text-xl font-medium"
-};
-const _hoisted_8 = [
-    "href",
-    "title"
-];
-const _hoisted_9 = {
-    id: "eventCountdown",
-    class: "text-center"
-};
-const _hoisted_10 = {
-    key: 0
-};
-const _hoisted_11 = {
-    key: 1
-};
-const _hoisted_12 = {
-    key: 2
-};
-const _hoisted_13 = {
-    class: "text-7xl"
-};
-const _hoisted_14 = {
-    key: 3
-};
-const _hoisted_15 = {
-    class: "text-7xl"
-};
-const _hoisted_16 = {
-    id: "eventInfo"
-};
-const _hoisted_17 = {
-    key: 0,
-    class: "mb-2 text-xl font-medium"
-};
-const _hoisted_18 = {
-    key: 1,
-    class: "mb-2 text-xl font-medium"
-};
-const _hoisted_19 = [
-    "href",
-    "title"
-];
-const _hoisted_20 = {
-    id: "eventCountdown",
-    class: "text-center"
-};
-const _hoisted_21 = {
-    key: 0
-};
-const _hoisted_22 = {
-    key: 1
-};
-const _hoisted_23 = {
-    key: 2
-};
-const _hoisted_24 = {
-    class: "text-7xl"
-};
-const _hoisted_25 = {
-    key: 3
-};
-const _hoisted_26 = {
-    class: "text-7xl"
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("main", _hoisted_1, [
-        (0, _vue.createElementVNode)("div", {
-            class: "flex mb-5 gap-1.5 items-center"
-        }, [
-            _cache[2] || (_cache[2] = (0, _vue.createElementVNode)("h2", {
-                class: "text-2xl font-semibold"
-            }, "Upcoming Events", -1 /* HOISTED */ )),
-            (0, _vue.createElementVNode)("div", {
-                class: "flex gap-0.5"
-            }, [
-                _cache[1] || (_cache[1] = (0, _vue.createElementVNode)("button", {
-                    id: "btn-add",
-                    title: "Add an Event",
-                    class: "h-6 w-6 border-none"
-                }, [
-                    (0, _vue.createElementVNode)("span", {
-                        class: "hidden"
-                    }, "Add Event"),
-                    (0, _vue.createElementVNode)("svg", {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "2",
-                        stroke: "currentColor",
-                        class: "size-6"
-                    }, [
-                        (0, _vue.createElementVNode)("path", {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            d: "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                        })
-                    ])
-                ], -1 /* HOISTED */ )),
-                (0, _vue.createElementVNode)("button", {
-                    id: "btn-update",
-                    title: "Update Events",
-                    class: "h-6 w-6",
-                    onClick: $setup.onUpdateEvents
-                }, _cache[0] || (_cache[0] = [
-                    (0, _vue.createElementVNode)("span", {
-                        class: "hidden"
-                    }, "Update Events", -1 /* HOISTED */ ),
-                    (0, _vue.createElementVNode)("svg", {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "2",
-                        stroke: "currentColor",
-                        class: "size-6"
-                    }, [
-                        (0, _vue.createElementVNode)("path", {
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round",
-                            d: "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
-                        })
-                    ], -1 /* HOISTED */ )
-                ]))
-            ])
-        ]),
-        $setup.loadingEvents ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_2, [
-            (0, _vue.createElementVNode)("p", _hoisted_3, (0, _vue.toDisplayString)($setup.loadingText), 1 /* TEXT */ ),
-            _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("span", {
-                class: "animate-bounce [animation-delay:-0.3s]"
-            }, ".", -1 /* HOISTED */ )),
-            _cache[4] || (_cache[4] = (0, _vue.createElementVNode)("span", {
-                class: "animate-bounce [animation-delay:-0.15s]"
-            }, ".", -1 /* HOISTED */ )),
-            _cache[5] || (_cache[5] = (0, _vue.createElementVNode)("span", {
-                class: "animate-bounce"
-            }, ".", -1 /* HOISTED */ ))
-        ])) : (0, _vue.createCommentVNode)("v-if", true),
-        (0, _vue.createElementVNode)("section", _hoisted_4, [
-            ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.upcomingEvents, (event)=>{
-                return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
-                    key: event.id
-                }, [
-                    $setup.calculateCountdown(event.dateStart) <= 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", {
-                        key: 0,
-                        class: (0, _vue.normalizeClass)([
-                            `event-${event.id}`,
-                            "event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
-                        ])
-                    }, [
-                        (0, _vue.createElementVNode)("div", _hoisted_5, [
-                            event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_6, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_7, [
-                                (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
-                                (0, _vue.createElementVNode)("a", {
-                                    href: event.link,
-                                    title: event.name,
-                                    target: "_blank",
-                                    class: "hover:text-indigo-700"
-                                }, [
-                                    (0, _vue.createVNode)($setup["LinkIcon"], {
-                                        class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
-                                    })
-                                ], 8 /* PROPS */ , _hoisted_8)
-                            ])),
-                            (0, _vue.createElementVNode)("p", null, [
-                                _cache[6] || (_cache[6] = (0, _vue.createElementVNode)("span", {
-                                    class: "font-medium"
-                                }, "Location:", -1 /* HOISTED */ )),
-                                (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
-                            ]),
-                            (0, _vue.createElementVNode)("p", null, [
-                                _cache[7] || (_cache[7] = (0, _vue.createElementVNode)("span", {
-                                    class: "font-medium"
-                                }, "Begin:", -1 /* HOISTED */ )),
-                                (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
-                            ]),
-                            (0, _vue.createElementVNode)("p", null, [
-                                _cache[8] || (_cache[8] = (0, _vue.createElementVNode)("span", {
-                                    class: "font-medium"
-                                }, "End:", -1 /* HOISTED */ )),
-                                (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
-                            ])
-                        ]),
-                        (0, _vue.createElementVNode)("div", _hoisted_9, [
-                            $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_10, [
-                                (0, _vue.createVNode)($setup["FireIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
-                                }),
-                                _cache[9] || (_cache[9] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "Ongoing!", -1 /* HOISTED */ ))
-                            ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, [
-                                (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
-                                }),
-                                _cache[10] || (_cache[10] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "Today is the day!", -1 /* HOISTED */ ))
-                            ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, [
-                                (0, _vue.createElementVNode)("p", _hoisted_13, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
-                                _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "day to go", -1 /* HOISTED */ ))
-                            ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_14, [
-                                (0, _vue.createElementVNode)("p", _hoisted_15, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
-                                _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "days to go", -1 /* HOISTED */ ))
-                            ]))
-                        ])
-                    ], 2 /* CLASS */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", {
-                        key: 1,
-                        class: (0, _vue.normalizeClass)([
-                            `event-${event.id}`,
-                            "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
-                        ])
-                    }, [
-                        (0, _vue.createElementVNode)("div", _hoisted_16, [
-                            event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_17, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_18, [
-                                (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
-                                (0, _vue.createElementVNode)("a", {
-                                    href: event.link,
-                                    title: event.name,
-                                    target: "_blank",
-                                    class: "hover:text-indigo-700"
-                                }, [
-                                    (0, _vue.createVNode)($setup["LinkIcon"], {
-                                        class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
-                                    })
-                                ], 8 /* PROPS */ , _hoisted_19)
-                            ])),
-                            (0, _vue.createElementVNode)("p", null, [
-                                _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("span", {
-                                    class: "font-medium"
-                                }, "Location:", -1 /* HOISTED */ )),
-                                (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
-                            ]),
-                            (0, _vue.createElementVNode)("p", null, [
-                                _cache[14] || (_cache[14] = (0, _vue.createElementVNode)("span", {
-                                    class: "font-medium"
-                                }, "Begin:", -1 /* HOISTED */ )),
-                                (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
-                            ]),
-                            (0, _vue.createElementVNode)("p", null, [
-                                _cache[15] || (_cache[15] = (0, _vue.createElementVNode)("span", {
-                                    class: "font-medium"
-                                }, "End:", -1 /* HOISTED */ )),
-                                (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
-                            ])
-                        ]),
-                        (0, _vue.createElementVNode)("div", _hoisted_20, [
-                            $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_21, [
-                                (0, _vue.createVNode)($setup["FireIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
-                                }),
-                                _cache[16] || (_cache[16] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "Ongoing!", -1 /* HOISTED */ ))
-                            ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_22, [
-                                (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
-                                    class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
-                                }),
-                                _cache[17] || (_cache[17] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "Today is the day!", -1 /* HOISTED */ ))
-                            ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_23, [
-                                (0, _vue.createElementVNode)("p", _hoisted_24, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
-                                _cache[18] || (_cache[18] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "day to go", -1 /* HOISTED */ ))
-                            ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_25, [
-                                (0, _vue.createElementVNode)("p", _hoisted_26, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
-                                _cache[19] || (_cache[19] = (0, _vue.createElementVNode)("p", {
-                                    class: "font-bold"
-                                }, "days to go", -1 /* HOISTED */ ))
-                            ]))
-                        ])
-                    ], 2 /* CLASS */ ))
-                ]);
-            }), 128 /* KEYED_FRAGMENT */ ))
-        ])
-    ]);
-}
-if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("5e4e47-hmr", render);
-});
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eo4HV":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kXK0P":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = {};
-    script.render = require("b796a23460e0a410").render;
-    require("d3c43c772a0ba228").default(script);
-    script.__scopeId = "data-v-ba31cc";
-    script.__file = "/Users/messern/code/cuttingedgedev/swim-events/src/Footer.vue";
-};
-initialize();
-if (module.hot) {
-    script.__hmrId = "ba31cc-hmr";
-    module.hot.accept(()=>{
-        setTimeout(()=>{
-            initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord("ba31cc-hmr", script)) __VUE_HMR_RUNTIME__.reload("ba31cc-hmr", script);
-        }, 0);
-    });
-}
-exports.default = script;
-
-},{"b796a23460e0a410":"d5AKR","d3c43c772a0ba228":"cLkey","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d5AKR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = {
-    class: "text-center border-t border-black px-16 py-4"
-};
-function render(_ctx, _cache) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("footer", _hoisted_1, _cache[0] || (_cache[0] = [
-        (0, _vue.createElementVNode)("p", null, [
-            (0, _vue.createTextVNode)("Copyright \xa9 2025 "),
-            (0, _vue.createElementVNode)("a", {
-                href: "https://cutting-edge.dev/",
-                target: "_blank",
-                title: "Cutting Edge Development Studio",
-                class: "underline underline-offset-2 hover:font-semibold hover:no-underline"
-            }, "Cutting Edge Development Studio"),
-            (0, _vue.createTextVNode)(" by Nicolas Messer")
-        ], -1 /* HOISTED */ )
-    ]));
-}
-if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender("ba31cc-hmr", render);
-});
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cLkey":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dO8ba":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -13635,6 +13261,525 @@ function t(e) {
             throw o;
         }));
 }
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Zhue":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    class: "px-16 py-8"
+};
+const _hoisted_2 = {
+    key: 0,
+    id: "eventsLoading",
+    class: "flex italic font-bold text-red-700 gap-0.5"
+};
+const _hoisted_3 = {
+    id: "eventsLoadingText"
+};
+const _hoisted_4 = {
+    id: "eventsList",
+    class: "flex flex-col gap-3 pt-3"
+};
+const _hoisted_5 = {
+    id: "eventInfo"
+};
+const _hoisted_6 = {
+    key: 0,
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_7 = {
+    key: 1,
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_8 = [
+    "href",
+    "title"
+];
+const _hoisted_9 = {
+    id: "eventCountdown",
+    class: "text-center"
+};
+const _hoisted_10 = {
+    key: 0
+};
+const _hoisted_11 = {
+    key: 1
+};
+const _hoisted_12 = {
+    key: 2
+};
+const _hoisted_13 = {
+    class: "text-7xl"
+};
+const _hoisted_14 = {
+    key: 3
+};
+const _hoisted_15 = {
+    class: "text-7xl"
+};
+const _hoisted_16 = {
+    id: "eventInfo"
+};
+const _hoisted_17 = {
+    key: 0,
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_18 = {
+    key: 1,
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_19 = [
+    "href",
+    "title"
+];
+const _hoisted_20 = {
+    id: "eventCountdown",
+    class: "text-center"
+};
+const _hoisted_21 = {
+    key: 0
+};
+const _hoisted_22 = {
+    key: 1
+};
+const _hoisted_23 = {
+    key: 2
+};
+const _hoisted_24 = {
+    class: "text-7xl"
+};
+const _hoisted_25 = {
+    key: 3
+};
+const _hoisted_26 = {
+    class: "text-7xl"
+};
+const _hoisted_27 = {
+    id: "eventsList",
+    class: "flex flex-col gap-3 pt-3"
+};
+const _hoisted_28 = {
+    id: "eventInfo"
+};
+const _hoisted_29 = {
+    key: 0,
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_30 = {
+    key: 1,
+    class: "mb-2 text-xl font-medium"
+};
+const _hoisted_31 = [
+    "href",
+    "title"
+];
+const _hoisted_32 = {
+    id: "eventCountdown",
+    class: "text-center"
+};
+const _hoisted_33 = {
+    key: 0
+};
+const _hoisted_34 = {
+    class: "text-7xl"
+};
+const _hoisted_35 = {
+    key: 1
+};
+const _hoisted_36 = {
+    class: "text-7xl"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("main", _hoisted_1, [
+        (0, _vue.createVNode)($setup["TabGroup"], null, {
+            default: (0, _vue.withCtx)(()=>[
+                    (0, _vue.createVNode)($setup["TabList"], {
+                        class: "tabList"
+                    }, {
+                        default: (0, _vue.withCtx)(()=>[
+                                (0, _vue.createVNode)($setup["Tab"], {
+                                    class: "tabButton"
+                                }, {
+                                    default: (0, _vue.withCtx)(()=>_cache[0] || (_cache[0] = [
+                                            (0, _vue.createElementVNode)("h2", {
+                                                class: "text-2xl font-semibold"
+                                            }, "Upcoming Events", -1 /* HOISTED */ )
+                                        ])),
+                                    _: 1 /* STABLE */ 
+                                }),
+                                (0, _vue.createVNode)($setup["Tab"], {
+                                    class: "tabButton"
+                                }, {
+                                    default: (0, _vue.withCtx)(()=>_cache[1] || (_cache[1] = [
+                                            (0, _vue.createElementVNode)("h2", {
+                                                class: "text-2xl font-semibold"
+                                            }, "Past Events", -1 /* HOISTED */ )
+                                        ])),
+                                    _: 1 /* STABLE */ 
+                                }),
+                                (0, _vue.createVNode)($setup["Tab"], {
+                                    class: "tabButton"
+                                }, {
+                                    default: (0, _vue.withCtx)(()=>[
+                                            (0, _vue.createElementVNode)("div", {
+                                                class: "flex gap-0.5"
+                                            }, [
+                                                _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("button", {
+                                                    id: "btn-add",
+                                                    title: "Add an Event",
+                                                    class: "h-6 w-6 border-none"
+                                                }, [
+                                                    (0, _vue.createElementVNode)("span", {
+                                                        class: "hidden"
+                                                    }, "Add Event"),
+                                                    (0, _vue.createElementVNode)("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        fill: "none",
+                                                        viewBox: "0 0 24 24",
+                                                        "stroke-width": "2",
+                                                        stroke: "currentColor",
+                                                        class: "size-6"
+                                                    }, [
+                                                        (0, _vue.createElementVNode)("path", {
+                                                            "stroke-linecap": "round",
+                                                            "stroke-linejoin": "round",
+                                                            d: "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                        })
+                                                    ])
+                                                ], -1 /* HOISTED */ )),
+                                                (0, _vue.createElementVNode)("button", {
+                                                    id: "btn-update",
+                                                    title: "Update Events",
+                                                    class: "h-6 w-6",
+                                                    onClick: $setup.onUpdateEvents
+                                                }, _cache[2] || (_cache[2] = [
+                                                    (0, _vue.createElementVNode)("span", {
+                                                        class: "hidden"
+                                                    }, "Update Events", -1 /* HOISTED */ ),
+                                                    (0, _vue.createElementVNode)("svg", {
+                                                        xmlns: "http://www.w3.org/2000/svg",
+                                                        fill: "none",
+                                                        viewBox: "0 0 24 24",
+                                                        "stroke-width": "2",
+                                                        stroke: "currentColor",
+                                                        class: "size-6"
+                                                    }, [
+                                                        (0, _vue.createElementVNode)("path", {
+                                                            "stroke-linecap": "round",
+                                                            "stroke-linejoin": "round",
+                                                            d: "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                                                        })
+                                                    ], -1 /* HOISTED */ )
+                                                ]))
+                                            ])
+                                        ]),
+                                    _: 1 /* STABLE */ 
+                                })
+                            ]),
+                        _: 1 /* STABLE */ 
+                    }),
+                    $setup.loadingEvents ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_2, [
+                        (0, _vue.createElementVNode)("p", _hoisted_3, (0, _vue.toDisplayString)($setup.loadingText), 1 /* TEXT */ ),
+                        _cache[4] || (_cache[4] = (0, _vue.createElementVNode)("span", {
+                            class: "animate-bounce [animation-delay:-0.3s]"
+                        }, ".", -1 /* HOISTED */ )),
+                        _cache[5] || (_cache[5] = (0, _vue.createElementVNode)("span", {
+                            class: "animate-bounce [animation-delay:-0.15s]"
+                        }, ".", -1 /* HOISTED */ )),
+                        _cache[6] || (_cache[6] = (0, _vue.createElementVNode)("span", {
+                            class: "animate-bounce"
+                        }, ".", -1 /* HOISTED */ ))
+                    ])) : (0, _vue.createCommentVNode)("v-if", true),
+                    (0, _vue.createVNode)($setup["TabPanels"], null, {
+                        default: (0, _vue.withCtx)(()=>[
+                                (0, _vue.createVNode)($setup["TabPanel"], null, {
+                                    default: (0, _vue.withCtx)(()=>[
+                                            (0, _vue.createElementVNode)("section", _hoisted_4, [
+                                                ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.upcomingEvents, (event)=>{
+                                                    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
+                                                        key: event.id
+                                                    }, [
+                                                        $setup.calculateCountdown(event.dateStart) <= 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", {
+                                                            key: 0,
+                                                            class: (0, _vue.normalizeClass)([
+                                                                `event-${event.id}`,
+                                                                "event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+                                                            ])
+                                                        }, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_5, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_6, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_7, [
+                                                                    (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
+                                                                    (0, _vue.createElementVNode)("a", {
+                                                                        href: event.link,
+                                                                        title: event.name,
+                                                                        target: "_blank",
+                                                                        class: "hover:text-indigo-700"
+                                                                    }, [
+                                                                        (0, _vue.createVNode)($setup["LinkIcon"], {
+                                                                            class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
+                                                                        })
+                                                                    ], 8 /* PROPS */ , _hoisted_8)
+                                                                ])),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[7] || (_cache[7] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Location:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
+                                                                ]),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[8] || (_cache[8] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Begin:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                ]),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[9] || (_cache[9] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "End:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                ])
+                                                            ]),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_9, [
+                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_10, [
+                                                                    (0, _vue.createVNode)($setup["FireIcon"], {
+                                                                        class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
+                                                                    }),
+                                                                    _cache[10] || (_cache[10] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "Ongoing!", -1 /* HOISTED */ ))
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, [
+                                                                    (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
+                                                                        class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
+                                                                    }),
+                                                                    _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "Today is the day!", -1 /* HOISTED */ ))
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_13, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                    _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "day to go", -1 /* HOISTED */ ))
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_14, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_15, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                    _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "days to go", -1 /* HOISTED */ ))
+                                                                ]))
+                                                            ])
+                                                        ], 2 /* CLASS */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("section", {
+                                                            key: 1,
+                                                            class: (0, _vue.normalizeClass)([
+                                                                `event-${event.id}`,
+                                                                "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+                                                            ])
+                                                        }, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_16, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_17, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_18, [
+                                                                    (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
+                                                                    (0, _vue.createElementVNode)("a", {
+                                                                        href: event.link,
+                                                                        title: event.name,
+                                                                        target: "_blank",
+                                                                        class: "hover:text-indigo-700"
+                                                                    }, [
+                                                                        (0, _vue.createVNode)($setup["LinkIcon"], {
+                                                                            class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
+                                                                        })
+                                                                    ], 8 /* PROPS */ , _hoisted_19)
+                                                                ])),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[14] || (_cache[14] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Location:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
+                                                                ]),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[15] || (_cache[15] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Begin:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                ]),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[16] || (_cache[16] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "End:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                ])
+                                                            ]),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_20, [
+                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_21, [
+                                                                    (0, _vue.createVNode)($setup["FireIcon"], {
+                                                                        class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
+                                                                    }),
+                                                                    _cache[17] || (_cache[17] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "Ongoing!", -1 /* HOISTED */ ))
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_22, [
+                                                                    (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
+                                                                        class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
+                                                                    }),
+                                                                    _cache[18] || (_cache[18] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "Today is the day!", -1 /* HOISTED */ ))
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_23, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_24, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                    _cache[19] || (_cache[19] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "day to go", -1 /* HOISTED */ ))
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_25, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_26, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                    _cache[20] || (_cache[20] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "days to go", -1 /* HOISTED */ ))
+                                                                ]))
+                                                            ])
+                                                        ], 2 /* CLASS */ ))
+                                                    ]);
+                                                }), 128 /* KEYED_FRAGMENT */ ))
+                                            ])
+                                        ]),
+                                    _: 1 /* STABLE */ 
+                                }),
+                                (0, _vue.createVNode)($setup["TabPanel"], null, {
+                                    default: (0, _vue.withCtx)(()=>[
+                                            (0, _vue.createElementVNode)("section", _hoisted_27, [
+                                                ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.pastEvents, (event)=>{
+                                                    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
+                                                        key: event.id
+                                                    }, [
+                                                        (0, _vue.createElementVNode)("section", {
+                                                            class: (0, _vue.normalizeClass)([
+                                                                `event-${event.id}`,
+                                                                "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+                                                            ])
+                                                        }, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_28, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_29, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_30, [
+                                                                    (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
+                                                                    (0, _vue.createElementVNode)("a", {
+                                                                        href: event.link,
+                                                                        title: event.name,
+                                                                        target: "_blank",
+                                                                        class: "hover:text-indigo-700"
+                                                                    }, [
+                                                                        (0, _vue.createVNode)($setup["LinkIcon"], {
+                                                                            class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
+                                                                        })
+                                                                    ], 8 /* PROPS */ , _hoisted_31)
+                                                                ])),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[21] || (_cache[21] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Location:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)(event.location), 1 /* TEXT */ )
+                                                                ]),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[22] || (_cache[22] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Began:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateStart, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                ]),
+                                                                (0, _vue.createElementVNode)("p", null, [
+                                                                    _cache[23] || (_cache[23] = (0, _vue.createElementVNode)("span", {
+                                                                        class: "font-medium"
+                                                                    }, "Ended:", -1 /* HOISTED */ )),
+                                                                    (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
+                                                                ])
+                                                            ]),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_32, [
+                                                                $setup.calculateCountdown(event.dateEnd) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_33, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_34, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
+                                                                    _cache[24] || (_cache[24] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "day ago", -1 /* HOISTED */ ))
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_35, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_36, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
+                                                                    _cache[25] || (_cache[25] = (0, _vue.createElementVNode)("p", {
+                                                                        class: "font-bold"
+                                                                    }, "days ago", -1 /* HOISTED */ ))
+                                                                ]))
+                                                            ])
+                                                        ], 2 /* CLASS */ )
+                                                    ]);
+                                                }), 128 /* KEYED_FRAGMENT */ ))
+                                            ])
+                                        ]),
+                                    _: 1 /* STABLE */ 
+                                })
+                            ]),
+                        _: 1 /* STABLE */ 
+                    })
+                ]),
+            _: 1 /* STABLE */ 
+        })
+    ]);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("5e4e47-hmr", render);
+});
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eo4HV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kXK0P":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = {};
+    script.render = require("b796a23460e0a410").render;
+    require("d3c43c772a0ba228").default(script);
+    script.__scopeId = "data-v-ba31cc";
+    script.__file = "/Users/messern/code/cuttingedgedev/swim-events/src/Footer.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = "ba31cc-hmr";
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord("ba31cc-hmr", script)) __VUE_HMR_RUNTIME__.reload("ba31cc-hmr", script);
+        }, 0);
+    });
+}
+exports.default = script;
+
+},{"b796a23460e0a410":"d5AKR","d3c43c772a0ba228":"cLkey","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d5AKR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    class: "text-center border-t border-black px-16 py-4"
+};
+function render(_ctx, _cache) {
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("footer", _hoisted_1, _cache[0] || (_cache[0] = [
+        (0, _vue.createElementVNode)("p", null, [
+            (0, _vue.createTextVNode)("Copyright \xa9 2025 "),
+            (0, _vue.createElementVNode)("a", {
+                href: "https://cutting-edge.dev/",
+                target: "_blank",
+                title: "Cutting Edge Development Studio",
+                class: "underline underline-offset-2 hover:font-semibold hover:no-underline"
+            }, "Cutting Edge Development Studio"),
+            (0, _vue.createTextVNode)(" by Nicolas Messer")
+        ], -1 /* HOISTED */ )
+    ]));
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender("ba31cc-hmr", render);
+});
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cLkey":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fQKov":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
