@@ -10218,7 +10218,935 @@ exports.default = {
     }
 };
 
-},{"@heroicons/vue/24/outline":"8j2hI","@formkit/tempo":"bPFbk","vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@headlessui/vue":"dO8ba"}],"8j2hI":[function(require,module,exports) {
+},{"@headlessui/vue":"dO8ba","@heroicons/vue/24/outline":"8j2hI","@formkit/tempo":"bPFbk","vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dO8ba":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Portal", ()=>(0, _portalJs.Portal));
+parcelHelpers.export(exports, "PortalGroup", ()=>(0, _portalJs.PortalGroup));
+parcelHelpers.export(exports, "provideUseId", ()=>(0, _useIdJs.provideUseId));
+var _comboboxJs = require("./components/combobox/combobox.js");
+parcelHelpers.exportAll(_comboboxJs, exports);
+var _dialogJs = require("./components/dialog/dialog.js");
+parcelHelpers.exportAll(_dialogJs, exports);
+var _disclosureJs = require("./components/disclosure/disclosure.js");
+parcelHelpers.exportAll(_disclosureJs, exports);
+var _focusTrapJs = require("./components/focus-trap/focus-trap.js");
+parcelHelpers.exportAll(_focusTrapJs, exports);
+var _listboxJs = require("./components/listbox/listbox.js");
+parcelHelpers.exportAll(_listboxJs, exports);
+var _menuJs = require("./components/menu/menu.js");
+parcelHelpers.exportAll(_menuJs, exports);
+var _popoverJs = require("./components/popover/popover.js");
+parcelHelpers.exportAll(_popoverJs, exports);
+var _portalJs = require("./components/portal/portal.js");
+var _radioGroupJs = require("./components/radio-group/radio-group.js");
+parcelHelpers.exportAll(_radioGroupJs, exports);
+var _switchJs = require("./components/switch/switch.js");
+parcelHelpers.exportAll(_switchJs, exports);
+var _tabsJs = require("./components/tabs/tabs.js");
+parcelHelpers.exportAll(_tabsJs, exports);
+var _transitionJs = require("./components/transitions/transition.js");
+parcelHelpers.exportAll(_transitionJs, exports);
+var _useIdJs = require("./hooks/use-id.js");
+
+},{"./components/combobox/combobox.js":false,"./components/dialog/dialog.js":false,"./components/disclosure/disclosure.js":false,"./components/focus-trap/focus-trap.js":false,"./components/listbox/listbox.js":false,"./components/menu/menu.js":false,"./components/popover/popover.js":false,"./components/portal/portal.js":false,"./components/radio-group/radio-group.js":false,"./components/switch/switch.js":false,"./components/tabs/tabs.js":"dv8Sp","./components/transitions/transition.js":false,"./hooks/use-id.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dv8Sp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Tab", ()=>xe);
+parcelHelpers.export(exports, "TabGroup", ()=>me);
+parcelHelpers.export(exports, "TabList", ()=>pe);
+parcelHelpers.export(exports, "TabPanel", ()=>ye);
+parcelHelpers.export(exports, "TabPanels", ()=>Ie);
+var _vue = require("vue");
+var _useIdJs = require("../../hooks/use-id.js");
+var _useResolveButtonTypeJs = require("../../hooks/use-resolve-button-type.js");
+var _focusSentinelJs = require("../../internal/focus-sentinel.js");
+var _hiddenJs = require("../../internal/hidden.js");
+var _keyboardJs = require("../../keyboard.js");
+var _domJs = require("../../utils/dom.js");
+var _focusManagementJs = require("../../utils/focus-management.js");
+var _matchJs = require("../../utils/match.js");
+var _microTaskJs = require("../../utils/micro-task.js");
+var _ownerJs = require("../../utils/owner.js");
+var _renderJs = require("../../utils/render.js");
+var te = ((s)=>(s[s.Forwards = 0] = "Forwards", s[s.Backwards = 1] = "Backwards", s))(te || {}), le = ((d)=>(d[d.Less = -1] = "Less", d[d.Equal = 0] = "Equal", d[d.Greater = 1] = "Greater", d))(le || {});
+let U = Symbol("TabsContext");
+function C(a) {
+    let b = (0, _vue.inject)(U, null);
+    if (b === null) {
+        let s = new Error(`<${a} /> is missing a parent <TabGroup /> component.`);
+        throw Error.captureStackTrace && Error.captureStackTrace(s, C), s;
+    }
+    return b;
+}
+let G = Symbol("TabsSSRContext"), me = (0, _vue.defineComponent)({
+    name: "TabGroup",
+    emits: {
+        change: (a)=>!0
+    },
+    props: {
+        as: {
+            type: [
+                Object,
+                String
+            ],
+            default: "template"
+        },
+        selectedIndex: {
+            type: [
+                Number
+            ],
+            default: null
+        },
+        defaultIndex: {
+            type: [
+                Number
+            ],
+            default: 0
+        },
+        vertical: {
+            type: [
+                Boolean
+            ],
+            default: !1
+        },
+        manual: {
+            type: [
+                Boolean
+            ],
+            default: !1
+        }
+    },
+    inheritAttrs: !1,
+    setup (a, { slots: b, attrs: s, emit: d }) {
+        var E;
+        let i = (0, _vue.ref)((E = a.selectedIndex) != null ? E : a.defaultIndex), l = (0, _vue.ref)([]), r = (0, _vue.ref)([]), p = (0, _vue.computed)(()=>a.selectedIndex !== null), R = (0, _vue.computed)(()=>p.value ? a.selectedIndex : i.value);
+        function y(t) {
+            var c;
+            let n = (0, _focusManagementJs.sortByDomNode)(u.tabs.value, (0, _domJs.dom)), o = (0, _focusManagementJs.sortByDomNode)(u.panels.value, (0, _domJs.dom)), e = n.filter((I)=>{
+                var m;
+                return !((m = (0, _domJs.dom)(I)) != null && m.hasAttribute("disabled"));
+            });
+            if (t < 0 || t > n.length - 1) {
+                let I = (0, _matchJs.match)(i.value === null ? 0 : Math.sign(t - i.value), {
+                    [-1]: ()=>1,
+                    [0]: ()=>(0, _matchJs.match)(Math.sign(t), {
+                            [-1]: ()=>0,
+                            [0]: ()=>0,
+                            [1]: ()=>1
+                        }),
+                    [1]: ()=>0
+                }), m = (0, _matchJs.match)(I, {
+                    [0]: ()=>n.indexOf(e[0]),
+                    [1]: ()=>n.indexOf(e[e.length - 1])
+                });
+                m !== -1 && (i.value = m), u.tabs.value = n, u.panels.value = o;
+            } else {
+                let I = n.slice(0, t), h = [
+                    ...n.slice(t),
+                    ...I
+                ].find((W)=>e.includes(W));
+                if (!h) return;
+                let O = (c = n.indexOf(h)) != null ? c : u.selectedIndex.value;
+                O === -1 && (O = u.selectedIndex.value), i.value = O, u.tabs.value = n, u.panels.value = o;
+            }
+        }
+        let u = {
+            selectedIndex: (0, _vue.computed)(()=>{
+                var t, n;
+                return (n = (t = i.value) != null ? t : a.defaultIndex) != null ? n : null;
+            }),
+            orientation: (0, _vue.computed)(()=>a.vertical ? "vertical" : "horizontal"),
+            activation: (0, _vue.computed)(()=>a.manual ? "manual" : "auto"),
+            tabs: l,
+            panels: r,
+            setSelectedIndex (t) {
+                R.value !== t && d("change", t), p.value || y(t);
+            },
+            registerTab (t) {
+                var o;
+                if (l.value.includes(t)) return;
+                let n = l.value[i.value];
+                if (l.value.push(t), l.value = (0, _focusManagementJs.sortByDomNode)(l.value, (0, _domJs.dom)), !p.value) {
+                    let e = (o = l.value.indexOf(n)) != null ? o : i.value;
+                    e !== -1 && (i.value = e);
+                }
+            },
+            unregisterTab (t) {
+                let n = l.value.indexOf(t);
+                n !== -1 && l.value.splice(n, 1);
+            },
+            registerPanel (t) {
+                r.value.includes(t) || (r.value.push(t), r.value = (0, _focusManagementJs.sortByDomNode)(r.value, (0, _domJs.dom)));
+            },
+            unregisterPanel (t) {
+                let n = r.value.indexOf(t);
+                n !== -1 && r.value.splice(n, 1);
+            }
+        };
+        (0, _vue.provide)(U, u);
+        let T = (0, _vue.ref)({
+            tabs: [],
+            panels: []
+        }), x = (0, _vue.ref)(!1);
+        (0, _vue.onMounted)(()=>{
+            x.value = !0;
+        }), (0, _vue.provide)(G, (0, _vue.computed)(()=>x.value ? null : T.value));
+        let w = (0, _vue.computed)(()=>a.selectedIndex);
+        return (0, _vue.onMounted)(()=>{
+            (0, _vue.watch)([
+                w
+            ], ()=>{
+                var t;
+                return y((t = a.selectedIndex) != null ? t : a.defaultIndex);
+            }, {
+                immediate: !0
+            });
+        }), (0, _vue.watchEffect)(()=>{
+            if (!p.value || R.value == null || u.tabs.value.length <= 0) return;
+            let t = (0, _focusManagementJs.sortByDomNode)(u.tabs.value, (0, _domJs.dom));
+            t.some((o, e)=>(0, _domJs.dom)(u.tabs.value[e]) !== (0, _domJs.dom)(o)) && u.setSelectedIndex(t.findIndex((o)=>(0, _domJs.dom)(o) === (0, _domJs.dom)(u.tabs.value[R.value])));
+        }), ()=>{
+            let t = {
+                selectedIndex: i.value
+            };
+            return (0, _vue.h)((0, _vue.Fragment), [
+                l.value.length <= 0 && (0, _vue.h)((0, _focusSentinelJs.FocusSentinel), {
+                    onFocus: ()=>{
+                        for (let n of l.value){
+                            let o = (0, _domJs.dom)(n);
+                            if ((o == null ? void 0 : o.tabIndex) === 0) return o.focus(), !0;
+                        }
+                        return !1;
+                    }
+                }),
+                (0, _renderJs.render)({
+                    theirProps: {
+                        ...s,
+                        ...(0, _renderJs.omit)(a, [
+                            "selectedIndex",
+                            "defaultIndex",
+                            "manual",
+                            "vertical",
+                            "onChange"
+                        ])
+                    },
+                    ourProps: {},
+                    slot: t,
+                    slots: b,
+                    attrs: s,
+                    name: "TabGroup"
+                })
+            ]);
+        };
+    }
+}), pe = (0, _vue.defineComponent)({
+    name: "TabList",
+    props: {
+        as: {
+            type: [
+                Object,
+                String
+            ],
+            default: "div"
+        }
+    },
+    setup (a, { attrs: b, slots: s }) {
+        let d = C("TabList");
+        return ()=>{
+            let i = {
+                selectedIndex: d.selectedIndex.value
+            }, l = {
+                role: "tablist",
+                "aria-orientation": d.orientation.value
+            };
+            return (0, _renderJs.render)({
+                ourProps: l,
+                theirProps: a,
+                slot: i,
+                attrs: b,
+                slots: s,
+                name: "TabList"
+            });
+        };
+    }
+}), xe = (0, _vue.defineComponent)({
+    name: "Tab",
+    props: {
+        as: {
+            type: [
+                Object,
+                String
+            ],
+            default: "button"
+        },
+        disabled: {
+            type: [
+                Boolean
+            ],
+            default: !1
+        },
+        id: {
+            type: String,
+            default: null
+        }
+    },
+    setup (a, { attrs: b, slots: s, expose: d }) {
+        var o;
+        let i = (o = a.id) != null ? o : `headlessui-tabs-tab-${(0, _useIdJs.useId)()}`, l = C("Tab"), r = (0, _vue.ref)(null);
+        d({
+            el: r,
+            $el: r
+        }), (0, _vue.onMounted)(()=>l.registerTab(r)), (0, _vue.onUnmounted)(()=>l.unregisterTab(r));
+        let p = (0, _vue.inject)(G), R = (0, _vue.computed)(()=>{
+            if (p.value) {
+                let e = p.value.tabs.indexOf(i);
+                return e === -1 ? p.value.tabs.push(i) - 1 : e;
+            }
+            return -1;
+        }), y = (0, _vue.computed)(()=>{
+            let e = l.tabs.value.indexOf(r);
+            return e === -1 ? R.value : e;
+        }), u = (0, _vue.computed)(()=>y.value === l.selectedIndex.value);
+        function T(e) {
+            var I;
+            let c = e();
+            if (c === (0, _focusManagementJs.FocusResult).Success && l.activation.value === "auto") {
+                let m = (I = (0, _ownerJs.getOwnerDocument)(r)) == null ? void 0 : I.activeElement, h = l.tabs.value.findIndex((O)=>(0, _domJs.dom)(O) === m);
+                h !== -1 && l.setSelectedIndex(h);
+            }
+            return c;
+        }
+        function x(e) {
+            let c = l.tabs.value.map((m)=>(0, _domJs.dom)(m)).filter(Boolean);
+            if (e.key === (0, _keyboardJs.Keys).Space || e.key === (0, _keyboardJs.Keys).Enter) {
+                e.preventDefault(), e.stopPropagation(), l.setSelectedIndex(y.value);
+                return;
+            }
+            switch(e.key){
+                case (0, _keyboardJs.Keys).Home:
+                case (0, _keyboardJs.Keys).PageUp:
+                    return e.preventDefault(), e.stopPropagation(), T(()=>(0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).First));
+                case (0, _keyboardJs.Keys).End:
+                case (0, _keyboardJs.Keys).PageDown:
+                    return e.preventDefault(), e.stopPropagation(), T(()=>(0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Last));
+            }
+            if (T(()=>(0, _matchJs.match)(l.orientation.value, {
+                    vertical () {
+                        return e.key === (0, _keyboardJs.Keys).ArrowUp ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Previous | (0, _focusManagementJs.Focus).WrapAround) : e.key === (0, _keyboardJs.Keys).ArrowDown ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Next | (0, _focusManagementJs.Focus).WrapAround) : (0, _focusManagementJs.FocusResult).Error;
+                    },
+                    horizontal () {
+                        return e.key === (0, _keyboardJs.Keys).ArrowLeft ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Previous | (0, _focusManagementJs.Focus).WrapAround) : e.key === (0, _keyboardJs.Keys).ArrowRight ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Next | (0, _focusManagementJs.Focus).WrapAround) : (0, _focusManagementJs.FocusResult).Error;
+                    }
+                })) === (0, _focusManagementJs.FocusResult).Success) return e.preventDefault();
+        }
+        let w = (0, _vue.ref)(!1);
+        function E() {
+            var e;
+            w.value || (w.value = !0, !a.disabled && ((e = (0, _domJs.dom)(r)) == null || e.focus({
+                preventScroll: !0
+            }), l.setSelectedIndex(y.value), (0, _microTaskJs.microTask)(()=>{
+                w.value = !1;
+            })));
+        }
+        function t(e) {
+            e.preventDefault();
+        }
+        let n = (0, _useResolveButtonTypeJs.useResolveButtonType)((0, _vue.computed)(()=>({
+                as: a.as,
+                type: b.type
+            })), r);
+        return ()=>{
+            var m, h;
+            let e = {
+                selected: u.value,
+                disabled: (m = a.disabled) != null ? m : !1
+            }, { ...c } = a, I = {
+                ref: r,
+                onKeydown: x,
+                onMousedown: t,
+                onClick: E,
+                id: i,
+                role: "tab",
+                type: n.value,
+                "aria-controls": (h = (0, _domJs.dom)(l.panels.value[y.value])) == null ? void 0 : h.id,
+                "aria-selected": u.value,
+                tabIndex: u.value ? 0 : -1,
+                disabled: a.disabled ? !0 : void 0
+            };
+            return (0, _renderJs.render)({
+                ourProps: I,
+                theirProps: c,
+                slot: e,
+                attrs: b,
+                slots: s,
+                name: "Tab"
+            });
+        };
+    }
+}), Ie = (0, _vue.defineComponent)({
+    name: "TabPanels",
+    props: {
+        as: {
+            type: [
+                Object,
+                String
+            ],
+            default: "div"
+        }
+    },
+    setup (a, { slots: b, attrs: s }) {
+        let d = C("TabPanels");
+        return ()=>{
+            let i = {
+                selectedIndex: d.selectedIndex.value
+            };
+            return (0, _renderJs.render)({
+                theirProps: a,
+                ourProps: {},
+                slot: i,
+                attrs: s,
+                slots: b,
+                name: "TabPanels"
+            });
+        };
+    }
+}), ye = (0, _vue.defineComponent)({
+    name: "TabPanel",
+    props: {
+        as: {
+            type: [
+                Object,
+                String
+            ],
+            default: "div"
+        },
+        static: {
+            type: Boolean,
+            default: !1
+        },
+        unmount: {
+            type: Boolean,
+            default: !0
+        },
+        id: {
+            type: String,
+            default: null
+        },
+        tabIndex: {
+            type: Number,
+            default: 0
+        }
+    },
+    setup (a, { attrs: b, slots: s, expose: d }) {
+        var T;
+        let i = (T = a.id) != null ? T : `headlessui-tabs-panel-${(0, _useIdJs.useId)()}`, l = C("TabPanel"), r = (0, _vue.ref)(null);
+        d({
+            el: r,
+            $el: r
+        }), (0, _vue.onMounted)(()=>l.registerPanel(r)), (0, _vue.onUnmounted)(()=>l.unregisterPanel(r));
+        let p = (0, _vue.inject)(G), R = (0, _vue.computed)(()=>{
+            if (p.value) {
+                let x = p.value.panels.indexOf(i);
+                return x === -1 ? p.value.panels.push(i) - 1 : x;
+            }
+            return -1;
+        }), y = (0, _vue.computed)(()=>{
+            let x = l.panels.value.indexOf(r);
+            return x === -1 ? R.value : x;
+        }), u = (0, _vue.computed)(()=>y.value === l.selectedIndex.value);
+        return ()=>{
+            var n;
+            let x = {
+                selected: u.value
+            }, { tabIndex: w, ...E } = a, t = {
+                ref: r,
+                id: i,
+                role: "tabpanel",
+                "aria-labelledby": (n = (0, _domJs.dom)(l.tabs.value[y.value])) == null ? void 0 : n.id,
+                tabIndex: u.value ? w : -1
+            };
+            return !u.value && a.unmount && !a.static ? (0, _vue.h)((0, _hiddenJs.Hidden), {
+                as: "span",
+                "aria-hidden": !0,
+                ...t
+            }) : (0, _renderJs.render)({
+                ourProps: t,
+                theirProps: E,
+                slot: x,
+                attrs: b,
+                slots: s,
+                features: (0, _renderJs.Features).Static | (0, _renderJs.Features).RenderStrategy,
+                visible: u.value,
+                name: "TabPanel"
+            });
+        };
+    }
+});
+
+},{"vue":"gzxs9","../../hooks/use-id.js":"3Y3LU","../../hooks/use-resolve-button-type.js":"6FSb5","../../internal/focus-sentinel.js":"3HKOX","../../internal/hidden.js":"74O43","../../keyboard.js":"dqkaz","../../utils/dom.js":"i2zBi","../../utils/focus-management.js":"2jWr5","../../utils/match.js":"8G4kV","../../utils/micro-task.js":"20VYr","../../utils/owner.js":"ipKxm","../../utils/render.js":"fUA5q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Y3LU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "provideUseId", ()=>l);
+parcelHelpers.export(exports, "useId", ()=>I);
+var _vue = require("vue");
+let t = Symbol("headlessui.useid"), i = 0;
+function I() {
+    return (0, _vue.inject)(t, ()=>`${++i}`)();
+}
+function l(e) {
+    (0, _vue.provide)(t, e);
+}
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6FSb5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useResolveButtonType", ()=>s);
+var _vue = require("vue");
+var _domJs = require("../utils/dom.js");
+function r(t, e) {
+    if (t) return t;
+    let n = e != null ? e : "button";
+    if (typeof n == "string" && n.toLowerCase() === "button") return "button";
+}
+function s(t, e) {
+    let n = (0, _vue.ref)(r(t.value.type, t.value.as));
+    return (0, _vue.onMounted)(()=>{
+        n.value = r(t.value.type, t.value.as);
+    }), (0, _vue.watchEffect)(()=>{
+        var u;
+        n.value || (0, _domJs.dom)(e) && (0, _domJs.dom)(e) instanceof HTMLButtonElement && !((u = (0, _domJs.dom)(e)) != null && u.hasAttribute("type")) && (n.value = "button");
+    }), n;
+}
+
+},{"vue":"gzxs9","../utils/dom.js":"i2zBi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i2zBi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "dom", ()=>o);
+function o(e) {
+    var l;
+    if (e == null || e.value == null) return null;
+    let n = (l = e.value.$el) != null ? l : e.value;
+    return n instanceof Node ? n : null;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3HKOX":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FocusSentinel", ()=>d);
+var _vue = require("vue");
+var _hiddenJs = require("./hidden.js");
+let d = (0, _vue.defineComponent)({
+    props: {
+        onFocus: {
+            type: Function,
+            required: !0
+        }
+    },
+    setup (t) {
+        let n = (0, _vue.ref)(!0);
+        return ()=>n.value ? (0, _vue.h)((0, _hiddenJs.Hidden), {
+                as: "button",
+                type: "button",
+                features: (0, _hiddenJs.Features).Focusable,
+                onFocus (o) {
+                    o.preventDefault();
+                    let e, a = 50;
+                    function r() {
+                        var u;
+                        if (a-- <= 0) {
+                            e && cancelAnimationFrame(e);
+                            return;
+                        }
+                        if ((u = t.onFocus) != null && u.call(t)) {
+                            n.value = !1, cancelAnimationFrame(e);
+                            return;
+                        }
+                        e = requestAnimationFrame(r);
+                    }
+                    e = requestAnimationFrame(r);
+                }
+            }) : null;
+    }
+});
+
+},{"vue":"gzxs9","./hidden.js":"74O43","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"74O43":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Features", ()=>u);
+parcelHelpers.export(exports, "Hidden", ()=>f);
+var _vue = require("vue");
+var _renderJs = require("../utils/render.js");
+var u = ((e)=>(e[e.None = 1] = "None", e[e.Focusable = 2] = "Focusable", e[e.Hidden = 4] = "Hidden", e))(u || {});
+let f = (0, _vue.defineComponent)({
+    name: "Hidden",
+    props: {
+        as: {
+            type: [
+                Object,
+                String
+            ],
+            default: "div"
+        },
+        features: {
+            type: Number,
+            default: 1
+        }
+    },
+    setup (t, { slots: n, attrs: i }) {
+        return ()=>{
+            var r;
+            let { features: e, ...d } = t, o = {
+                "aria-hidden": (e & 2) === 2 ? !0 : (r = d["aria-hidden"]) != null ? r : void 0,
+                hidden: (e & 4) === 4 ? !0 : void 0,
+                style: {
+                    position: "fixed",
+                    top: 1,
+                    left: 1,
+                    width: 1,
+                    height: 0,
+                    padding: 0,
+                    margin: -1,
+                    overflow: "hidden",
+                    clip: "rect(0, 0, 0, 0)",
+                    whiteSpace: "nowrap",
+                    borderWidth: "0",
+                    ...(e & 4) === 4 && (e & 2) !== 2 && {
+                        display: "none"
+                    }
+                }
+            };
+            return (0, _renderJs.render)({
+                ourProps: o,
+                theirProps: d,
+                slot: {},
+                attrs: i,
+                slots: n,
+                name: "Hidden"
+            });
+        };
+    }
+});
+
+},{"vue":"gzxs9","../utils/render.js":"fUA5q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fUA5q":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Features", ()=>N);
+parcelHelpers.export(exports, "RenderStrategy", ()=>S);
+parcelHelpers.export(exports, "compact", ()=>E);
+parcelHelpers.export(exports, "omit", ()=>T);
+parcelHelpers.export(exports, "render", ()=>A);
+var _vue = require("vue");
+var _matchJs = require("./match.js");
+var N = ((o)=>(o[o.None = 0] = "None", o[o.RenderStrategy = 1] = "RenderStrategy", o[o.Static = 2] = "Static", o))(N || {}), S = ((e)=>(e[e.Unmount = 0] = "Unmount", e[e.Hidden = 1] = "Hidden", e))(S || {});
+function A({ visible: r = !0, features: t = 0, ourProps: e, theirProps: o, ...i }) {
+    var a;
+    let n = j(o, e), l = Object.assign(i, {
+        props: n
+    });
+    if (r || t & 2 && n.static) return y(l);
+    if (t & 1) {
+        let d = (a = n.unmount) == null || a ? 0 : 1;
+        return (0, _matchJs.match)(d, {
+            [0] () {
+                return null;
+            },
+            [1] () {
+                return y({
+                    ...i,
+                    props: {
+                        ...n,
+                        hidden: !0,
+                        style: {
+                            display: "none"
+                        }
+                    }
+                });
+            }
+        });
+    }
+    return y(l);
+}
+function y({ props: r, attrs: t, slots: e, slot: o, name: i }) {
+    var m, h;
+    let { as: n, ...l } = T(r, [
+        "unmount",
+        "static"
+    ]), a = (m = e.default) == null ? void 0 : m.call(e, o), d = {};
+    if (o) {
+        let u = !1, c = [];
+        for (let [p, f] of Object.entries(o))typeof f == "boolean" && (u = !0), f === !0 && c.push(p);
+        u && (d["data-headlessui-state"] = c.join(" "));
+    }
+    if (n === "template") {
+        if (a = b(a != null ? a : []), Object.keys(l).length > 0 || Object.keys(t).length > 0) {
+            let [u, ...c] = a != null ? a : [];
+            if (!v(u) || c.length > 0) throw new Error([
+                'Passing props on "template"!',
+                "",
+                `The current component <${i} /> is rendering a "template".`,
+                "However we need to passthrough the following props:",
+                Object.keys(l).concat(Object.keys(t)).map((s)=>s.trim()).filter((s, g, R)=>R.indexOf(s) === g).sort((s, g)=>s.localeCompare(g)).map((s)=>`  - ${s}`).join(`
+`),
+                "",
+                "You can apply a few solutions:",
+                [
+                    'Add an `as="..."` prop, to ensure that we render an actual element instead of a "template".',
+                    "Render a single element as the child so that we can forward the props onto that element."
+                ].map((s)=>`  - ${s}`).join(`
+`)
+            ].join(`
+`));
+            let p = j((h = u.props) != null ? h : {}, l, d), f = (0, _vue.cloneVNode)(u, p, !0);
+            for(let s in p)s.startsWith("on") && (f.props || (f.props = {}), f.props[s] = p[s]);
+            return f;
+        }
+        return Array.isArray(a) && a.length === 1 ? a[0] : a;
+    }
+    return (0, _vue.h)(n, Object.assign({}, l, d), {
+        default: ()=>a
+    });
+}
+function b(r) {
+    return r.flatMap((t)=>t.type === (0, _vue.Fragment) ? b(t.children) : [
+            t
+        ]);
+}
+function j(...r) {
+    var o;
+    if (r.length === 0) return {};
+    if (r.length === 1) return r[0];
+    let t = {}, e = {};
+    for (let i of r)for(let n in i)n.startsWith("on") && typeof i[n] == "function" ? ((o = e[n]) != null || (e[n] = []), e[n].push(i[n])) : t[n] = i[n];
+    if (t.disabled || t["aria-disabled"]) return Object.assign(t, Object.fromEntries(Object.keys(e).map((i)=>[
+            i,
+            void 0
+        ])));
+    for(let i in e)Object.assign(t, {
+        [i] (n, ...l) {
+            let a = e[i];
+            for (let d of a){
+                if (n instanceof Event && n.defaultPrevented) return;
+                d(n, ...l);
+            }
+        }
+    });
+    return t;
+}
+function E(r) {
+    let t = Object.assign({}, r);
+    for(let e in t)t[e] === void 0 && delete t[e];
+    return t;
+}
+function T(r, t = []) {
+    let e = Object.assign({}, r);
+    for (let o of t)o in e && delete e[o];
+    return e;
+}
+function v(r) {
+    return r == null ? !1 : typeof r.type == "string" || typeof r.type == "object" || typeof r.type == "function";
+}
+
+},{"vue":"gzxs9","./match.js":"8G4kV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8G4kV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "match", ()=>u);
+function u(r, n, ...a) {
+    if (r in n) {
+        let e = n[r];
+        return typeof e == "function" ? e(...a) : e;
+    }
+    let t = new Error(`Tried to handle "${r}" but there is no handler defined. Only defined handlers are: ${Object.keys(n).map((e)=>`"${e}"`).join(", ")}.`);
+    throw Error.captureStackTrace && Error.captureStackTrace(t, u), t;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dqkaz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Keys", ()=>o);
+var o = ((r)=>(r.Space = " ", r.Enter = "Enter", r.Escape = "Escape", r.Backspace = "Backspace", r.Delete = "Delete", r.ArrowLeft = "ArrowLeft", r.ArrowUp = "ArrowUp", r.ArrowRight = "ArrowRight", r.ArrowDown = "ArrowDown", r.Home = "Home", r.End = "End", r.PageUp = "PageUp", r.PageDown = "PageDown", r.Tab = "Tab", r))(o || {});
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2jWr5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Focus", ()=>N);
+parcelHelpers.export(exports, "FocusResult", ()=>T);
+parcelHelpers.export(exports, "FocusableMode", ()=>h);
+parcelHelpers.export(exports, "focusElement", ()=>S);
+parcelHelpers.export(exports, "focusFrom", ()=>v);
+parcelHelpers.export(exports, "focusIn", ()=>P);
+parcelHelpers.export(exports, "getFocusableElements", ()=>E);
+parcelHelpers.export(exports, "isFocusableElement", ()=>w);
+parcelHelpers.export(exports, "restoreFocusIfNecessary", ()=>_);
+parcelHelpers.export(exports, "sortByDomNode", ()=>O);
+var _vue = require("vue");
+var _matchJs = require("./match.js");
+var _ownerJs = require("./owner.js");
+let c = [
+    "[contentEditable=true]",
+    "[tabindex]",
+    "a[href]",
+    "area[href]",
+    "button:not([disabled])",
+    "iframe",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])"
+].map((e)=>`${e}:not([tabindex='-1'])`).join(",");
+var N = ((n)=>(n[n.First = 1] = "First", n[n.Previous = 2] = "Previous", n[n.Next = 4] = "Next", n[n.Last = 8] = "Last", n[n.WrapAround = 16] = "WrapAround", n[n.NoScroll = 32] = "NoScroll", n))(N || {}), T = ((o)=>(o[o.Error = 0] = "Error", o[o.Overflow = 1] = "Overflow", o[o.Success = 2] = "Success", o[o.Underflow = 3] = "Underflow", o))(T || {}), F = ((t)=>(t[t.Previous = -1] = "Previous", t[t.Next = 1] = "Next", t))(F || {});
+function E(e = document.body) {
+    return e == null ? [] : Array.from(e.querySelectorAll(c)).sort((r, t)=>Math.sign((r.tabIndex || Number.MAX_SAFE_INTEGER) - (t.tabIndex || Number.MAX_SAFE_INTEGER)));
+}
+var h = ((t)=>(t[t.Strict = 0] = "Strict", t[t.Loose = 1] = "Loose", t))(h || {});
+function w(e, r = 0) {
+    var t;
+    return e === ((t = (0, _ownerJs.getOwnerDocument)(e)) == null ? void 0 : t.body) ? !1 : (0, _matchJs.match)(r, {
+        [0] () {
+            return e.matches(c);
+        },
+        [1] () {
+            let l = e;
+            for(; l !== null;){
+                if (l.matches(c)) return !0;
+                l = l.parentElement;
+            }
+            return !1;
+        }
+    });
+}
+function _(e) {
+    let r = (0, _ownerJs.getOwnerDocument)(e);
+    (0, _vue.nextTick)(()=>{
+        r && !w(r.activeElement, 0) && S(e);
+    });
+}
+var y = ((t)=>(t[t.Keyboard = 0] = "Keyboard", t[t.Mouse = 1] = "Mouse", t))(y || {});
+typeof window != "undefined" && typeof document != "undefined" && (document.addEventListener("keydown", (e)=>{
+    e.metaKey || e.altKey || e.ctrlKey || (document.documentElement.dataset.headlessuiFocusVisible = "");
+}, !0), document.addEventListener("click", (e)=>{
+    e.detail === 1 ? delete document.documentElement.dataset.headlessuiFocusVisible : e.detail === 0 && (document.documentElement.dataset.headlessuiFocusVisible = "");
+}, !0));
+function S(e) {
+    e == null || e.focus({
+        preventScroll: !0
+    });
+}
+let H = [
+    "textarea",
+    "input"
+].join(",");
+function I(e) {
+    var r, t;
+    return (t = (r = e == null ? void 0 : e.matches) == null ? void 0 : r.call(e, H)) != null ? t : !1;
+}
+function O(e, r = (t)=>t) {
+    return e.slice().sort((t, l)=>{
+        let o = r(t), i = r(l);
+        if (o === null || i === null) return 0;
+        let n = o.compareDocumentPosition(i);
+        return n & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : n & Node.DOCUMENT_POSITION_PRECEDING ? 1 : 0;
+    });
+}
+function v(e, r) {
+    return P(E(), r, {
+        relativeTo: e
+    });
+}
+function P(e, r, { sorted: t = !0, relativeTo: l = null, skipElements: o = [] } = {}) {
+    var m;
+    let i = (m = Array.isArray(e) ? e.length > 0 ? e[0].ownerDocument : document : e == null ? void 0 : e.ownerDocument) != null ? m : document, n = Array.isArray(e) ? t ? O(e) : e : E(e);
+    o.length > 0 && n.length > 1 && (n = n.filter((s)=>!o.includes(s))), l = l != null ? l : i.activeElement;
+    let x = (()=>{
+        if (r & 5) return 1;
+        if (r & 10) return -1;
+        throw new Error("Missing Focus.First, Focus.Previous, Focus.Next or Focus.Last");
+    })(), p = (()=>{
+        if (r & 1) return 0;
+        if (r & 2) return Math.max(0, n.indexOf(l)) - 1;
+        if (r & 4) return Math.max(0, n.indexOf(l)) + 1;
+        if (r & 8) return n.length - 1;
+        throw new Error("Missing Focus.First, Focus.Previous, Focus.Next or Focus.Last");
+    })(), L = r & 32 ? {
+        preventScroll: !0
+    } : {}, a = 0, d = n.length, u;
+    do {
+        if (a >= d || a + d <= 0) return 0;
+        let s = p + a;
+        if (r & 16) s = (s + d) % d;
+        else {
+            if (s < 0) return 3;
+            if (s >= d) return 1;
+        }
+        u = n[s], u == null || u.focus(L), a += x;
+    }while (u !== i.activeElement);
+    return r & 6 && I(u) && u.select(), 2;
+}
+
+},{"vue":"gzxs9","./match.js":"8G4kV","./owner.js":"ipKxm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ipKxm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getOwnerDocument", ()=>i);
+var _domJs = require("./dom.js");
+var _envJs = require("./env.js");
+function i(r) {
+    if ((0, _envJs.env).isServer) return null;
+    if (r instanceof Node) return r.ownerDocument;
+    if (r != null && r.hasOwnProperty("value")) {
+        let n = (0, _domJs.dom)(r);
+        if (n) return n.ownerDocument;
+    }
+    return document;
+}
+
+},{"./dom.js":"i2zBi","./env.js":"fpO77","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fpO77":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "env", ()=>c);
+var i = Object.defineProperty;
+var d = (t, e, r)=>e in t ? i(t, e, {
+        enumerable: !0,
+        configurable: !0,
+        writable: !0,
+        value: r
+    }) : t[e] = r;
+var n = (t, e, r)=>(d(t, typeof e != "symbol" ? e + "" : e, r), r);
+class s {
+    constructor(){
+        n(this, "current", this.detect());
+        n(this, "currentId", 0);
+    }
+    set(e) {
+        this.current !== e && (this.currentId = 0, this.current = e);
+    }
+    reset() {
+        this.set(this.detect());
+    }
+    nextId() {
+        return ++this.currentId;
+    }
+    get isServer() {
+        return this.current === "server";
+    }
+    get isClient() {
+        return this.current === "client";
+    }
+    detect() {
+        return typeof window == "undefined" || typeof document == "undefined" ? "server" : "client";
+    }
+}
+let c = new s;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"20VYr":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "microTask", ()=>t);
+function t(e) {
+    typeof queueMicrotask == "function" ? queueMicrotask(e) : Promise.resolve().then(e).catch((o)=>setTimeout(()=>{
+            throw o;
+        }));
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8j2hI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AcademicCapIcon", ()=>(0, _academicCapIconJsDefault.default));
@@ -12334,934 +13262,6 @@ function diffYears(dateA, dateB) {
     return r == 0 ? 0 : r;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dO8ba":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Portal", ()=>(0, _portalJs.Portal));
-parcelHelpers.export(exports, "PortalGroup", ()=>(0, _portalJs.PortalGroup));
-parcelHelpers.export(exports, "provideUseId", ()=>(0, _useIdJs.provideUseId));
-var _comboboxJs = require("./components/combobox/combobox.js");
-parcelHelpers.exportAll(_comboboxJs, exports);
-var _dialogJs = require("./components/dialog/dialog.js");
-parcelHelpers.exportAll(_dialogJs, exports);
-var _disclosureJs = require("./components/disclosure/disclosure.js");
-parcelHelpers.exportAll(_disclosureJs, exports);
-var _focusTrapJs = require("./components/focus-trap/focus-trap.js");
-parcelHelpers.exportAll(_focusTrapJs, exports);
-var _listboxJs = require("./components/listbox/listbox.js");
-parcelHelpers.exportAll(_listboxJs, exports);
-var _menuJs = require("./components/menu/menu.js");
-parcelHelpers.exportAll(_menuJs, exports);
-var _popoverJs = require("./components/popover/popover.js");
-parcelHelpers.exportAll(_popoverJs, exports);
-var _portalJs = require("./components/portal/portal.js");
-var _radioGroupJs = require("./components/radio-group/radio-group.js");
-parcelHelpers.exportAll(_radioGroupJs, exports);
-var _switchJs = require("./components/switch/switch.js");
-parcelHelpers.exportAll(_switchJs, exports);
-var _tabsJs = require("./components/tabs/tabs.js");
-parcelHelpers.exportAll(_tabsJs, exports);
-var _transitionJs = require("./components/transitions/transition.js");
-parcelHelpers.exportAll(_transitionJs, exports);
-var _useIdJs = require("./hooks/use-id.js");
-
-},{"./components/combobox/combobox.js":false,"./components/dialog/dialog.js":false,"./components/disclosure/disclosure.js":false,"./components/focus-trap/focus-trap.js":false,"./components/listbox/listbox.js":false,"./components/menu/menu.js":false,"./components/popover/popover.js":false,"./components/portal/portal.js":false,"./components/radio-group/radio-group.js":false,"./components/switch/switch.js":false,"./components/tabs/tabs.js":"dv8Sp","./components/transitions/transition.js":false,"./hooks/use-id.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dv8Sp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Tab", ()=>xe);
-parcelHelpers.export(exports, "TabGroup", ()=>me);
-parcelHelpers.export(exports, "TabList", ()=>pe);
-parcelHelpers.export(exports, "TabPanel", ()=>ye);
-parcelHelpers.export(exports, "TabPanels", ()=>Ie);
-var _vue = require("vue");
-var _useIdJs = require("../../hooks/use-id.js");
-var _useResolveButtonTypeJs = require("../../hooks/use-resolve-button-type.js");
-var _focusSentinelJs = require("../../internal/focus-sentinel.js");
-var _hiddenJs = require("../../internal/hidden.js");
-var _keyboardJs = require("../../keyboard.js");
-var _domJs = require("../../utils/dom.js");
-var _focusManagementJs = require("../../utils/focus-management.js");
-var _matchJs = require("../../utils/match.js");
-var _microTaskJs = require("../../utils/micro-task.js");
-var _ownerJs = require("../../utils/owner.js");
-var _renderJs = require("../../utils/render.js");
-var te = ((s)=>(s[s.Forwards = 0] = "Forwards", s[s.Backwards = 1] = "Backwards", s))(te || {}), le = ((d)=>(d[d.Less = -1] = "Less", d[d.Equal = 0] = "Equal", d[d.Greater = 1] = "Greater", d))(le || {});
-let U = Symbol("TabsContext");
-function C(a) {
-    let b = (0, _vue.inject)(U, null);
-    if (b === null) {
-        let s = new Error(`<${a} /> is missing a parent <TabGroup /> component.`);
-        throw Error.captureStackTrace && Error.captureStackTrace(s, C), s;
-    }
-    return b;
-}
-let G = Symbol("TabsSSRContext"), me = (0, _vue.defineComponent)({
-    name: "TabGroup",
-    emits: {
-        change: (a)=>!0
-    },
-    props: {
-        as: {
-            type: [
-                Object,
-                String
-            ],
-            default: "template"
-        },
-        selectedIndex: {
-            type: [
-                Number
-            ],
-            default: null
-        },
-        defaultIndex: {
-            type: [
-                Number
-            ],
-            default: 0
-        },
-        vertical: {
-            type: [
-                Boolean
-            ],
-            default: !1
-        },
-        manual: {
-            type: [
-                Boolean
-            ],
-            default: !1
-        }
-    },
-    inheritAttrs: !1,
-    setup (a, { slots: b, attrs: s, emit: d }) {
-        var E;
-        let i = (0, _vue.ref)((E = a.selectedIndex) != null ? E : a.defaultIndex), l = (0, _vue.ref)([]), r = (0, _vue.ref)([]), p = (0, _vue.computed)(()=>a.selectedIndex !== null), R = (0, _vue.computed)(()=>p.value ? a.selectedIndex : i.value);
-        function y(t) {
-            var c;
-            let n = (0, _focusManagementJs.sortByDomNode)(u.tabs.value, (0, _domJs.dom)), o = (0, _focusManagementJs.sortByDomNode)(u.panels.value, (0, _domJs.dom)), e = n.filter((I)=>{
-                var m;
-                return !((m = (0, _domJs.dom)(I)) != null && m.hasAttribute("disabled"));
-            });
-            if (t < 0 || t > n.length - 1) {
-                let I = (0, _matchJs.match)(i.value === null ? 0 : Math.sign(t - i.value), {
-                    [-1]: ()=>1,
-                    [0]: ()=>(0, _matchJs.match)(Math.sign(t), {
-                            [-1]: ()=>0,
-                            [0]: ()=>0,
-                            [1]: ()=>1
-                        }),
-                    [1]: ()=>0
-                }), m = (0, _matchJs.match)(I, {
-                    [0]: ()=>n.indexOf(e[0]),
-                    [1]: ()=>n.indexOf(e[e.length - 1])
-                });
-                m !== -1 && (i.value = m), u.tabs.value = n, u.panels.value = o;
-            } else {
-                let I = n.slice(0, t), h = [
-                    ...n.slice(t),
-                    ...I
-                ].find((W)=>e.includes(W));
-                if (!h) return;
-                let O = (c = n.indexOf(h)) != null ? c : u.selectedIndex.value;
-                O === -1 && (O = u.selectedIndex.value), i.value = O, u.tabs.value = n, u.panels.value = o;
-            }
-        }
-        let u = {
-            selectedIndex: (0, _vue.computed)(()=>{
-                var t, n;
-                return (n = (t = i.value) != null ? t : a.defaultIndex) != null ? n : null;
-            }),
-            orientation: (0, _vue.computed)(()=>a.vertical ? "vertical" : "horizontal"),
-            activation: (0, _vue.computed)(()=>a.manual ? "manual" : "auto"),
-            tabs: l,
-            panels: r,
-            setSelectedIndex (t) {
-                R.value !== t && d("change", t), p.value || y(t);
-            },
-            registerTab (t) {
-                var o;
-                if (l.value.includes(t)) return;
-                let n = l.value[i.value];
-                if (l.value.push(t), l.value = (0, _focusManagementJs.sortByDomNode)(l.value, (0, _domJs.dom)), !p.value) {
-                    let e = (o = l.value.indexOf(n)) != null ? o : i.value;
-                    e !== -1 && (i.value = e);
-                }
-            },
-            unregisterTab (t) {
-                let n = l.value.indexOf(t);
-                n !== -1 && l.value.splice(n, 1);
-            },
-            registerPanel (t) {
-                r.value.includes(t) || (r.value.push(t), r.value = (0, _focusManagementJs.sortByDomNode)(r.value, (0, _domJs.dom)));
-            },
-            unregisterPanel (t) {
-                let n = r.value.indexOf(t);
-                n !== -1 && r.value.splice(n, 1);
-            }
-        };
-        (0, _vue.provide)(U, u);
-        let T = (0, _vue.ref)({
-            tabs: [],
-            panels: []
-        }), x = (0, _vue.ref)(!1);
-        (0, _vue.onMounted)(()=>{
-            x.value = !0;
-        }), (0, _vue.provide)(G, (0, _vue.computed)(()=>x.value ? null : T.value));
-        let w = (0, _vue.computed)(()=>a.selectedIndex);
-        return (0, _vue.onMounted)(()=>{
-            (0, _vue.watch)([
-                w
-            ], ()=>{
-                var t;
-                return y((t = a.selectedIndex) != null ? t : a.defaultIndex);
-            }, {
-                immediate: !0
-            });
-        }), (0, _vue.watchEffect)(()=>{
-            if (!p.value || R.value == null || u.tabs.value.length <= 0) return;
-            let t = (0, _focusManagementJs.sortByDomNode)(u.tabs.value, (0, _domJs.dom));
-            t.some((o, e)=>(0, _domJs.dom)(u.tabs.value[e]) !== (0, _domJs.dom)(o)) && u.setSelectedIndex(t.findIndex((o)=>(0, _domJs.dom)(o) === (0, _domJs.dom)(u.tabs.value[R.value])));
-        }), ()=>{
-            let t = {
-                selectedIndex: i.value
-            };
-            return (0, _vue.h)((0, _vue.Fragment), [
-                l.value.length <= 0 && (0, _vue.h)((0, _focusSentinelJs.FocusSentinel), {
-                    onFocus: ()=>{
-                        for (let n of l.value){
-                            let o = (0, _domJs.dom)(n);
-                            if ((o == null ? void 0 : o.tabIndex) === 0) return o.focus(), !0;
-                        }
-                        return !1;
-                    }
-                }),
-                (0, _renderJs.render)({
-                    theirProps: {
-                        ...s,
-                        ...(0, _renderJs.omit)(a, [
-                            "selectedIndex",
-                            "defaultIndex",
-                            "manual",
-                            "vertical",
-                            "onChange"
-                        ])
-                    },
-                    ourProps: {},
-                    slot: t,
-                    slots: b,
-                    attrs: s,
-                    name: "TabGroup"
-                })
-            ]);
-        };
-    }
-}), pe = (0, _vue.defineComponent)({
-    name: "TabList",
-    props: {
-        as: {
-            type: [
-                Object,
-                String
-            ],
-            default: "div"
-        }
-    },
-    setup (a, { attrs: b, slots: s }) {
-        let d = C("TabList");
-        return ()=>{
-            let i = {
-                selectedIndex: d.selectedIndex.value
-            }, l = {
-                role: "tablist",
-                "aria-orientation": d.orientation.value
-            };
-            return (0, _renderJs.render)({
-                ourProps: l,
-                theirProps: a,
-                slot: i,
-                attrs: b,
-                slots: s,
-                name: "TabList"
-            });
-        };
-    }
-}), xe = (0, _vue.defineComponent)({
-    name: "Tab",
-    props: {
-        as: {
-            type: [
-                Object,
-                String
-            ],
-            default: "button"
-        },
-        disabled: {
-            type: [
-                Boolean
-            ],
-            default: !1
-        },
-        id: {
-            type: String,
-            default: null
-        }
-    },
-    setup (a, { attrs: b, slots: s, expose: d }) {
-        var o;
-        let i = (o = a.id) != null ? o : `headlessui-tabs-tab-${(0, _useIdJs.useId)()}`, l = C("Tab"), r = (0, _vue.ref)(null);
-        d({
-            el: r,
-            $el: r
-        }), (0, _vue.onMounted)(()=>l.registerTab(r)), (0, _vue.onUnmounted)(()=>l.unregisterTab(r));
-        let p = (0, _vue.inject)(G), R = (0, _vue.computed)(()=>{
-            if (p.value) {
-                let e = p.value.tabs.indexOf(i);
-                return e === -1 ? p.value.tabs.push(i) - 1 : e;
-            }
-            return -1;
-        }), y = (0, _vue.computed)(()=>{
-            let e = l.tabs.value.indexOf(r);
-            return e === -1 ? R.value : e;
-        }), u = (0, _vue.computed)(()=>y.value === l.selectedIndex.value);
-        function T(e) {
-            var I;
-            let c = e();
-            if (c === (0, _focusManagementJs.FocusResult).Success && l.activation.value === "auto") {
-                let m = (I = (0, _ownerJs.getOwnerDocument)(r)) == null ? void 0 : I.activeElement, h = l.tabs.value.findIndex((O)=>(0, _domJs.dom)(O) === m);
-                h !== -1 && l.setSelectedIndex(h);
-            }
-            return c;
-        }
-        function x(e) {
-            let c = l.tabs.value.map((m)=>(0, _domJs.dom)(m)).filter(Boolean);
-            if (e.key === (0, _keyboardJs.Keys).Space || e.key === (0, _keyboardJs.Keys).Enter) {
-                e.preventDefault(), e.stopPropagation(), l.setSelectedIndex(y.value);
-                return;
-            }
-            switch(e.key){
-                case (0, _keyboardJs.Keys).Home:
-                case (0, _keyboardJs.Keys).PageUp:
-                    return e.preventDefault(), e.stopPropagation(), T(()=>(0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).First));
-                case (0, _keyboardJs.Keys).End:
-                case (0, _keyboardJs.Keys).PageDown:
-                    return e.preventDefault(), e.stopPropagation(), T(()=>(0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Last));
-            }
-            if (T(()=>(0, _matchJs.match)(l.orientation.value, {
-                    vertical () {
-                        return e.key === (0, _keyboardJs.Keys).ArrowUp ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Previous | (0, _focusManagementJs.Focus).WrapAround) : e.key === (0, _keyboardJs.Keys).ArrowDown ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Next | (0, _focusManagementJs.Focus).WrapAround) : (0, _focusManagementJs.FocusResult).Error;
-                    },
-                    horizontal () {
-                        return e.key === (0, _keyboardJs.Keys).ArrowLeft ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Previous | (0, _focusManagementJs.Focus).WrapAround) : e.key === (0, _keyboardJs.Keys).ArrowRight ? (0, _focusManagementJs.focusIn)(c, (0, _focusManagementJs.Focus).Next | (0, _focusManagementJs.Focus).WrapAround) : (0, _focusManagementJs.FocusResult).Error;
-                    }
-                })) === (0, _focusManagementJs.FocusResult).Success) return e.preventDefault();
-        }
-        let w = (0, _vue.ref)(!1);
-        function E() {
-            var e;
-            w.value || (w.value = !0, !a.disabled && ((e = (0, _domJs.dom)(r)) == null || e.focus({
-                preventScroll: !0
-            }), l.setSelectedIndex(y.value), (0, _microTaskJs.microTask)(()=>{
-                w.value = !1;
-            })));
-        }
-        function t(e) {
-            e.preventDefault();
-        }
-        let n = (0, _useResolveButtonTypeJs.useResolveButtonType)((0, _vue.computed)(()=>({
-                as: a.as,
-                type: b.type
-            })), r);
-        return ()=>{
-            var m, h;
-            let e = {
-                selected: u.value,
-                disabled: (m = a.disabled) != null ? m : !1
-            }, { ...c } = a, I = {
-                ref: r,
-                onKeydown: x,
-                onMousedown: t,
-                onClick: E,
-                id: i,
-                role: "tab",
-                type: n.value,
-                "aria-controls": (h = (0, _domJs.dom)(l.panels.value[y.value])) == null ? void 0 : h.id,
-                "aria-selected": u.value,
-                tabIndex: u.value ? 0 : -1,
-                disabled: a.disabled ? !0 : void 0
-            };
-            return (0, _renderJs.render)({
-                ourProps: I,
-                theirProps: c,
-                slot: e,
-                attrs: b,
-                slots: s,
-                name: "Tab"
-            });
-        };
-    }
-}), Ie = (0, _vue.defineComponent)({
-    name: "TabPanels",
-    props: {
-        as: {
-            type: [
-                Object,
-                String
-            ],
-            default: "div"
-        }
-    },
-    setup (a, { slots: b, attrs: s }) {
-        let d = C("TabPanels");
-        return ()=>{
-            let i = {
-                selectedIndex: d.selectedIndex.value
-            };
-            return (0, _renderJs.render)({
-                theirProps: a,
-                ourProps: {},
-                slot: i,
-                attrs: s,
-                slots: b,
-                name: "TabPanels"
-            });
-        };
-    }
-}), ye = (0, _vue.defineComponent)({
-    name: "TabPanel",
-    props: {
-        as: {
-            type: [
-                Object,
-                String
-            ],
-            default: "div"
-        },
-        static: {
-            type: Boolean,
-            default: !1
-        },
-        unmount: {
-            type: Boolean,
-            default: !0
-        },
-        id: {
-            type: String,
-            default: null
-        },
-        tabIndex: {
-            type: Number,
-            default: 0
-        }
-    },
-    setup (a, { attrs: b, slots: s, expose: d }) {
-        var T;
-        let i = (T = a.id) != null ? T : `headlessui-tabs-panel-${(0, _useIdJs.useId)()}`, l = C("TabPanel"), r = (0, _vue.ref)(null);
-        d({
-            el: r,
-            $el: r
-        }), (0, _vue.onMounted)(()=>l.registerPanel(r)), (0, _vue.onUnmounted)(()=>l.unregisterPanel(r));
-        let p = (0, _vue.inject)(G), R = (0, _vue.computed)(()=>{
-            if (p.value) {
-                let x = p.value.panels.indexOf(i);
-                return x === -1 ? p.value.panels.push(i) - 1 : x;
-            }
-            return -1;
-        }), y = (0, _vue.computed)(()=>{
-            let x = l.panels.value.indexOf(r);
-            return x === -1 ? R.value : x;
-        }), u = (0, _vue.computed)(()=>y.value === l.selectedIndex.value);
-        return ()=>{
-            var n;
-            let x = {
-                selected: u.value
-            }, { tabIndex: w, ...E } = a, t = {
-                ref: r,
-                id: i,
-                role: "tabpanel",
-                "aria-labelledby": (n = (0, _domJs.dom)(l.tabs.value[y.value])) == null ? void 0 : n.id,
-                tabIndex: u.value ? w : -1
-            };
-            return !u.value && a.unmount && !a.static ? (0, _vue.h)((0, _hiddenJs.Hidden), {
-                as: "span",
-                "aria-hidden": !0,
-                ...t
-            }) : (0, _renderJs.render)({
-                ourProps: t,
-                theirProps: E,
-                slot: x,
-                attrs: b,
-                slots: s,
-                features: (0, _renderJs.Features).Static | (0, _renderJs.Features).RenderStrategy,
-                visible: u.value,
-                name: "TabPanel"
-            });
-        };
-    }
-});
-
-},{"vue":"gzxs9","../../hooks/use-id.js":"3Y3LU","../../hooks/use-resolve-button-type.js":"6FSb5","../../internal/focus-sentinel.js":"3HKOX","../../internal/hidden.js":"74O43","../../keyboard.js":"dqkaz","../../utils/dom.js":"i2zBi","../../utils/focus-management.js":"2jWr5","../../utils/match.js":"8G4kV","../../utils/micro-task.js":"20VYr","../../utils/owner.js":"ipKxm","../../utils/render.js":"fUA5q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3Y3LU":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "provideUseId", ()=>l);
-parcelHelpers.export(exports, "useId", ()=>I);
-var _vue = require("vue");
-let t = Symbol("headlessui.useid"), i = 0;
-function I() {
-    return (0, _vue.inject)(t, ()=>`${++i}`)();
-}
-function l(e) {
-    (0, _vue.provide)(t, e);
-}
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6FSb5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useResolveButtonType", ()=>s);
-var _vue = require("vue");
-var _domJs = require("../utils/dom.js");
-function r(t, e) {
-    if (t) return t;
-    let n = e != null ? e : "button";
-    if (typeof n == "string" && n.toLowerCase() === "button") return "button";
-}
-function s(t, e) {
-    let n = (0, _vue.ref)(r(t.value.type, t.value.as));
-    return (0, _vue.onMounted)(()=>{
-        n.value = r(t.value.type, t.value.as);
-    }), (0, _vue.watchEffect)(()=>{
-        var u;
-        n.value || (0, _domJs.dom)(e) && (0, _domJs.dom)(e) instanceof HTMLButtonElement && !((u = (0, _domJs.dom)(e)) != null && u.hasAttribute("type")) && (n.value = "button");
-    }), n;
-}
-
-},{"vue":"gzxs9","../utils/dom.js":"i2zBi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i2zBi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "dom", ()=>o);
-function o(e) {
-    var l;
-    if (e == null || e.value == null) return null;
-    let n = (l = e.value.$el) != null ? l : e.value;
-    return n instanceof Node ? n : null;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3HKOX":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "FocusSentinel", ()=>d);
-var _vue = require("vue");
-var _hiddenJs = require("./hidden.js");
-let d = (0, _vue.defineComponent)({
-    props: {
-        onFocus: {
-            type: Function,
-            required: !0
-        }
-    },
-    setup (t) {
-        let n = (0, _vue.ref)(!0);
-        return ()=>n.value ? (0, _vue.h)((0, _hiddenJs.Hidden), {
-                as: "button",
-                type: "button",
-                features: (0, _hiddenJs.Features).Focusable,
-                onFocus (o) {
-                    o.preventDefault();
-                    let e, a = 50;
-                    function r() {
-                        var u;
-                        if (a-- <= 0) {
-                            e && cancelAnimationFrame(e);
-                            return;
-                        }
-                        if ((u = t.onFocus) != null && u.call(t)) {
-                            n.value = !1, cancelAnimationFrame(e);
-                            return;
-                        }
-                        e = requestAnimationFrame(r);
-                    }
-                    e = requestAnimationFrame(r);
-                }
-            }) : null;
-    }
-});
-
-},{"vue":"gzxs9","./hidden.js":"74O43","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"74O43":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Features", ()=>u);
-parcelHelpers.export(exports, "Hidden", ()=>f);
-var _vue = require("vue");
-var _renderJs = require("../utils/render.js");
-var u = ((e)=>(e[e.None = 1] = "None", e[e.Focusable = 2] = "Focusable", e[e.Hidden = 4] = "Hidden", e))(u || {});
-let f = (0, _vue.defineComponent)({
-    name: "Hidden",
-    props: {
-        as: {
-            type: [
-                Object,
-                String
-            ],
-            default: "div"
-        },
-        features: {
-            type: Number,
-            default: 1
-        }
-    },
-    setup (t, { slots: n, attrs: i }) {
-        return ()=>{
-            var r;
-            let { features: e, ...d } = t, o = {
-                "aria-hidden": (e & 2) === 2 ? !0 : (r = d["aria-hidden"]) != null ? r : void 0,
-                hidden: (e & 4) === 4 ? !0 : void 0,
-                style: {
-                    position: "fixed",
-                    top: 1,
-                    left: 1,
-                    width: 1,
-                    height: 0,
-                    padding: 0,
-                    margin: -1,
-                    overflow: "hidden",
-                    clip: "rect(0, 0, 0, 0)",
-                    whiteSpace: "nowrap",
-                    borderWidth: "0",
-                    ...(e & 4) === 4 && (e & 2) !== 2 && {
-                        display: "none"
-                    }
-                }
-            };
-            return (0, _renderJs.render)({
-                ourProps: o,
-                theirProps: d,
-                slot: {},
-                attrs: i,
-                slots: n,
-                name: "Hidden"
-            });
-        };
-    }
-});
-
-},{"vue":"gzxs9","../utils/render.js":"fUA5q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fUA5q":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Features", ()=>N);
-parcelHelpers.export(exports, "RenderStrategy", ()=>S);
-parcelHelpers.export(exports, "compact", ()=>E);
-parcelHelpers.export(exports, "omit", ()=>T);
-parcelHelpers.export(exports, "render", ()=>A);
-var _vue = require("vue");
-var _matchJs = require("./match.js");
-var N = ((o)=>(o[o.None = 0] = "None", o[o.RenderStrategy = 1] = "RenderStrategy", o[o.Static = 2] = "Static", o))(N || {}), S = ((e)=>(e[e.Unmount = 0] = "Unmount", e[e.Hidden = 1] = "Hidden", e))(S || {});
-function A({ visible: r = !0, features: t = 0, ourProps: e, theirProps: o, ...i }) {
-    var a;
-    let n = j(o, e), l = Object.assign(i, {
-        props: n
-    });
-    if (r || t & 2 && n.static) return y(l);
-    if (t & 1) {
-        let d = (a = n.unmount) == null || a ? 0 : 1;
-        return (0, _matchJs.match)(d, {
-            [0] () {
-                return null;
-            },
-            [1] () {
-                return y({
-                    ...i,
-                    props: {
-                        ...n,
-                        hidden: !0,
-                        style: {
-                            display: "none"
-                        }
-                    }
-                });
-            }
-        });
-    }
-    return y(l);
-}
-function y({ props: r, attrs: t, slots: e, slot: o, name: i }) {
-    var m, h;
-    let { as: n, ...l } = T(r, [
-        "unmount",
-        "static"
-    ]), a = (m = e.default) == null ? void 0 : m.call(e, o), d = {};
-    if (o) {
-        let u = !1, c = [];
-        for (let [p, f] of Object.entries(o))typeof f == "boolean" && (u = !0), f === !0 && c.push(p);
-        u && (d["data-headlessui-state"] = c.join(" "));
-    }
-    if (n === "template") {
-        if (a = b(a != null ? a : []), Object.keys(l).length > 0 || Object.keys(t).length > 0) {
-            let [u, ...c] = a != null ? a : [];
-            if (!v(u) || c.length > 0) throw new Error([
-                'Passing props on "template"!',
-                "",
-                `The current component <${i} /> is rendering a "template".`,
-                "However we need to passthrough the following props:",
-                Object.keys(l).concat(Object.keys(t)).map((s)=>s.trim()).filter((s, g, R)=>R.indexOf(s) === g).sort((s, g)=>s.localeCompare(g)).map((s)=>`  - ${s}`).join(`
-`),
-                "",
-                "You can apply a few solutions:",
-                [
-                    'Add an `as="..."` prop, to ensure that we render an actual element instead of a "template".',
-                    "Render a single element as the child so that we can forward the props onto that element."
-                ].map((s)=>`  - ${s}`).join(`
-`)
-            ].join(`
-`));
-            let p = j((h = u.props) != null ? h : {}, l, d), f = (0, _vue.cloneVNode)(u, p, !0);
-            for(let s in p)s.startsWith("on") && (f.props || (f.props = {}), f.props[s] = p[s]);
-            return f;
-        }
-        return Array.isArray(a) && a.length === 1 ? a[0] : a;
-    }
-    return (0, _vue.h)(n, Object.assign({}, l, d), {
-        default: ()=>a
-    });
-}
-function b(r) {
-    return r.flatMap((t)=>t.type === (0, _vue.Fragment) ? b(t.children) : [
-            t
-        ]);
-}
-function j(...r) {
-    var o;
-    if (r.length === 0) return {};
-    if (r.length === 1) return r[0];
-    let t = {}, e = {};
-    for (let i of r)for(let n in i)n.startsWith("on") && typeof i[n] == "function" ? ((o = e[n]) != null || (e[n] = []), e[n].push(i[n])) : t[n] = i[n];
-    if (t.disabled || t["aria-disabled"]) return Object.assign(t, Object.fromEntries(Object.keys(e).map((i)=>[
-            i,
-            void 0
-        ])));
-    for(let i in e)Object.assign(t, {
-        [i] (n, ...l) {
-            let a = e[i];
-            for (let d of a){
-                if (n instanceof Event && n.defaultPrevented) return;
-                d(n, ...l);
-            }
-        }
-    });
-    return t;
-}
-function E(r) {
-    let t = Object.assign({}, r);
-    for(let e in t)t[e] === void 0 && delete t[e];
-    return t;
-}
-function T(r, t = []) {
-    let e = Object.assign({}, r);
-    for (let o of t)o in e && delete e[o];
-    return e;
-}
-function v(r) {
-    return r == null ? !1 : typeof r.type == "string" || typeof r.type == "object" || typeof r.type == "function";
-}
-
-},{"vue":"gzxs9","./match.js":"8G4kV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8G4kV":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "match", ()=>u);
-function u(r, n, ...a) {
-    if (r in n) {
-        let e = n[r];
-        return typeof e == "function" ? e(...a) : e;
-    }
-    let t = new Error(`Tried to handle "${r}" but there is no handler defined. Only defined handlers are: ${Object.keys(n).map((e)=>`"${e}"`).join(", ")}.`);
-    throw Error.captureStackTrace && Error.captureStackTrace(t, u), t;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dqkaz":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Keys", ()=>o);
-var o = ((r)=>(r.Space = " ", r.Enter = "Enter", r.Escape = "Escape", r.Backspace = "Backspace", r.Delete = "Delete", r.ArrowLeft = "ArrowLeft", r.ArrowUp = "ArrowUp", r.ArrowRight = "ArrowRight", r.ArrowDown = "ArrowDown", r.Home = "Home", r.End = "End", r.PageUp = "PageUp", r.PageDown = "PageDown", r.Tab = "Tab", r))(o || {});
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2jWr5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Focus", ()=>N);
-parcelHelpers.export(exports, "FocusResult", ()=>T);
-parcelHelpers.export(exports, "FocusableMode", ()=>h);
-parcelHelpers.export(exports, "focusElement", ()=>S);
-parcelHelpers.export(exports, "focusFrom", ()=>v);
-parcelHelpers.export(exports, "focusIn", ()=>P);
-parcelHelpers.export(exports, "getFocusableElements", ()=>E);
-parcelHelpers.export(exports, "isFocusableElement", ()=>w);
-parcelHelpers.export(exports, "restoreFocusIfNecessary", ()=>_);
-parcelHelpers.export(exports, "sortByDomNode", ()=>O);
-var _vue = require("vue");
-var _matchJs = require("./match.js");
-var _ownerJs = require("./owner.js");
-let c = [
-    "[contentEditable=true]",
-    "[tabindex]",
-    "a[href]",
-    "area[href]",
-    "button:not([disabled])",
-    "iframe",
-    "input:not([disabled])",
-    "select:not([disabled])",
-    "textarea:not([disabled])"
-].map((e)=>`${e}:not([tabindex='-1'])`).join(",");
-var N = ((n)=>(n[n.First = 1] = "First", n[n.Previous = 2] = "Previous", n[n.Next = 4] = "Next", n[n.Last = 8] = "Last", n[n.WrapAround = 16] = "WrapAround", n[n.NoScroll = 32] = "NoScroll", n))(N || {}), T = ((o)=>(o[o.Error = 0] = "Error", o[o.Overflow = 1] = "Overflow", o[o.Success = 2] = "Success", o[o.Underflow = 3] = "Underflow", o))(T || {}), F = ((t)=>(t[t.Previous = -1] = "Previous", t[t.Next = 1] = "Next", t))(F || {});
-function E(e = document.body) {
-    return e == null ? [] : Array.from(e.querySelectorAll(c)).sort((r, t)=>Math.sign((r.tabIndex || Number.MAX_SAFE_INTEGER) - (t.tabIndex || Number.MAX_SAFE_INTEGER)));
-}
-var h = ((t)=>(t[t.Strict = 0] = "Strict", t[t.Loose = 1] = "Loose", t))(h || {});
-function w(e, r = 0) {
-    var t;
-    return e === ((t = (0, _ownerJs.getOwnerDocument)(e)) == null ? void 0 : t.body) ? !1 : (0, _matchJs.match)(r, {
-        [0] () {
-            return e.matches(c);
-        },
-        [1] () {
-            let l = e;
-            for(; l !== null;){
-                if (l.matches(c)) return !0;
-                l = l.parentElement;
-            }
-            return !1;
-        }
-    });
-}
-function _(e) {
-    let r = (0, _ownerJs.getOwnerDocument)(e);
-    (0, _vue.nextTick)(()=>{
-        r && !w(r.activeElement, 0) && S(e);
-    });
-}
-var y = ((t)=>(t[t.Keyboard = 0] = "Keyboard", t[t.Mouse = 1] = "Mouse", t))(y || {});
-typeof window != "undefined" && typeof document != "undefined" && (document.addEventListener("keydown", (e)=>{
-    e.metaKey || e.altKey || e.ctrlKey || (document.documentElement.dataset.headlessuiFocusVisible = "");
-}, !0), document.addEventListener("click", (e)=>{
-    e.detail === 1 ? delete document.documentElement.dataset.headlessuiFocusVisible : e.detail === 0 && (document.documentElement.dataset.headlessuiFocusVisible = "");
-}, !0));
-function S(e) {
-    e == null || e.focus({
-        preventScroll: !0
-    });
-}
-let H = [
-    "textarea",
-    "input"
-].join(",");
-function I(e) {
-    var r, t;
-    return (t = (r = e == null ? void 0 : e.matches) == null ? void 0 : r.call(e, H)) != null ? t : !1;
-}
-function O(e, r = (t)=>t) {
-    return e.slice().sort((t, l)=>{
-        let o = r(t), i = r(l);
-        if (o === null || i === null) return 0;
-        let n = o.compareDocumentPosition(i);
-        return n & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : n & Node.DOCUMENT_POSITION_PRECEDING ? 1 : 0;
-    });
-}
-function v(e, r) {
-    return P(E(), r, {
-        relativeTo: e
-    });
-}
-function P(e, r, { sorted: t = !0, relativeTo: l = null, skipElements: o = [] } = {}) {
-    var m;
-    let i = (m = Array.isArray(e) ? e.length > 0 ? e[0].ownerDocument : document : e == null ? void 0 : e.ownerDocument) != null ? m : document, n = Array.isArray(e) ? t ? O(e) : e : E(e);
-    o.length > 0 && n.length > 1 && (n = n.filter((s)=>!o.includes(s))), l = l != null ? l : i.activeElement;
-    let x = (()=>{
-        if (r & 5) return 1;
-        if (r & 10) return -1;
-        throw new Error("Missing Focus.First, Focus.Previous, Focus.Next or Focus.Last");
-    })(), p = (()=>{
-        if (r & 1) return 0;
-        if (r & 2) return Math.max(0, n.indexOf(l)) - 1;
-        if (r & 4) return Math.max(0, n.indexOf(l)) + 1;
-        if (r & 8) return n.length - 1;
-        throw new Error("Missing Focus.First, Focus.Previous, Focus.Next or Focus.Last");
-    })(), L = r & 32 ? {
-        preventScroll: !0
-    } : {}, a = 0, d = n.length, u;
-    do {
-        if (a >= d || a + d <= 0) return 0;
-        let s = p + a;
-        if (r & 16) s = (s + d) % d;
-        else {
-            if (s < 0) return 3;
-            if (s >= d) return 1;
-        }
-        u = n[s], u == null || u.focus(L), a += x;
-    }while (u !== i.activeElement);
-    return r & 6 && I(u) && u.select(), 2;
-}
-
-},{"vue":"gzxs9","./match.js":"8G4kV","./owner.js":"ipKxm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ipKxm":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getOwnerDocument", ()=>i);
-var _domJs = require("./dom.js");
-var _envJs = require("./env.js");
-function i(r) {
-    if ((0, _envJs.env).isServer) return null;
-    if (r instanceof Node) return r.ownerDocument;
-    if (r != null && r.hasOwnProperty("value")) {
-        let n = (0, _domJs.dom)(r);
-        if (n) return n.ownerDocument;
-    }
-    return document;
-}
-
-},{"./dom.js":"i2zBi","./env.js":"fpO77","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fpO77":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "env", ()=>c);
-var i = Object.defineProperty;
-var d = (t, e, r)=>e in t ? i(t, e, {
-        enumerable: !0,
-        configurable: !0,
-        writable: !0,
-        value: r
-    }) : t[e] = r;
-var n = (t, e, r)=>(d(t, typeof e != "symbol" ? e + "" : e, r), r);
-class s {
-    constructor(){
-        n(this, "current", this.detect());
-        n(this, "currentId", 0);
-    }
-    set(e) {
-        this.current !== e && (this.currentId = 0, this.current = e);
-    }
-    reset() {
-        this.set(this.detect());
-    }
-    nextId() {
-        return ++this.currentId;
-    }
-    get isServer() {
-        return this.current === "server";
-    }
-    get isClient() {
-        return this.current === "client";
-    }
-    detect() {
-        return typeof window == "undefined" || typeof document == "undefined" ? "server" : "client";
-    }
-}
-let c = new s;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"20VYr":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "microTask", ()=>t);
-function t(e) {
-    typeof queueMicrotask == "function" ? queueMicrotask(e) : Promise.resolve().then(e).catch((o)=>setTimeout(()=>{
-            throw o;
-        }));
-}
-
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Zhue":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -13419,64 +13419,57 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                         ])),
                                     _: 1 /* STABLE */ 
                                 }),
-                                (0, _vue.createVNode)($setup["Tab"], {
-                                    class: "tabButton"
-                                }, {
-                                    default: (0, _vue.withCtx)(()=>[
-                                            (0, _vue.createElementVNode)("div", {
-                                                class: "flex gap-0.5"
-                                            }, [
-                                                _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("button", {
-                                                    id: "btn-add",
-                                                    title: "Add an Event",
-                                                    class: "h-6 w-6 border-none"
-                                                }, [
-                                                    (0, _vue.createElementVNode)("span", {
-                                                        class: "hidden"
-                                                    }, "Add Event"),
-                                                    (0, _vue.createElementVNode)("svg", {
-                                                        xmlns: "http://www.w3.org/2000/svg",
-                                                        fill: "none",
-                                                        viewBox: "0 0 24 24",
-                                                        "stroke-width": "2",
-                                                        stroke: "currentColor",
-                                                        class: "size-6"
-                                                    }, [
-                                                        (0, _vue.createElementVNode)("path", {
-                                                            "stroke-linecap": "round",
-                                                            "stroke-linejoin": "round",
-                                                            d: "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                        })
-                                                    ])
-                                                ], -1 /* HOISTED */ )),
-                                                (0, _vue.createElementVNode)("button", {
-                                                    id: "btn-update",
-                                                    title: "Update Events",
-                                                    class: "h-6 w-6",
-                                                    onClick: $setup.onUpdateEvents
-                                                }, _cache[2] || (_cache[2] = [
-                                                    (0, _vue.createElementVNode)("span", {
-                                                        class: "hidden"
-                                                    }, "Update Events", -1 /* HOISTED */ ),
-                                                    (0, _vue.createElementVNode)("svg", {
-                                                        xmlns: "http://www.w3.org/2000/svg",
-                                                        fill: "none",
-                                                        viewBox: "0 0 24 24",
-                                                        "stroke-width": "2",
-                                                        stroke: "currentColor",
-                                                        class: "size-6"
-                                                    }, [
-                                                        (0, _vue.createElementVNode)("path", {
-                                                            "stroke-linecap": "round",
-                                                            "stroke-linejoin": "round",
-                                                            d: "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
-                                                        })
-                                                    ], -1 /* HOISTED */ )
-                                                ]))
-                                            ])
-                                        ]),
-                                    _: 1 /* STABLE */ 
-                                })
+                                (0, _vue.createElementVNode)("div", {
+                                    class: "flex gap-0.5"
+                                }, [
+                                    (0, _vue.createElementVNode)("button", {
+                                        id: "btn-update",
+                                        title: "Update Events",
+                                        class: "h-6 w-6",
+                                        onClick: $setup.onUpdateEvents
+                                    }, _cache[2] || (_cache[2] = [
+                                        (0, _vue.createElementVNode)("span", {
+                                            class: "hidden"
+                                        }, "Update Events", -1 /* HOISTED */ ),
+                                        (0, _vue.createElementVNode)("svg", {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            fill: "none",
+                                            viewBox: "0 0 24 24",
+                                            "stroke-width": "2",
+                                            stroke: "currentColor",
+                                            class: "size-6"
+                                        }, [
+                                            (0, _vue.createElementVNode)("path", {
+                                                "stroke-linecap": "round",
+                                                "stroke-linejoin": "round",
+                                                d: "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                                            })
+                                        ], -1 /* HOISTED */ )
+                                    ])),
+                                    _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("button", {
+                                        id: "btn-add",
+                                        title: "Add an Event",
+                                        class: "h-6 w-6 border-none"
+                                    }, [
+                                        (0, _vue.createElementVNode)("span", {
+                                            class: "hidden"
+                                        }, "Add Event"),
+                                        (0, _vue.createElementVNode)("svg", {
+                                            xmlns: "http://www.w3.org/2000/svg",
+                                            fill: "none",
+                                            viewBox: "0 0 24 24",
+                                            "stroke-width": "2",
+                                            stroke: "currentColor",
+                                            class: "size-6"
+                                        }, [
+                                            (0, _vue.createElementVNode)("path", {
+                                                "stroke-linecap": "round",
+                                                "stroke-linejoin": "round",
+                                                d: "M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                            })
+                                        ])
+                                    ], -1 /* HOISTED */ ))
+                                ])
                             ]),
                         _: 1 /* STABLE */ 
                     }),
@@ -13689,7 +13682,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                 ])
                                                             ]),
                                                             (0, _vue.createElementVNode)("div", _hoisted_32, [
-                                                                $setup.calculateCountdown(event.dateEnd) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_33, [
+                                                                Math.abs($setup.calculateCountdown(event.dateEnd)) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_33, [
                                                                     (0, _vue.createElementVNode)("p", _hoisted_34, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
                                                                     _cache[24] || (_cache[24] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
