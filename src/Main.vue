@@ -131,7 +131,7 @@
             </section>
           </TabPanel>
           <TabPanel>
-            <section id="eventsList" class="flex flex-col gap-3 pt-3">
+            <section id="eventsList" class="flex gap-3 pt-3 flex-col-reverse">
               <div v-for="event in pastEvents" :key="event.id">
                 <section :class="`event-${event.id}`" class="event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
                   <div id="eventInfo">

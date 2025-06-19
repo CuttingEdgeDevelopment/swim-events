@@ -473,6 +473,10 @@ select {
   margin-left: .5rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .inline {
   display: inline;
 }
@@ -504,8 +508,16 @@ select {
   height: 1.5rem;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-6 {
   width: 1.5rem;
+}
+
+.grow {
+  flex-grow: 1;
 }
 
 @keyframes bounce {
@@ -526,6 +538,10 @@ select {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-col-reverse {
+  flex-direction: column-reverse;
 }
 
 .items-center {

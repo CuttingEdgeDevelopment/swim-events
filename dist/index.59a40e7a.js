@@ -13358,7 +13358,7 @@ const _hoisted_26 = {
 };
 const _hoisted_27 = {
     id: "eventsList",
-    class: "flex flex-col gap-3 pt-3"
+    class: "flex gap-3 pt-3 flex-col-reverse"
 };
 const _hoisted_28 = {
     id: "eventInfo"
