@@ -9965,18 +9965,15 @@ exports.default = {
         const date = (0, _tempo.format)(new Date(), "MMMM DD, YYYY");
         const day = (0, _tempo.format)(new Date(), "dddd");
         const events = (0, _vue.ref)([]);
-        function handleLogin() {
-            // we initially verify if a user is logged in with Supabase
-            (0, _store.store).state.user = (0, _supabaseClient.supabase).auth.getUser();
-            // we then set up a listener to update the store when the user changes either by logging in or out
-            (0, _supabaseClient.supabase).auth.onAuthStateChange((event, session)=>{
-                if (event == "SIGNED_OUT") (0, _store.store).state.user = null;
-                else (0, _store.store).state.user = session.user;
-            });
-            return {
-                store: (0, _store.store)
-            };
-        }
+        // Check if a user is logged in with Supabase
+        (0, _supabaseClient.supabase).auth.getUser().then(({ data: { user } })=>{
+            (0, _store.store).state.user = user;
+        });
+        // Set up a listener to update the store when the user changes
+        (0, _supabaseClient.supabase).auth.onAuthStateChange((event, session)=>{
+            if (event === "SIGNED_OUT") (0, _store.store).state.user = null;
+            else (0, _store.store).state.user = session?.user || null;
+        });
         async function fetchData() {
             const { data, error } = await (0, _supabaseClient.supabase).from("events").select("*").order("dateStart", {
                 ascending: true
@@ -9996,7 +9993,6 @@ exports.default = {
             date,
             day,
             events,
-            handleLogin,
             fetchData,
             Auth: (0, _authVueDefault.default),
             Header: (0, _headerVueDefault.default),
@@ -23294,15 +23290,24 @@ var _signUpVueDefault = parcelHelpers.interopDefault(_signUpVue);
 var _signInVue = require("./SignIn.vue");
 var _signInVueDefault = parcelHelpers.interopDefault(_signInVue);
 exports.default = {
-    components: {
-        SignUp: (0, _signUpVueDefault.default),
-        SignIn: (0, _signInVueDefault.default)
-    },
-    setup () {
+    __name: "Auth",
+    setup (__props, { expose: __expose }) {
+        __expose();
         const isSignUp = (0, _vue.ref)(true);
-        return {
-            isSignUp
+        const buttonLabel = (0, _vue.computed)(()=>isSignUp.value ? `<p>Already have an account? <span class="font-bold">Sign In</span></p>` : `<p>Don't have an account yet? <span class="font-bold">Sign Up</span></p>`);
+        const __returned__ = {
+            isSignUp,
+            buttonLabel,
+            ref: (0, _vue.ref),
+            computed: (0, _vue.computed),
+            SignUp: (0, _signUpVueDefault.default),
+            SignIn: (0, _signInVueDefault.default)
         };
+        Object.defineProperty(__returned__, "__isScriptSetup", {
+            enumerable: false,
+            value: true
+        });
+        return __returned__;
     }
 };
 
@@ -23542,18 +23547,23 @@ var _vue = require("vue");
 const _hoisted_1 = {
     class: "px-16 py-8"
 };
+const _hoisted_2 = [
+    "innerHTML"
+];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_sign_up = (0, _vue.resolveComponent)("sign-up");
-    const _component_sign_in = (0, _vue.resolveComponent)("sign-in");
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
-        $setup.isSignUp ? ((0, _vue.openBlock)(), (0, _vue.createBlock)(_component_sign_up, {
+        $setup.isSignUp ? ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["SignUp"], {
             key: 0
-        })) : ((0, _vue.openBlock)(), (0, _vue.createBlock)(_component_sign_in, {
+        })) : ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["SignIn"], {
             key: 1
         })),
         (0, _vue.createElementVNode)("button", {
             onClick: _cache[0] || (_cache[0] = ($event)=>$setup.isSignUp = !$setup.isSignUp)
-        }, (0, _vue.toDisplayString)($setup.isSignUp ? "Already have an account? Sign In" : "Don't have an account yet? Sign Up"), 1 /* TEXT */ )
+        }, [
+            (0, _vue.createElementVNode)("span", {
+                innerHTML: $setup.buttonLabel
+            }, null, 8 /* PROPS */ , _hoisted_2)
+        ])
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
@@ -23593,7 +23603,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "currentDate"
         ]),
         (0, _vue.createCommentVNode)(" Check if user is available in the store, if not show auth compoenent "),
-        (0, _vue.createVNode)($setup["Auth"]),
+        !$setup.store.state.user ? ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["Auth"], {
+            key: 0
+        })) : (0, _vue.createCommentVNode)("v-if", true),
         (0, _vue.createCommentVNode)(" If user is available, show the main component "),
         (0, _vue.createVNode)($setup["Main"], {
             events: $setup.events,

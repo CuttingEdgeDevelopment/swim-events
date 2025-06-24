@@ -1,17 +1,15 @@
-<script>
-import { ref } from "vue";
-import SignUp from "./SignUp.vue";
-import SignIn from "./SignIn.vue";
-export default {
-  components: { SignUp, SignIn },
-  setup() {
-    const isSignUp = ref(true);
+<script setup>
+  import { ref, computed } from "vue";
+  import SignUp from "./SignUp.vue";
+  import SignIn from "./SignIn.vue";
 
-    return {
-      isSignUp,
-    };
-  },
-};
+  const isSignUp = ref(true);
+
+  const buttonLabel = computed(() =>
+    isSignUp.value
+      ? `<p>Already have an account? <span class="font-bold">Sign In</span></p>`
+      : `<p>Don't have an account yet? <span class="font-bold">Sign Up</span></p>`
+  );
 </script>
 
 <template>
@@ -19,11 +17,7 @@ export default {
     <sign-up v-if="isSignUp" />
     <sign-in v-else />
     <button @click="isSignUp = !isSignUp">
-      {{
-        isSignUp
-          ? "Already have an account? Sign In"
-          : "Don't have an account yet? Sign Up"
-      }}
+      <span v-html="buttonLabel"></span>
     </button>
   </div>
 </template>
