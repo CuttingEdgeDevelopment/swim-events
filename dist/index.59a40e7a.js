@@ -13318,97 +13318,103 @@ const _hoisted_8 = [
     "title"
 ];
 const _hoisted_9 = {
+    key: 0
+};
+const _hoisted_10 = {
     id: "eventCountdown",
     class: "text-center"
 };
-const _hoisted_10 = {
+const _hoisted_11 = {
     key: 0
 };
-const _hoisted_11 = {
+const _hoisted_12 = {
     key: 1
 };
-const _hoisted_12 = {
+const _hoisted_13 = {
     key: 2
 };
-const _hoisted_13 = {
-    class: "text-7xl"
-};
 const _hoisted_14 = {
-    key: 3
+    class: "text-7xl"
 };
 const _hoisted_15 = {
-    class: "text-7xl"
+    key: 3
 };
 const _hoisted_16 = {
-    id: "eventInfo"
+    class: "text-7xl"
 };
 const _hoisted_17 = {
+    id: "eventInfo"
+};
+const _hoisted_18 = {
     key: 0,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_18 = {
+const _hoisted_19 = {
     key: 1,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_19 = [
+const _hoisted_20 = [
     "href",
     "title"
 ];
-const _hoisted_20 = {
-    id: "eventCountdown",
-    class: "text-center"
-};
 const _hoisted_21 = {
     key: 0
 };
 const _hoisted_22 = {
-    key: 1
+    id: "eventCountdown",
+    class: "text-center"
 };
 const _hoisted_23 = {
-    key: 2
+    key: 0
 };
 const _hoisted_24 = {
-    class: "text-7xl"
+    key: 1
 };
 const _hoisted_25 = {
-    key: 3
+    key: 2
 };
 const _hoisted_26 = {
     class: "text-7xl"
 };
 const _hoisted_27 = {
+    key: 3
+};
+const _hoisted_28 = {
+    class: "text-7xl"
+};
+const _hoisted_29 = {
     id: "eventsList",
     class: "flex gap-3 pt-3 flex-col-reverse"
 };
-const _hoisted_28 = {
+const _hoisted_30 = {
     id: "eventInfo"
 };
-const _hoisted_29 = {
+const _hoisted_31 = {
     key: 0,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_30 = {
+const _hoisted_32 = {
     key: 1,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_31 = [
+const _hoisted_33 = [
     "href",
     "title"
 ];
-const _hoisted_32 = {
+const _hoisted_34 = {
     id: "eventCountdown",
     class: "text-center"
 };
-const _hoisted_33 = {
+const _hoisted_35 = {
     key: 0
 };
-const _hoisted_34 = {
+const _hoisted_36 = {
     class: "text-7xl"
 };
-const _hoisted_35 = {
+const _hoisted_37 = {
     key: 1
 };
-const _hoisted_36 = {
+const _hoisted_38 = {
     class: "text-7xl"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -13554,28 +13560,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                 ])
                                                             ]),
-                                                            (0, _vue.createElementVNode)("div", _hoisted_9, [
-                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_10, [
+                                                            event.location.includes("SUI") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("span", _hoisted_9, [
+                                                                (0, _vue.createElementVNode)("div", {
+                                                                    class: (0, _vue.normalizeClass)([
+                                                                        "flag",
+                                                                        `event-${event.id}`
+                                                                    ])
+                                                                }, null, 2 /* CLASS */ )
+                                                            ])) : (0, _vue.createCommentVNode)("v-if", true),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_10, [
+                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, [
                                                                     (0, _vue.createVNode)($setup["FireIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
                                                                     }),
                                                                     _cache[10] || (_cache[10] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Ongoing!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, [
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, [
                                                                     (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
                                                                     }),
                                                                     _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Today is the day!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_13, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_13, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_14, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "day to go", -1 /* HOISTED */ ))
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_14, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_15, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_15, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_16, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "days to go", -1 /* HOISTED */ ))
@@ -13588,8 +13602,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                 "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                             ])
                                                         }, [
-                                                            (0, _vue.createElementVNode)("div", _hoisted_16, [
-                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_17, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_18, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_17, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_18, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_19, [
                                                                     (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
                                                                     (0, _vue.createElementVNode)("a", {
                                                                         href: event.link,
@@ -13600,7 +13614,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                         (0, _vue.createVNode)($setup["LinkIcon"], {
                                                                             class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
                                                                         })
-                                                                    ], 8 /* PROPS */ , _hoisted_19)
+                                                                    ], 8 /* PROPS */ , _hoisted_20)
                                                                 ])),
                                                                 (0, _vue.createElementVNode)("p", null, [
                                                                     _cache[14] || (_cache[14] = (0, _vue.createElementVNode)("span", {
@@ -13621,28 +13635,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                 ])
                                                             ]),
-                                                            (0, _vue.createElementVNode)("div", _hoisted_20, [
-                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_21, [
+                                                            event.location.includes("SUI") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("span", _hoisted_21, [
+                                                                (0, _vue.createElementVNode)("div", {
+                                                                    class: (0, _vue.normalizeClass)([
+                                                                        "flag",
+                                                                        `event-${event.id}`
+                                                                    ])
+                                                                }, null, 2 /* CLASS */ )
+                                                            ])) : (0, _vue.createCommentVNode)("v-if", true),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_22, [
+                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_23, [
                                                                     (0, _vue.createVNode)($setup["FireIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
                                                                     }),
                                                                     _cache[17] || (_cache[17] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Ongoing!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_22, [
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_24, [
                                                                     (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
                                                                     }),
                                                                     _cache[18] || (_cache[18] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Today is the day!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_23, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_24, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_25, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_26, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[19] || (_cache[19] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "day to go", -1 /* HOISTED */ ))
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_25, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_26, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_27, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_28, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[20] || (_cache[20] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "days to go", -1 /* HOISTED */ ))
@@ -13657,7 +13679,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                 }),
                                 (0, _vue.createVNode)($setup["TabPanel"], null, {
                                     default: (0, _vue.withCtx)(()=>[
-                                            (0, _vue.createElementVNode)("section", _hoisted_27, [
+                                            (0, _vue.createElementVNode)("section", _hoisted_29, [
                                                 ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.pastEvents, (event)=>{
                                                     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
                                                         key: event.id
@@ -13668,8 +13690,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                 "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                             ])
                                                         }, [
-                                                            (0, _vue.createElementVNode)("div", _hoisted_28, [
-                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_29, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_30, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_30, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_31, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_32, [
                                                                     (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
                                                                     (0, _vue.createElementVNode)("a", {
                                                                         href: event.link,
@@ -13680,7 +13702,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                         (0, _vue.createVNode)($setup["LinkIcon"], {
                                                                             class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
                                                                         })
-                                                                    ], 8 /* PROPS */ , _hoisted_31)
+                                                                    ], 8 /* PROPS */ , _hoisted_33)
                                                                 ])),
                                                                 (0, _vue.createElementVNode)("p", null, [
                                                                     _cache[21] || (_cache[21] = (0, _vue.createElementVNode)("span", {
@@ -13701,14 +13723,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                 ])
                                                             ]),
-                                                            (0, _vue.createElementVNode)("div", _hoisted_32, [
-                                                                Math.abs($setup.calculateCountdown(event.dateEnd)) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_33, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_34, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_34, [
+                                                                Math.abs($setup.calculateCountdown(event.dateEnd)) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_35, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_36, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
                                                                     _cache[24] || (_cache[24] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "day ago", -1 /* HOISTED */ ))
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_35, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_36, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_37, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_38, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
                                                                     _cache[25] || (_cache[25] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "days ago", -1 /* HOISTED */ ))
@@ -23603,9 +23625,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "currentDate"
         ]),
         (0, _vue.createCommentVNode)(" Check if user is available in the store, if not show auth compoenent "),
-        !$setup.store.state.user ? ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["Auth"], {
-            key: 0
-        })) : (0, _vue.createCommentVNode)("v-if", true),
+        (0, _vue.createCommentVNode)(' <Auth v-if="!store.state.user" /> '),
         (0, _vue.createCommentVNode)(" If user is available, show the main component "),
         (0, _vue.createVNode)($setup["Main"], {
             events: $setup.events,

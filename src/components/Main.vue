@@ -81,6 +81,9 @@
                     <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
                     <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
                   </div>
+                  <span v-if="event.location.includes('SUI')">
+                    <div class="flag" :class="`event-${event.id}`"></div>
+                  </span>
                   <div id="eventCountdown" class="text-center">
                     <div v-if="calculateCountdown(event.dateStart) < 0">
                       <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
@@ -108,6 +111,9 @@
                     <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
                     <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
                   </div>
+                  <span v-if="event.location.includes('SUI')">
+                    <div class="flag" :class="`event-${event.id}`"></div>
+                  </span>
                   <div id="eventCountdown" class="text-center">
                     <div v-if="calculateCountdown(event.dateStart) < 0">
                       <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />

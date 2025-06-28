@@ -712,8 +712,24 @@ select {
   animation-delay: -.3s;
 }
 
-.event-4, .event-5, .event-9, .event-25, .event-30, .event-31, .event-32, .event-33, .event-47 {
-  background: #fecaca;
+.flag {
+  background: #fe0000;
+  place-items: center;
+  width: 150px;
+  height: 100px;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 1px #00000080;
+}
+
+.flag:before {
+  content: "";
+  aspect-ratio: 1;
+  clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
+  background-color: #fff;
+  width: 75px;
+  position: absolute;
 }
 
 .tabList {

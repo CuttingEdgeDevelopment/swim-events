@@ -2,8 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-.event-4, .event-5, .event-9, .event-25, .event-30, .event-31, .event-32, .event-33, .event-47 {
-  background: #fecaca;
+.flag {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background: #fe0000;
+  display: grid;
+  place-items: center;
+}
+
+.flag::before {
+  position: absolute;
+  content: "";
+
+  width: 75px;
+  aspect-ratio: 1;
+  background-color: white;
+
+  clip-path: polygon(
+    0 35%,
+    35% 35%,
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 65%,
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0 65%
+  );
 }
 
 .tabList {
