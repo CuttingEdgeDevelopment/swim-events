@@ -1,36 +1,23 @@
-<script>
+<script setup>
 import { ref } from "vue";
 import { supabase } from "../lib/supabaseClient";
+import { CheckCircleIcon } from '@heroicons/vue/20/solid'
 
-export default {
-  setup() {
-    const email = ref("");
-    const password = ref("");
+const email = ref("");
+const password = ref("");
 
-    const handleSignin = async () => {
-      try {
-        // Use the Supabase provided method to handle the signin
-        const { error } = await supabase.auth.signInWithPassword({
-          email: email.value,
-          password: password.value,
-        });
-        if (error) throw error;
-      } catch (error) {
-        alert(error.error_description || error.message);
+const handleSignin = async () => {
+  try {
+    // Use the Supabase provided method to handle the signin
+    const { error } = await supabase.auth.signInWithPassword({ email: email.value, password: password.value })
+    if (error) throw error
+  } catch (error) {
+    if (error instanceof Error) {
+        alert(error.error_description || error.message)
       }
-    };
-
-    return {
-      email,
-      password,
-      handleSignin,
-    };
-  },
-};
-</script>
-
-<script setup>
-  import { CheckCircleIcon } from '@heroicons/vue/20/solid'
+    }
+  return { email, password, handleSignin };
+}
 </script>
 
 <template>
