@@ -10113,7 +10113,7 @@ exports.default = {
         const handleSignup = async ()=>{
             try {
                 // Use the Supabase provided method to handle the signup
-                const { error } = await (0, _supabaseClient.supabase).auth.signUp({
+                const { data, error } = await (0, _supabaseClient.supabase).auth.signUp({
                     email: email.value,
                     password: password.value
                 });
@@ -10121,11 +10121,6 @@ exports.default = {
             } catch (error) {
                 if (error instanceof Error) alert(error.error_description || error.message);
             }
-            return {
-                email,
-                password,
-                handleSignup
-            };
         };
         const __returned__ = {
             email,
@@ -20549,7 +20544,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
                     id: "email",
                     type: "email",
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event)=>$setup.email = $event)
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event)=>$setup.email = $event),
+                    required: "",
+                    placeholder: "Your Email"
                 }, null, 512 /* NEED_PATCH */ ), [
                     [
                         (0, _vue.vModelText),
@@ -20565,7 +20562,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
                     id: "password",
                     type: "password",
-                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event)=>$setup.password = $event)
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event)=>$setup.password = $event),
+                    required: "",
+                    placeholder: "Your Password"
                 }, null, 512 /* NEED_PATCH */ ), [
                     [
                         (0, _vue.vModelText),
@@ -20642,11 +20641,6 @@ exports.default = {
             } catch (error) {
                 if (error instanceof Error) alert(error.error_description || error.message);
             }
-            return {
-                email,
-                password,
-                handleSignin
-            };
         };
         const __returned__ = {
             email,
@@ -20694,7 +20688,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
                     id: "email",
                     type: "email",
-                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event)=>$setup.email = $event)
+                    "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event)=>$setup.email = $event),
+                    required: "",
+                    placeholder: "Your Email"
                 }, null, 512 /* NEED_PATCH */ ), [
                     [
                         (0, _vue.vModelText),
@@ -20710,7 +20706,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
                     id: "password",
                     type: "password",
-                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event)=>$setup.password = $event)
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event)=>$setup.password = $event),
+                    required: "",
+                    placeholder: "Your Password"
                 }, null, 512 /* NEED_PATCH */ ), [
                     [
                         (0, _vue.vModelText),
