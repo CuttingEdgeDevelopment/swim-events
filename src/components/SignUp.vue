@@ -16,6 +16,7 @@ const handleSignup = async () => {
       alert(error.error_description || error.message)
     }
   }
+  return { email, password, handleSignup, };
 }
 </script>
 

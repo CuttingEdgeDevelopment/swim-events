@@ -2,10 +2,14 @@
   const props = defineProps(["events", "today"]);
   const emit = defineEmits(["update-events"]);
 
+  import { Flags } from "./Flags.vue";
+
   import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-  import { LinkIcon, RocketLaunchIcon, FireIcon } from '@heroicons/vue/24/outline'
+  import { LinkIcon, RocketLaunchIcon, FireIcon, CheckCircleIcon } from '@heroicons/vue/24/outline'
   import { format, diffDays, parse } from "@formkit/tempo";
   import { computed, ref, watch } from "vue";
+  import { supabase } from "../lib/supabaseClient";
+  import { store } from "../lib/store";
 
   const upcomingEvents = computed(() => props.events.filter(event => daysPassed(event.dateEnd) >= 0));
   const pastEvents = computed(() => props.events.filter(event => daysPassed(event.dateEnd) < 0));
@@ -36,10 +40,21 @@
     loadingEvents.value = true;
     emit('update-events');
   }
+
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+  }
 </script>
 
 <template>
   <main class="px-16 py-8">
+    <div v-if="store.state.user" >
+      <p>Logged in as {{ store.state.user.email }}</p>
+      <button @click="signOut" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      <CheckCircleIcon class="-ml-0.5 size-5" aria-hidden="true" />
+      Sign Out
+    </button>
+    </div>
       <TabGroup>
         <TabList class="tabList">
           <Tab class="tabButton">
@@ -81,6 +96,7 @@
                     <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
                     <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
                   </div>
+                  <Flags />
                   <span v-if="event.location.includes('SUI')">
                     <div class="flag" :class="`event-${event.id}`"></div>
                   </span>
