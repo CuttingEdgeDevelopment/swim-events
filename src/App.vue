@@ -1,6 +1,6 @@
 <template>
   <Header :name="name" :currentDay="day" :currentDate="date" />
-  <div v-if="production">
+  <div v-if="!production">
     <!-- Check if user is available in the store, if not show auth compoenent -->
     <Auth v-if="!store.state.user" />
   </div>
