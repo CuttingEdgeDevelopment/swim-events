@@ -9964,6 +9964,7 @@ exports.default = {
         __expose();
         const date = (0, _tempo.format)(new Date(), "MMMM DD, YYYY");
         const day = (0, _tempo.format)(new Date(), "dddd");
+        const production = false;
         const events = (0, _vue.ref)([]);
         const user = (0, _vue.ref)();
         async function fetchData() {
@@ -9993,6 +9994,7 @@ exports.default = {
             name,
             date,
             day,
+            production,
             events,
             user,
             fetchData,
@@ -21058,7 +21060,6 @@ exports.default = {
     setup (__props, { expose: __expose }) {
         __expose();
         const props = __props;
-        console.log(props.eventLocation);
         const __returned__ = {
             props
         };
@@ -21076,17 +21077,77 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
 var _vue = require("vue");
 const _hoisted_1 = {
+    key: 0,
+    class: "flag china"
+};
+const _hoisted_2 = {
     key: 1,
+    class: "flag france"
+};
+const _hoisted_3 = {
+    key: 2,
+    class: "flag south_korea"
+};
+const _hoisted_4 = {
+    key: 3,
+    class: "flag germany"
+};
+const _hoisted_5 = {
+    key: 4,
+    class: "flag hungary"
+};
+const _hoisted_6 = {
+    key: 5,
+    class: "flag lithuania"
+};
+const _hoisted_7 = {
+    key: 6,
+    class: "flag norway"
+};
+const _hoisted_8 = {
+    key: 7,
+    class: "flag poland"
+};
+const _hoisted_9 = {
+    key: 8,
+    class: "flag romania"
+};
+const _hoisted_10 = {
+    key: 9,
+    class: "flag serbia"
+};
+const _hoisted_11 = {
+    key: 10,
+    class: "flag slovakia"
+};
+const _hoisted_12 = {
+    key: 12,
     class: "flag singapore"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return $setup.props.eventLocation.includes("SUI") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
-        key: 0,
+    return $setup.props.eventLocation.includes("CHN") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, _cache[0] || (_cache[0] = [
+        (0, _vue.createStaticVNode)('<div class="china__star"></div><div class="china__small_star"></div><div class="china__small_star"></div><div class="china__small_star"></div><div class="china__small_star"></div>', 5)
+    ]))) : $setup.props.eventLocation.includes("FRA") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_2)) : $setup.props.eventLocation.includes("KOR") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_3, _cache[1] || (_cache[1] = [
+        (0, _vue.createStaticVNode)('<div class="south_korea__center_circle"></div><div class="south_korea__strips_1"><div class="strips"><div></div><div></div><div></div></div><div class="strips"><div></div><div></div><div></div></div></div><div class="south_korea__strips_2"><div class="strips"><div></div><div></div><div></div></div><div class="strips"><div></div><div></div><div></div></div></div><p class="south_korea__invisible_brick"></p><p class="south_korea__invisible_brick"></p>', 5)
+    ]))) : $setup.props.eventLocation.includes("GER") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_4)) : $setup.props.eventLocation.includes("HUN") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_5)) : $setup.props.eventLocation.includes("LTU") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_6)) : $setup.props.eventLocation.includes("NOR") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_7)) : $setup.props.eventLocation.includes("POL") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_8)) : $setup.props.eventLocation.includes("ROU") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_9)) : $setup.props.eventLocation.includes("SRB") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_10, _cache[2] || (_cache[2] = [
+        (0, _vue.createElementVNode)("img", {
+            src: "https://imgur.com/7PtlQSE.png",
+            width: "37",
+            alt: ""
+        }, null, -1 /* HOISTED */ )
+    ]))) : $setup.props.eventLocation.includes("SVK") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, _cache[3] || (_cache[3] = [
+        (0, _vue.createElementVNode)("img", {
+            src: "https://imgur.com/JZWJjrF.png",
+            width: "42",
+            alt: ""
+        }, null, -1 /* HOISTED */ )
+    ]))) : $setup.props.eventLocation.includes("SUI") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
+        key: 11,
         class: (0, _vue.normalizeClass)([
             "flag switzerland",
             `event-${$setup.props.eventLocation}`
         ])
-    }, null, 2 /* CLASS */ )) : $setup.props.eventLocation.includes("SGP") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, _cache[0] || (_cache[0] = [
+    }, null, 2 /* CLASS */ )) : $setup.props.eventLocation.includes("SGP") ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, _cache[4] || (_cache[4] = [
         (0, _vue.createStaticVNode)('<div class="singapore__moon"><div class="singapore__star"></div><div class="singapore__middle_stars"><div class="singapore__star"></div><div class="singapore__star"></div></div><div class="singapore__bottom_stars"><div class="singapore__star"></div><div class="singapore__star"></div></div></div>', 1)
     ]))) : (0, _vue.createCommentVNode)("v-if", true);
 }
@@ -24202,7 +24263,8 @@ const _hoisted_5 = {
     class: "flex flex-col gap-3 pt-3"
 };
 const _hoisted_6 = {
-    id: "eventInfo"
+    id: "eventInfo",
+    class: "basis-1/2"
 };
 const _hoisted_7 = {
     key: 0,
@@ -24217,97 +24279,111 @@ const _hoisted_9 = [
     "title"
 ];
 const _hoisted_10 = {
-    id: "eventCountdown",
-    class: "text-center"
+    id: "eventFlag",
+    class: "basis-1/4"
 };
 const _hoisted_11 = {
-    key: 0
+    id: "eventCountdown",
+    class: "text-center basis-1/4"
 };
 const _hoisted_12 = {
-    key: 1
+    key: 0
 };
 const _hoisted_13 = {
-    key: 2
+    key: 1
 };
 const _hoisted_14 = {
-    class: "text-7xl"
+    key: 2
 };
 const _hoisted_15 = {
-    key: 3
-};
-const _hoisted_16 = {
     class: "text-7xl"
 };
+const _hoisted_16 = {
+    key: 3
+};
 const _hoisted_17 = {
-    id: "eventInfo"
+    class: "text-7xl"
 };
 const _hoisted_18 = {
+    id: "eventInfo",
+    class: "basis-1/2"
+};
+const _hoisted_19 = {
     key: 0,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_19 = {
+const _hoisted_20 = {
     key: 1,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_20 = [
+const _hoisted_21 = [
     "href",
     "title"
 ];
-const _hoisted_21 = {
-    id: "eventCountdown",
-    class: "text-center"
-};
 const _hoisted_22 = {
-    key: 0
+    id: "eventFlag",
+    class: "basis-1/4"
 };
 const _hoisted_23 = {
-    key: 1
+    id: "eventCountdown",
+    class: "text-center basis-1/4"
 };
 const _hoisted_24 = {
-    key: 2
+    key: 0
 };
 const _hoisted_25 = {
-    class: "text-7xl"
+    key: 1
 };
 const _hoisted_26 = {
-    key: 3
+    key: 2
 };
 const _hoisted_27 = {
     class: "text-7xl"
 };
 const _hoisted_28 = {
+    key: 3
+};
+const _hoisted_29 = {
+    class: "text-7xl"
+};
+const _hoisted_30 = {
     id: "eventsList",
     class: "flex gap-3 pt-3 flex-col-reverse"
 };
-const _hoisted_29 = {
-    id: "eventInfo"
+const _hoisted_31 = {
+    id: "eventInfo",
+    class: "basis-1/2"
 };
-const _hoisted_30 = {
+const _hoisted_32 = {
     key: 0,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_31 = {
+const _hoisted_33 = {
     key: 1,
     class: "mb-2 text-xl font-medium"
 };
-const _hoisted_32 = [
+const _hoisted_34 = [
     "href",
     "title"
 ];
-const _hoisted_33 = {
-    id: "eventCountdown",
-    class: "text-center"
-};
-const _hoisted_34 = {
-    key: 0
-};
 const _hoisted_35 = {
-    class: "text-7xl"
+    id: "eventFlag",
+    class: "basis-1/4"
 };
 const _hoisted_36 = {
-    key: 1
+    id: "eventCountdown",
+    class: "text-center basis-1/4"
 };
 const _hoisted_37 = {
+    key: 0
+};
+const _hoisted_38 = {
+    class: "text-7xl"
+};
+const _hoisted_39 = {
+    key: 1
+};
+const _hoisted_40 = {
     class: "text-7xl"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24430,7 +24506,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                             key: 0,
                                                             class: (0, _vue.normalizeClass)([
                                                                 `event-${event.id}`,
-                                                                "event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+                                                                "event border-2 border-black rounded-xl px-4 py-5 flex flex-row flex-wrap hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                             ])
                                                         }, [
                                                             (0, _vue.createElementVNode)("div", _hoisted_6, [
@@ -24466,33 +24542,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                 ])
                                                             ]),
-                                                            (0, _vue.createVNode)($setup["Flags"], {
-                                                                eventLocation: event.location
-                                                            }, null, 8 /* PROPS */ , [
-                                                                "eventLocation"
-                                                            ]),
                                                             (0, _vue.createElementVNode)("div", _hoisted_10, [
-                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_11, [
+                                                                (0, _vue.createVNode)($setup["Flags"], {
+                                                                    eventLocation: event.location
+                                                                }, null, 8 /* PROPS */ , [
+                                                                    "eventLocation"
+                                                                ])
+                                                            ]),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_11, [
+                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, [
                                                                     (0, _vue.createVNode)($setup["FireIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
                                                                     }),
                                                                     _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Ongoing!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_12, [
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_13, [
                                                                     (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
                                                                     }),
                                                                     _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Today is the day!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_13, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_14, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_14, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_15, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "day to go", -1 /* HOISTED */ ))
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_15, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_16, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_16, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_17, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[14] || (_cache[14] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "days to go", -1 /* HOISTED */ ))
@@ -24502,11 +24580,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                             key: 1,
                                                             class: (0, _vue.normalizeClass)([
                                                                 `event-${event.id}`,
-                                                                "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+                                                                "event border border-black rounded-xl px-4 py-5 flex flex-row flex-wrap hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                             ])
                                                         }, [
-                                                            (0, _vue.createElementVNode)("div", _hoisted_17, [
-                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_18, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_19, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_18, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_19, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_20, [
                                                                     (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
                                                                     (0, _vue.createElementVNode)("a", {
                                                                         href: event.link,
@@ -24517,7 +24595,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                         (0, _vue.createVNode)($setup["LinkIcon"], {
                                                                             class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
                                                                         })
-                                                                    ], 8 /* PROPS */ , _hoisted_20)
+                                                                    ], 8 /* PROPS */ , _hoisted_21)
                                                                 ])),
                                                                 (0, _vue.createElementVNode)("p", null, [
                                                                     _cache[15] || (_cache[15] = (0, _vue.createElementVNode)("span", {
@@ -24538,33 +24616,35 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                 ])
                                                             ]),
-                                                            (0, _vue.createVNode)($setup["Flags"], {
-                                                                eventLocation: event.location
-                                                            }, null, 8 /* PROPS */ , [
-                                                                "eventLocation"
+                                                            (0, _vue.createElementVNode)("div", _hoisted_22, [
+                                                                (0, _vue.createVNode)($setup["Flags"], {
+                                                                    eventLocation: event.location
+                                                                }, null, 8 /* PROPS */ , [
+                                                                    "eventLocation"
+                                                                ])
                                                             ]),
-                                                            (0, _vue.createElementVNode)("div", _hoisted_21, [
-                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_22, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_23, [
+                                                                $setup.calculateCountdown(event.dateStart) < 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_24, [
                                                                     (0, _vue.createVNode)($setup["FireIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#b91c1c]"
                                                                     }),
                                                                     _cache[18] || (_cache[18] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Ongoing!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_23, [
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 0 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_25, [
                                                                     (0, _vue.createVNode)($setup["RocketLaunchIcon"], {
                                                                         class: "size-20 m-auto stroke-[1.5] stroke-[#15803d]"
                                                                     }),
                                                                     _cache[19] || (_cache[19] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "Today is the day!", -1 /* HOISTED */ ))
-                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_24, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_25, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : $setup.calculateCountdown(event.dateStart) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_26, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_27, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[20] || (_cache[20] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "day to go", -1 /* HOISTED */ ))
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_26, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_27, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_28, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_29, (0, _vue.toDisplayString)($setup.calculateCountdown(event.dateStart)), 1 /* TEXT */ ),
                                                                     _cache[21] || (_cache[21] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "days to go", -1 /* HOISTED */ ))
@@ -24579,7 +24659,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                 }),
                                 (0, _vue.createVNode)($setup["TabPanel"], null, {
                                     default: (0, _vue.withCtx)(()=>[
-                                            (0, _vue.createElementVNode)("section", _hoisted_28, [
+                                            (0, _vue.createElementVNode)("section", _hoisted_30, [
                                                 ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.pastEvents, (event)=>{
                                                     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", {
                                                         key: event.id
@@ -24587,11 +24667,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                         (0, _vue.createElementVNode)("section", {
                                                             class: (0, _vue.normalizeClass)([
                                                                 `event-${event.id}`,
-                                                                "event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
+                                                                "event border border-black rounded-xl px-4 py-5 flex flex-row flex-wrap hover:drop-shadow hover:shadow-md hover:shadow-indigo-300"
                                                             ])
                                                         }, [
-                                                            (0, _vue.createElementVNode)("div", _hoisted_29, [
-                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_30, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_31, [
+                                                            (0, _vue.createElementVNode)("div", _hoisted_31, [
+                                                                event.link == "" ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_32, (0, _vue.toDisplayString)(event.name), 1 /* TEXT */ )) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("h4", _hoisted_33, [
                                                                     (0, _vue.createTextVNode)((0, _vue.toDisplayString)(event.name), 1 /* TEXT */ ),
                                                                     (0, _vue.createElementVNode)("a", {
                                                                         href: event.link,
@@ -24602,7 +24682,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                         (0, _vue.createVNode)($setup["LinkIcon"], {
                                                                             class: "size-4 inline ml-2 stroke-[3.0] stroke-current"
                                                                         })
-                                                                    ], 8 /* PROPS */ , _hoisted_32)
+                                                                    ], 8 /* PROPS */ , _hoisted_34)
                                                                 ])),
                                                                 (0, _vue.createElementVNode)("p", null, [
                                                                     _cache[22] || (_cache[22] = (0, _vue.createElementVNode)("span", {
@@ -24623,14 +24703,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                                     (0, _vue.createTextVNode)(" " + (0, _vue.toDisplayString)($setup.format(event.dateEnd, "dddd, MMMM DD, YYYY")), 1 /* TEXT */ )
                                                                 ])
                                                             ]),
-                                                            (0, _vue.createElementVNode)("div", _hoisted_33, [
-                                                                Math.abs($setup.calculateCountdown(event.dateEnd)) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_34, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_35, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_35, [
+                                                                (0, _vue.createVNode)($setup["Flags"], {
+                                                                    eventLocation: event.location
+                                                                }, null, 8 /* PROPS */ , [
+                                                                    "eventLocation"
+                                                                ])
+                                                            ]),
+                                                            (0, _vue.createElementVNode)("div", _hoisted_36, [
+                                                                Math.abs($setup.calculateCountdown(event.dateEnd)) == 1 ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_37, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_38, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
                                                                     _cache[25] || (_cache[25] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "day ago", -1 /* HOISTED */ ))
-                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_36, [
-                                                                    (0, _vue.createElementVNode)("p", _hoisted_37, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
+                                                                ])) : ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_39, [
+                                                                    (0, _vue.createElementVNode)("p", _hoisted_40, (0, _vue.toDisplayString)(Math.abs($setup.calculateCountdown(event.dateEnd))), 1 /* TEXT */ ),
                                                                     _cache[26] || (_cache[26] = (0, _vue.createElementVNode)("p", {
                                                                         class: "font-bold"
                                                                     }, "days ago", -1 /* HOISTED */ ))
@@ -24721,6 +24808,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
 var _vue = require("vue");
+const _hoisted_1 = {
+    key: 0
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)((0, _vue.Fragment), null, [
         (0, _vue.createVNode)($setup["Header"], {
@@ -24731,10 +24821,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "currentDay",
             "currentDate"
         ]),
-        (0, _vue.createCommentVNode)(" Check if user is available in the store, if not show auth compoenent "),
-        !$setup.store.state.user ? ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["Auth"], {
-            key: 0
-        })) : (0, _vue.createCommentVNode)("v-if", true),
+        $setup.production ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
+            (0, _vue.createCommentVNode)(" Check if user is available in the store, if not show auth compoenent "),
+            !$setup.store.state.user ? ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["Auth"], {
+                key: 0
+            })) : (0, _vue.createCommentVNode)("v-if", true)
+        ])) : (0, _vue.createCommentVNode)("v-if", true),
         (0, _vue.createCommentVNode)(" If user is available, show the main component "),
         (0, _vue.createVNode)($setup["Main"], {
             events: $setup.events,

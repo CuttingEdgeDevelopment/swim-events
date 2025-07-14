@@ -7,6 +7,181 @@
   box-shadow: 0 0 1px #00000080;
 }
 
+.china {
+  background: #dd2d26;
+}
+
+.china__star, .china__small_star {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  background-color: #fddd00;
+  width: 25px;
+  height: 25px;
+  margin: 10px;
+  position: absolute;
+}
+
+.china__small_star {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+}
+
+.china__small_star:nth-child(2) {
+  top: 5px;
+  left: 41px;
+  transform: rotate(15deg);
+}
+
+.china__small_star:nth-child(3) {
+  top: 13px;
+  left: 50px;
+  transform: rotate(22deg);
+}
+
+.china__small_star:nth-child(4) {
+  top: 27px;
+  left: 51px;
+}
+
+.china__small_star:nth-child(5) {
+  top: 37px;
+  left: 41px;
+  transform: rotate(15deg);
+}
+
+.france {
+  background: linear-gradient(to right, #192f8e 33%, #fff 33% 67%, #e01414 0);
+}
+
+.germany {
+  background: linear-gradient(#000 33%, #de0000 33% 67%, #ffcf00 0);
+}
+
+.hungary {
+  background: linear-gradient(#cf2436 33%, #fff 33% 66%, #45714e 0);
+}
+
+.south_korea {
+  background-color: #fff;
+  place-items: center;
+  display: grid;
+}
+
+.south_korea__center_circle {
+  background: linear-gradient(#cd2e3a 50%, #0047a0 0);
+  border-radius: 1in;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  rotate: 17deg;
+}
+
+.south_korea__center_circle:before {
+  content: "";
+  background-color: #cd2e3a;
+  border-radius: 1in;
+  width: 25px;
+  height: 25px;
+  margin: 25px 0;
+  position: absolute;
+  box-shadow: 25px 0 #0047a0;
+}
+
+.south_korea__strips_1, .south_korea__strips_2 {
+  justify-content: space-between;
+  width: 105px;
+  height: 22px;
+  display: flex;
+  position: absolute;
+}
+
+.strips {
+  gap: 2px;
+  display: flex;
+}
+
+.strips > div {
+  background-color: #000;
+  width: 4px;
+  height: 100%;
+}
+
+.south_korea__strips_1 {
+  rotate: -17deg;
+}
+
+.south_korea__strips_2 {
+  rotate: 17deg;
+}
+
+.south_korea__invisible_brick {
+  color: #fff;
+  background-color: #fff;
+  width: 5px;
+  height: 8px;
+  position: absolute;
+}
+
+.south_korea__invisible_brick:first-of-type {
+  top: 71px;
+  left: 35px;
+  rotate: -17deg;
+  box-shadow: 84px 0, 145px 0;
+}
+
+.south_korea__invisible_brick:nth-of-type(2) {
+  top: 71px;
+  right: 35px;
+  rotate: 17deg;
+  box-shadow: -5px 0, 6px 0;
+}
+
+.lithuania {
+  background: linear-gradient(#fdba0b 33%, #006a42 33% 66%, #c2222a 0);
+}
+
+.norway {
+  background: linear-gradient(#ba043c 40%, #fff 40% 45%, #011a5c 45% 55%, #fff 55% 60%, #ba043c 0);
+}
+
+.norway:before {
+  content: "";
+  background: #011a5c;
+  width: 10px;
+  height: 50%;
+  position: absolute;
+  left: 43px;
+  box-shadow: 0 50px #011a5c, 5px -5px #fff, -5px -5px #fff, 5px 55px #fff, -5px 55px #fff;
+}
+
+.poland {
+  background: linear-gradient(#fff 50%, #de0c39 0);
+}
+
+.romania {
+  background: linear-gradient(to right, #00277f 33%, #fcd20e 33% 66%, #cf0922 0);
+}
+
+.serbia {
+  background: linear-gradient(#c83339 33%, #033e76 33% 66%, #fff 0);
+}
+
+.serbia > img {
+  position: absolute;
+  top: 8px;
+  left: 35px;
+}
+
+.slovakia {
+  background: linear-gradient(#fff 33%, #0b4ea2 33% 66%, #ee1c25 0);
+}
+
+.slovakia > img {
+  position: absolute;
+  top: 23%;
+  left: 16%;
+}
+
 .switzerland {
   background: #fe0000;
   display: grid;
@@ -585,6 +760,14 @@ select {
   width: 1.5rem;
 }
 
+.basis-1\/2 {
+  flex-basis: 50%;
+}
+
+.basis-1\/4 {
+  flex-basis: 25%;
+}
+
 @keyframes bounce {
   0%, 100% {
     animation-timing-function: cubic-bezier(.8, 0, 1, 1);
@@ -601,12 +784,20 @@ select {
   animation: 1s infinite bounce;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
 
 .flex-col-reverse {
   flex-direction: column-reverse;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {

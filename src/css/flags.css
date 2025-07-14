@@ -7,6 +7,222 @@
   place-items: center;
 }
 
+/* China (CHN) */
+.china {
+  background: #dd2d26;
+}
+
+.china__star,
+.china__small_star {
+  position: absolute;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: #fddd00;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.china__small_star {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+}
+
+.china__small_star:nth-child(2) {
+  left: 41px;
+  top: 5px;
+  transform: rotate(15deg);
+}
+.china__small_star:nth-child(3) {
+  left: 50px;
+  top: 13px;
+  transform: rotate(22deg);
+}
+.china__small_star:nth-child(4) {
+  left: 51px;
+  top: 27px;
+}
+.china__small_star:nth-child(5) {
+  left: 41px;
+  top: 37px;
+  transform: rotate(15deg);
+}
+
+/* France (FRA) */
+.france {
+  background: linear-gradient(
+    to right,
+    #192f8e 33%,
+    #fff 33%,
+    #fff 67%,
+    #e01414 0
+  );
+}
+
+/* Germany (GER) */
+.germany {
+  background: linear-gradient(#000 33%, #de0000 33%, #de0000 67%, #ffcf00 0);
+}
+
+/* Hungary (HUN) */
+.hungary {
+  background: linear-gradient(#cf2436 33%, #fff 33%, #fff 66%, #45714e 0);
+}
+
+/* Korea (KOR) */
+.south_korea {
+  background-color: white;
+  display: grid;
+  place-items: center;
+}
+
+.south_korea__center_circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(#cd2e3a 50%, #0047a0 0);
+  border-radius: 1in;
+  rotate: 17deg;
+}
+
+.south_korea__center_circle::before {
+  position: absolute;
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: #cd2e3a;
+  border-radius: 1in;
+  margin: 25px 0;
+  box-shadow: 25px 0 #0047a0;
+}
+
+.south_korea__strips_1,
+.south_korea__strips_2 {
+  position: absolute;
+  width: 105px;
+  height: 22px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.strips {
+  display: flex;
+  gap: 2px;
+}
+
+.strips > div {
+  background-color: black;
+  width: 4px;
+  height: 100%;
+}
+
+.south_korea__strips_1 {
+  rotate: -17deg;
+}
+.south_korea__strips_2 {
+  rotate: 17deg;
+}
+
+.south_korea__invisible_brick {
+  position: absolute;
+  width: 5px;
+  height: 8px;
+  background-color: white;
+  color: white;
+}
+
+.south_korea__invisible_brick:nth-of-type(1) {
+  left: 35px;
+  top: 71px;
+  rotate: -17deg;
+  box-shadow: 84px 0, 145px 0;
+}
+
+.south_korea__invisible_brick:nth-of-type(2) {
+  right: 35px;
+  top: 71px;
+  rotate: 17deg;
+  box-shadow: -5px 0, 6px 0;
+}
+
+/* Lithuania (LTU) */
+.lithuania {
+  background: linear-gradient(#fdba0b 33%, #006a42 33%, #006a42 66%, #c2222a 0);
+}
+
+/* Norway (NOR) */
+.norway {
+  background: linear-gradient(
+    #ba043c 40%,
+    #fff 40%,
+    #fff 45%,
+    #011a5c 45%,
+    #011a5c 55%,
+    #fff 55%,
+    #fff 60%,
+    #ba043c 0
+  );
+}
+
+.norway::before {
+  position: absolute;
+  content: "";
+  left: 43px;
+  background: #011a5c;
+  height: 50%;
+  width: 10px;
+  box-shadow: 0 50px #011a5c, 5px -5px white, -5px -5px white,
+    5px 55px white, -5px 55px white;
+}
+
+/* Poland (POL) */
+.poland {
+  background: linear-gradient(#fff 50%, #de0c39 0);
+}
+
+/* Romania (ROU) */
+.romania {
+  background: linear-gradient(
+    to right,
+    #00277f 33%,
+    #fcd20e 33%,
+    #fcd20e 66%,
+    #cf0922 0
+  );
+}
+
+/* Serbia (SRB) */
+.serbia {
+  background: linear-gradient(#c83339 33%, #033e76 33%, #033e76 66%, #fff 0);
+}
+
+.serbia > img {
+  position: absolute;
+  left: 35px;
+  top: 8px;
+}
+
+/* Slovakia (SVK) */
+.slovakia {
+  background: linear-gradient(#fff 33%, #0b4ea2 33%, #0b4ea2 66%, #ee1c25 0);
+}
+.slovakia > img {
+  position: absolute;
+  left: 16%;
+  top: 23%;
+}
+
 /* Switzerland (SUI) */
 .switzerland {
   background: #fe0000;

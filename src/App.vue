@@ -1,7 +1,9 @@
 <template>
   <Header :name="name" :currentDay="day" :currentDate="date" />
-  <!-- Check if user is available in the store, if not show auth compoenent -->
-  <Auth v-if="!store.state.user" />
+  <div v-if="production">
+    <!-- Check if user is available in the store, if not show auth compoenent -->
+    <Auth v-if="!store.state.user" />
+  </div>
   <!-- If user is available, show the main component -->
   <Main :events="events" :today="date" @update-events="fetchData" />
   <Footer />
@@ -21,6 +23,7 @@
   const name = "Swim Events Countdown";
   const date = format(new Date(), "MMMM DD, YYYY");
   const day = format(new Date(), "dddd");
+  const production = process.env.NODE_ENV === "production";
 
   const events = ref([]);
   const user = ref()

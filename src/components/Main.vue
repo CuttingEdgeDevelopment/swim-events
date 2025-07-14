@@ -87,16 +87,18 @@
           <TabPanel>
             <section id="eventsList" class="flex flex-col gap-3 pt-3">
               <div v-for="event in upcomingEvents" :key="event.id">
-                <section v-if="calculateCountdown(event.dateStart) <= 0" :class="`event-${event.id}`" class="event border-2 border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
-                  <div id="eventInfo">
+                <section v-if="calculateCountdown(event.dateStart) <= 0" :class="`event-${event.id}`" class="event border-2 border-black rounded-xl px-4 py-5 flex flex-row flex-wrap hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+                  <div id="eventInfo" class="basis-1/2">
                     <h4 class="mb-2 text-xl font-medium" v-if="event.link == ''">{{event.name}}</h4>
                     <h4 class="mb-2 text-xl font-medium" v-else>{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
                     <p><span class="font-medium">Location:</span> {{event.location}}</p>
                     <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
                     <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
                   </div>
-                  <Flags :eventLocation=(event.location) />
-                  <div id="eventCountdown" class="text-center">
+                  <div id="eventFlag" class="basis-1/4">
+                    <Flags :eventLocation=(event.location) />
+                  </div>
+                  <div id="eventCountdown" class="text-center basis-1/4">
                     <div v-if="calculateCountdown(event.dateStart) < 0">
                       <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
                       <p class="font-bold">Ongoing!</p>
@@ -115,16 +117,18 @@
                     </div>
                   </div>
                 </section>
-                <section v-else :class="`event-${event.id}`" class="event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
-                  <div id="eventInfo">
+                <section v-else :class="`event-${event.id}`" class="event border border-black rounded-xl px-4 py-5 flex flex-row flex-wrap hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+                  <div id="eventInfo" class="basis-1/2">
                     <h4 class="mb-2 text-xl font-medium" v-if="event.link == ''">{{event.name}}</h4>
                     <h4 class="mb-2 text-xl font-medium" v-else>{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
                     <p><span class="font-medium">Location:</span> {{event.location}}</p>
                     <p><span class="font-medium">Begin:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
                     <p><span class="font-medium">End:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
                   </div>
-                  <Flags :eventLocation=(event.location) />
-                  <div id="eventCountdown" class="text-center">
+                  <div id="eventFlag" class="basis-1/4">
+                    <Flags :eventLocation=(event.location) />
+                  </div>
+                  <div id="eventCountdown" class="text-center basis-1/4">
                     <div v-if="calculateCountdown(event.dateStart) < 0">
                       <FireIcon class="size-20 m-auto stroke-[1.5] stroke-[#b91c1c]" />
                       <p class="font-bold">Ongoing!</p>
@@ -149,15 +153,18 @@
           <TabPanel>
             <section id="eventsList" class="flex gap-3 pt-3 flex-col-reverse">
               <div v-for="event in pastEvents" :key="event.id">
-                <section :class="`event-${event.id}`" class="event border border-black rounded-xl px-4 py-5 flex justify-between hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
-                  <div id="eventInfo">
+                <section :class="`event-${event.id}`" class="event border border-black rounded-xl px-4 py-5 flex flex-row flex-wrap hover:drop-shadow hover:shadow-md hover:shadow-indigo-300">
+                  <div id="eventInfo" class="basis-1/2">
                     <h4 class="mb-2 text-xl font-medium" v-if="event.link == ''">{{event.name}}</h4>
                     <h4 class="mb-2 text-xl font-medium" v-else>{{event.name}}<a :href="event.link" :title="event.name" target="_blank" class="hover:text-indigo-700"><LinkIcon class="size-4 inline ml-2 stroke-[3.0] stroke-current"/></a></h4>
                     <p><span class="font-medium">Location:</span> {{event.location}}</p>
                     <p><span class="font-medium">Began:</span> {{format(event.dateStart, "dddd, MMMM DD, YYYY")}}</p>
                     <p><span class="font-medium">Ended:</span> {{format(event.dateEnd, "dddd, MMMM DD, YYYY")}}</p>
                   </div>
-                  <div id="eventCountdown" class="text-center">
+                  <div id="eventFlag" class="basis-1/4">
+                    <Flags :eventLocation=(event.location) />
+                  </div>
+                  <div id="eventCountdown" class="text-center basis-1/4">
                     <div v-if="Math.abs(calculateCountdown(event.dateEnd)) == 1">
                       <p class="text-7xl">{{Math.abs(calculateCountdown(event.dateEnd))}}</p>
                       <p class="font-bold">day ago</p>
