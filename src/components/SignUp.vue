@@ -1,36 +1,23 @@
-<script>
+<script setup>
 import { ref } from "vue";
 import { supabase } from "../lib/supabaseClient";
+import { CheckCircleIcon } from '@heroicons/vue/20/solid'
 
-export default {
-  setup() {
-    const email = ref("");
-    const password = ref("");
+const email = ref("");
+const password = ref("");
 
-    const handleSignup = async () => {
-      try {
-        // Use the Supabase provided method to handle the signup
-        const { error } = await supabase.auth.signUp({
-          email: email.value,
-          password: password.value,
-        });
-        if (error) throw error;
-      } catch (error) {
-        alert(error.error_description || error.message);
-      }
-    };
-
-    return {
-      email,
-      password,
-      handleSignup,
-    };
-  },
-};
-</script>
-
-<script setup>
-  import { CheckCircleIcon } from '@heroicons/vue/20/solid'
+const handleSignup = async () => {
+  try {
+    // Use the Supabase provided method to handle the signup
+    const { data, error } = await supabase.auth.signUp({ email: email.value, password: password.value })
+    if (error) throw error
+  } catch (error) {
+    if (error instanceof Error) {
+      alert(error.error_description || error.message)
+    }
+  }
+  return { email, password, handleSignup, };
+}
 </script>
 
 <template>
@@ -39,11 +26,11 @@ export default {
     <form @submit.prevent="handleSignup" class="flex gap-3">
       <div>
         <label for="email" class="pr-1">Email</label>
-        <input id="email" type="email" v-model="email" />
+        <input id="email" type="email" v-model="email" required placeholder="Your Email" />
       </div>
       <div>
         <label for="password" class="pr-1">Password</label>
-        <input id="password" type="password" v-model="password" />
+        <input id="password" type="password" v-model="password" required placeholder="Your Password" />
       </div>
       <div>
         <button type="submit" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">

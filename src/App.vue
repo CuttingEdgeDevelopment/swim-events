@@ -1,7 +1,9 @@
 <template>
   <Header :name="name" :currentDay="day" :currentDate="date" />
-  <!-- Check if user is available in the store, if not show auth compoenent -->
-  <!-- <Auth v-if="!store.state.user" /> -->
+  <div v-if="!production">
+    <!-- Check if user is available in the store, if not show auth compoenent -->
+    <Auth v-if="!store.state.user" />
+  </div>
   <!-- If user is available, show the main component -->
   <Main :events="events" :today="date" @update-events="fetchData" />
   <Footer />
@@ -21,22 +23,10 @@
   const name = "Swim Events Countdown";
   const date = format(new Date(), "MMMM DD, YYYY");
   const day = format(new Date(), "dddd");
+  const production = process.env.NODE_ENV === "production";
 
   const events = ref([]);
-
-  // Check if a user is logged in with Supabase
-  supabase.auth.getUser().then(({ data: { user } }) => {
-    store.state.user = user;
-  });
-
-  // Set up a listener to update the store when the user changes
-  supabase.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_OUT") {
-      store.state.user = null;
-    } else {
-      store.state.user = session?.user || null;
-    }
-  });
+  const user = ref()
 
   async function fetchData() {
     const { data, error } = await supabase.from("events").select("*").order("dateStart", { ascending: true })
@@ -51,6 +41,16 @@
   }
 
   onMounted(() => {
+    // Check if a user is logged in with Supabase
+    supabase.auth.getUser().then(({ data: { user } }) => { store.state.user = user; });
+    // Set up a listener to update the store when the user changes
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT") {
+        store.state.user = null;
+      } else {
+        store.state.user = session?.user || null;
+      }
+    });
     fetchData();
   })
 </script>
