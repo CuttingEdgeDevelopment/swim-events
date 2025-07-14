@@ -24821,7 +24821,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "currentDay",
             "currentDate"
         ]),
-        $setup.production ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
+        !$setup.production ? ((0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
             (0, _vue.createCommentVNode)(" Check if user is available in the store, if not show auth compoenent "),
             !$setup.store.state.user ? ((0, _vue.openBlock)(), (0, _vue.createBlock)($setup["Auth"], {
                 key: 0
