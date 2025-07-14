@@ -1,0 +1,86 @@
+.flag {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  place-items: center;
+}
+
+/* Switzerland (SUI) */
+.switzerland {
+  background: #fe0000;
+  display: grid;
+}
+
+.switzerland::before {
+  position: absolute;
+  content: "";
+
+  width: 75px;
+  aspect-ratio: 1;
+  background-color: white;
+
+  clip-path: polygon(
+    0 35%,
+    35% 35%,
+    35% 0%,
+    65% 0%,
+    65% 35%,
+    100% 35%,
+    100% 65%,
+    65% 65%,
+    65% 100%,
+    35% 100%,
+    35% 65%,
+    0 65%
+  );
+}
+
+/* Singapore (SGP) */
+.singapore {
+  background: linear-gradient(#ed2939 50%, #fff 0);
+}
+
+.singapore__moon {
+  position: absolute;
+  width: 72px;
+  aspect-ratio: 1;
+  border-radius: 1in;
+  box-shadow: -17px 0 white;
+  left: 14%;
+  top: 6.6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.singapore__middle_stars {
+  display: flex;
+  gap: 15px;
+  margin-top: -3px;
+}
+.singapore__bottom_stars {
+  display: flex;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.singapore__star {
+  height: 17px;
+  aspect-ratio: 1;
+  background-color: white;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}

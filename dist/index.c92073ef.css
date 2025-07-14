@@ -1,3 +1,63 @@
+.flag {
+  place-items: center;
+  width: 150px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 1px #00000080;
+}
+
+.switzerland {
+  background: #fe0000;
+  display: grid;
+}
+
+.switzerland:before {
+  content: "";
+  aspect-ratio: 1;
+  clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
+  background-color: #fff;
+  width: 75px;
+  position: absolute;
+}
+
+.singapore {
+  background: linear-gradient(#ed2939 50%, #fff 0);
+}
+
+.singapore__moon {
+  aspect-ratio: 1;
+  border-radius: 1in;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  display: flex;
+  position: absolute;
+  top: 6.6%;
+  left: 14%;
+  box-shadow: -17px 0 #fff;
+}
+
+.singapore__middle_stars {
+  gap: 15px;
+  margin-top: -3px;
+  display: flex;
+}
+
+.singapore__bottom_stars {
+  gap: 5px;
+  margin-top: 2px;
+  display: flex;
+}
+
+.singapore__star {
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  background-color: #fff;
+  height: 17px;
+}
+
 *, :before, :after {
   box-sizing: border-box;
   border: 0 solid #e5e7eb;
@@ -763,26 +823,6 @@ select {
 
 .\[animation-delay\:-0\.3s\] {
   animation-delay: -.3s;
-}
-
-.flag {
-  background: #fe0000;
-  place-items: center;
-  width: 150px;
-  height: 100px;
-  display: grid;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 1px #00000080;
-}
-
-.flag:before {
-  content: "";
-  aspect-ratio: 1;
-  clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
-  background-color: #fff;
-  width: 75px;
-  position: absolute;
 }
 
 .tabList {
