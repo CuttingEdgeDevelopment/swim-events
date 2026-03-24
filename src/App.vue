@@ -1,9 +1,9 @@
 <template>
   <Header :name="name" :currentDay="day" :currentDate="date" />
-  <div v-if="!production">
+  <!-- <div v-if="!production"> -->
     <!-- Check if user is available in the store, if not show auth compoenent -->
-    <Auth v-if="!store.state.user" />
-  </div>
+    <!-- <Auth v-if="!store.state.user" /> -->
+  <!-- </div> -->
   <!-- If user is available, show the main component -->
   <Main :events="events" :today="date" @update-events="fetchData" />
   <Footer />
